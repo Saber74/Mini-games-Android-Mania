@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="space">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Assets/space.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
