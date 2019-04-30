@@ -1,230 +1,116 @@
 package com.mygdx.game.game;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
-import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Texture;
-
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.mygdx.game.game.Main;
+import java.awt.*;
 import java.util.ArrayList;
-
-
 public class Player {
-    //stores x loc (start at 240)
-    private int x = 340;
-    //stores y loc (start at 167)
-    private int y = 167;
-    //texture for our character
-    public Texture player_img = new Texture("Assets/SPRITES/Megaman/Zero/DashL/0.png");
+    private float x, y; // stores the x and the y of the player
+    private Texture player_sprite;
+    private Sprite player;
+    private boolean shooting = false;
+    // powerup types
+    private final static int SPIRITBOMB = 0;
+    private final static int INVINCIBLE = 1;
+    private final static int HEART = 2;
+    private ArrayList<Integer> powerupID = new ArrayList<Integer>(); // will store the id of the powerup
+    private int points = 0; // will store the points
+    private int lives = 3; // stores the amount of lives left
+    private boolean invincible = true; // used to determine invincibility
+    private Sprite barrier = new Sprite(new Texture("Assets/barriers.png")); // sprite of the barrier
+    boolean musicPlaying = false; // checks if music is playing
+    Rectangle rect; // stores a rectangle of the player which is used for collision and more
 
-    //speed for our character in pixels/s
-
-    private String name;
-
-    private int width, height;
-
-    private int counter = 0;
-    private int pos = 0;
-    private int animation_speed = 2;
-
-    private int speed = 10;
-
-    private boolean jump = false;
-
-    private boolean isTouchingGround = false;
-
-    private boolean L = false;
-    private boolean R = false;
-
-    //initialization code
-    public Player(String name) {
-        this.name = name;
-        Main.players.add(this);
-        height = player_img.getHeight();
-        width = player_img.getWidth();
+    public Player(float x, float y) { // constructor takes in x and y
+        player_sprite = new Texture("Assets/0.png"); // loads in player sprite image
+        player = new Sprite(player_sprite); // creates a sprite out of the image
+        this.x = x; // sets the x variable
+        this.y = y; // sets the y variable
+        player.setX(x); // sets the player's x
+        player.setY(y); // sets the player's y
+        rect = new Rectangle((int) player.getX(), (int) player.getY(), (int) player.getWidth(), (int) player.getHeight()); // creates a rect based on the sprite's dimensions
     }
 
     //updates character's position
-    public void render() {
-        if(L){
-            for(int i=0;i<17;i++){
-                player_img = new Texture("Assets/SPRITES/Megaman/Zero/Walk/"+i+".png");
-//                if(time>g_SpikeGuardBreakpoint) {
-                    Main.batch.draw(player_img, x, y, -width, height);
-                System.out.println("Left");
-            }
+    private void render(SpriteBatch batch) { // renders in the player and the invincibility circle if the ability is active
+        if (invincible) { // if the player is invincible
+            // ther barrier sprite's x and y is set corresponding to the player's x and y
+            barrier.setX(player.getX() - 35);
+            barrier.setY(player.getY() - 40);
+            barrier.rotate(1); // will rotate the barrier
+            barrier.draw(batch); // draws the barrier onto the screen
         }
-        else if(R) {
-            for (int i = 0; i < 17; i++) {
-                player_img = new Texture("Assets/SPRITES/Megaman/Zero/Walk/" + i + ".png");
-//                if(time>g_SpikeGuardBreakpoint) {
-                    Main.batch.draw(player_img, x, y, width, height);
-                System.out.println("Right");
-            }
-        }
-    }
-//    public class MyInputProcessor implements InputProcessor {
-//        public boolean keyPressed;
-//        @Override
-//        public boolean keyDown(int key) {
-//            if (key == Input.Keys.UP) {
-//                keyPressed = true;
-//            }
-//
-//            return false;
-//        }
-//
-//        @Override
-//        public boolean keyUp(int key) {
-//            if (key == Input.Keys.UP) {
-//                keyPressed = false;
-//            }
-//
-//            return false;
-//        }
-//
-//        @Override
-//        public boolean keyTyped(char character) {
-//            return false;
-//        }
-//
-//        @Override
-//        public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-//            return false;
-//        }
-//
-//        @Override
-//        public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-//            return false;
-//        }
-//
-//        @Override
-//        public boolean touchDragged(int screenX, int screenY, int pointer) {
-//            return false;
-//        }
-//
-//        @Override
-//        public boolean mouseMoved(int screenX, int screenY) {
-//            return false;
-//        }
-//
-//        @Override
-//        public boolean scrolled(int amount) {
-//            return false;
-//        }
-//    }
-    public void update() {
-        if (!jump){
-            this.goDown();
-        }
-
-        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) this.goRight();
-        else if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) this.goLeft();
-        else if(Gdx.input.isKeyPressed(Input.Keys.UP)) this.jump();
-
-        counter += 1;
-        if (counter > animation_speed) {
-            counter = 0;
-            pos += 1;
-            if (pos >= 3) {
-                pos = 0;
-            }
-        }
-
+        player.draw(batch); // draws the player on to the screen
     }
 
-
-    public void setJump(boolean jump) {
-        this.jump = jump;
+    public void update(SpriteBatch batch) { // updates the position of the player and updates any abilities being used
+        // sets the x and the y of the player
+        player.setX(x);
+        player.setY(y);
+        // creates a new rectangle
+        rect = new Rectangle((int) player.getX(), (int) player.getY(), (int) player.getWidth(), (int) player.getHeight());
+        System.out.println(lives);
+        this.render(batch); // calls the render method
     }
 
-    public void goRight() {
-
-//        if (this.getX() - this.getWidth() / 2 >= Main.WIDTH / 2){
-//            System.out.println("MIDDLE");
-//            Main.xShift += speed;
-//            Main.cam.translate(Main.xShift, 0);
-//        }else{
-        x += speed;
-        R = true;
-        L = false;
-    //}
-
-    }
-
-    public void goLeft() {
-
-//        if (this.getX() - this.getWidth() / 2 >= Main.WIDTH / 2){
-//            System.out.println("MIDDLE");
-//            Main.xShift -= speed;
-//            Main.cam.translate(Main.xShift, 0);
-//        }else{
-            x -= speed;
-            L = true;
-            R = false;
-//        }
-    }
-
-    public void goDown(){
-        y -= speed;
-        collidesWithGround(Main.walls);
-    }
-    public void goUp(){
-        y += speed;
-        collidesWithGround(Main.walls);
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
-    public int getWidth() {
-        return width;
-    }
-
-    public void jump(){
-        y +=speed;
-//        Main.xShift += speed;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public void collidesWith(ArrayList<Walls> walls){
-        for (Walls i : walls){
-            if (i.isCollideWith(this)){
-                if (R){
-                    x -= speed;
-                }else if (L){
-                    x += speed;
-                }
+    public void usePowerup() { // uses a powerup when the shift button is pressed
+        if (powerupID.size() > 0) { // if there is a powerup that is present
+            if (powerupID.get(0) == INVINCIBLE) { // if the powerup is invincible
+                invincible = true; // invincible  is set to true
+                powerupID.remove(0); // removes the powerup id as it is not used
             }
         }
     }
 
-    public boolean isTouchingGround() {
-        return isTouchingGround;
-    }
-
-    public void setTouchingGround(boolean touchingGround) {
-        isTouchingGround = touchingGround;
-    }
-
-    public void collidesWithGround(ArrayList<Walls> walls){
-        for (Walls i : walls){
-            if (i.isCollideWith(this)){
-                goUp();
-                this.setTouchingGround(true);
+    public void getPowerup(PowerUp powerup) { // called when the player collides with a powerup object
+        int type = powerup.getType(); // gets the type of powerup
+        if (powerupID.size() == 0) { // will only receive it if there are non presently used
+            if (type == INVINCIBLE) { // if the type is invincible
+                powerupID.add(INVINCIBLE); // adds the ID to the arraylist
             }
         }
+        else if (type == HEART) { // will add a life if not already maxed out
+            lives += (lives == 3 ? 0 : 1);
+        }
+    }
+
+    public void goLeft() { // goes left
+        if (player.getX() > 0) x -= 8;
+    }
+
+    public void goRight() { // goes right
+        if (player.getX() + player.getWidth() < Main.WIDTH) x += 8;
+    }
+
+    public boolean isCollidingWith(PowerUp powerup) { // checks if the player is colliding with a powerup object and return a boolean
+        return powerup.getRect().intersects(this.getRect());
+    }
+
+
+    public Rectangle getRect() { // returns the Rectangle
+        return rect;
+    }
+
+    public void addPoints(int points) { // adds points when given a point value
+        this.points += points;
+    }
+
+    public int getPoints() { // returns the amount of points
+        return points;
+    }
+
+    public int getLives() { // returns the amount of lives
+        return lives;
+    }
+
+    public void takeAwayLife() { // takes away a life
+        if (!invincible) lives -= 1;
+        else invincible = false; // if the player was invincible then the ability will end
+    }
+
+    public void kill(){ // kills the player immediately
+        lives = 0;
     }
 
 }
-
