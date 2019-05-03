@@ -5,7 +5,7 @@ os.environ['SDL_VIDEO_WINDOW_POS'] = '10,30'
 
 init()
 fname = glob.glob("*.png")[0]
-fname = "pez.png"
+fname = "Megaman vine swinging sprite.png"
 pic = image.load(fname)   
 
 wid,hi = pic.get_size()
