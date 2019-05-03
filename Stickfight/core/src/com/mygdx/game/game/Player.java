@@ -2,7 +2,6 @@ package com.mygdx.game.game;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.mygdx.game.game.Main;
 import java.awt.*;
 import java.util.ArrayList;
 public class Player {
@@ -23,7 +22,7 @@ public class Player {
     Rectangle rect; // stores a rectangle of the player which is used for collision and more
 
     public Player(float x, float y) { // constructor takes in x and y
-        player_sprite = new Texture("Assets/0.png"); // loads in player sprite image
+        player_sprite = new Texture("Assets/SPRITES/Megaman/0.png"); // loads in player sprite image
         player = new Sprite(player_sprite); // creates a sprite out of the image
         this.x = x; // sets the x variable
         this.y = y; // sets the y variable
@@ -82,11 +81,19 @@ public class Player {
     public void goRight() { // goes right
         if (player.getX() + player.getWidth() < Main.WIDTH) x += 8;
     }
+    public void goDown(){
+        for(int i=0;i<8;i++){
+            y-=1;
+        }
+    }
+    public void goUp(){
+        if(player.getY()+player.getHeight()<Main.HEIGHT) y+=8;
+        goDown();
+    }
 
     public boolean isCollidingWith(PowerUp powerup) { // checks if the player is colliding with a powerup object and return a boolean
         return powerup.getRect().intersects(this.getRect());
     }
-
 
     public Rectangle getRect() { // returns the Rectangle
         return rect;
@@ -107,6 +114,12 @@ public class Player {
     public void takeAwayLife() { // takes away a life
         if (!invincible) lives -= 1;
         else invincible = false; // if the player was invincible then the ability will end
+    }
+    public float getxpos(){
+        return player.getX();
+    }
+    public float getypos(){
+        return player.getY();
     }
 
     public void kill(){ // kills the player immediately

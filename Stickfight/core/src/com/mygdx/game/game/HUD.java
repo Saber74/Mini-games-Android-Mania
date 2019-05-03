@@ -10,7 +10,6 @@ public class HUD {
     private Texture powerups_hud; // the background for the powerups HUD
     private Texture points_hud; // the COOL text for the points
     private Texture heart; // the texture for the heart to display the players life
-    private BitmapFont font = new BitmapFont(Gdx.files.internal("Assets/one/impact.fnt"), false); // will load in a font for the points
     private ArrayList<Texture> powerup_sprites = new ArrayList<Texture>(); //will store the powerup texture
 
     public HUD() {// will load in various textures
