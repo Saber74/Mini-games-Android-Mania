@@ -1,5 +1,8 @@
 //May 10, 2019
 
+//update vines as bkg moves
+//arrow keys to move player
+//sprite frames for megaman
 
 package com.swing.along;
 
@@ -29,8 +32,8 @@ public class SwingAlong extends ApplicationAdapter implements InputProcessor{
 	boolean right = true;//vines start swinging right
 	
 	Texture bkg;
-	Sprite[] vines;
-	Sprite p1, p2;
+	Vine[] vines;
+	Player p1, p2;
 	
 	@Override
 	public void create () {
@@ -43,16 +46,16 @@ public class SwingAlong extends ApplicationAdapter implements InputProcessor{
 		
 		bkg = new Texture("bkg.png");
 		
-		vines = new Sprite[15];
+		vines = new Vine[15];
 		
 		for(int i=0; i<vines.length; i++){
-			vines[i] = new Sprite(new Texture("vine.png"));
-			vines[i].setOrigin(0,0);
-			vines[i].setPosition(400+i*320,800);
+			vines[i] = new Vine("vine.png");
+			vines[i].setPos(400+i*500,800);
+			
 		}
 		
-		p1 = new Sprite(new Texture("Megaman.png"));
-		p1.setOrigin(p1.getWidth()-50,p1.getHeight()-50);
+		p1 = new Player("Megaman.png",100,600);
+		//p1.setVine();
 		
 		Gdx.input.setInputProcessor(this);
 		
@@ -73,22 +76,15 @@ public class SwingAlong extends ApplicationAdapter implements InputProcessor{
 		//lower background
 		batch.draw(bkg, bkgX2, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/2);
 		updateBkg();
+		
+		updateAngle();
+		
+		if(p1.onVine()){
+			p1.setRotation(angle-180);
+			p1.setPos();
+		}
 
-		if(angle<=270 && right){
-			angle += 10;
-		}
-		
-		if(angle==270){
-			right = false;
-		}
-		
-		if(angle<=270 && !right){
-			angle -= 10;
-		}
-		
-		if(angle==90 && !right){
-			right = true;
-		}
+		p1.render(batch);
 		
 		for(int i=0; i<vines.length; i++){
 			
@@ -100,20 +96,10 @@ public class SwingAlong extends ApplicationAdapter implements InputProcessor{
 				vines[i].setRotation(-angle);
 			}
 			
-			vines[i].draw(batch);
+			vines[i].render(batch);
 		}
 		
-		p1.setRotation(angle-180);
-		p1.setPosition(updateP1()[0],updateP1()[1]);
 
-		p1.draw(batch);
-		
-		
-		for(Sprite vine : vines){
-			vine.draw(batch);
-		}
-		
-				
 		batch.end();
 		
 		sr.begin(ShapeType.Filled);
@@ -139,30 +125,38 @@ public class SwingAlong extends ApplicationAdapter implements InputProcessor{
 		}
 	}
 	
+	public void updateAngle(){
+		if(angle<=270 && right){
+			angle += 10;
+		}
+		
+		if(angle==270){
+			right = false;
+		}
+		
+		if(angle<=270 && !right){
+			angle -= 10;
+		}
+		
+		if(angle==90 && !right){
+			right = true;
+		}
+	}
+	
 	public void updateBkg(){
 		if(bkgX1<0){
-			System.out.println(bkgX1);
 			for(int i=0; i<bkgX1/-1000+1; i++){
 				batch.draw(bkg, 1000*(i+1)+bkgX1, 400, Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/2);
 			}
 		}
 	}
-	
-	public float[] updateP1(){
-		float p1X = -80+(float)(500-vines[0].getWidth()/2-vines[0].getHeight()*Math.cos(Math.toRadians(vines[0].getRotation()-90)));
-		float p1Y = -30+(float)(800-vines[0].getHeight()/2-vines[0].getHeight()*Math.sin(Math.toRadians(vines[0].getRotation()-90)));
-		
-		float[] coord = {p1X, p1Y};
-		
-		return coord;
-	}
-	
+
 	//implement ALL methods of InputProcessor
 	public boolean keyDown(int keycode){
 		if(keycode == Keys.RIGHT){
 			bkgX1 -= 20;
-			for(Sprite vine : vines){
-				vine.setPosition(vine.getX()-20, vine.getY());
+			for(Vine vine : vines){
+				vine.changeX(-20);
 			}
 		}
 		return true;
