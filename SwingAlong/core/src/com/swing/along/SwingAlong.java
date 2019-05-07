@@ -6,7 +6,7 @@
 
 package com.swing.along;
 
-
+import java.util.*;
 import com.badlogic.gdx.ApplicationAdapter;
 
 
@@ -29,11 +29,15 @@ public class SwingAlong extends ApplicationAdapter implements InputProcessor{
 	int angle = 90;
 	int bkgX1, bkgX2;
 	
+	boolean animation = false;
+	
 	boolean right = true;//vines start swinging right
 	
 	Texture bkg;
-	Vine[] vines;
+	LinkedList<Vine> vines;
 	Player p1, p2;
+	
+	float stateTime;
 	
 	@Override
 	public void create () {
@@ -41,20 +45,24 @@ public class SwingAlong extends ApplicationAdapter implements InputProcessor{
 		batch = new SpriteBatch();
 		sr = new ShapeRenderer();
 		
+		stateTime = 0f;
+		
 		bkgX1 = 0;
 		bkgX2 = 0;
 		
 		bkg = new Texture("bkg.png");
 		
-		vines = new Vine[15];
+		vines = new LinkedList<Vine>();
 		
-		for(int i=0; i<vines.length; i++){
-			vines[i] = new Vine("vine.png");
-			vines[i].setPos(400+i*500,800);
+		//15 vines
+		for(int i=0; i<15; i++){
+			vines.add(new Vine("vine.png"));
+			vines.get(i).setPos(400+i*500,800);
 			
 		}
 		
-		p1 = new Player("Megaman.png",100,600);
+		String[] p1Frames = {"megaman_1.png","megaman_2.png","megaman_3.png","megaman_4.png"};
+		p1 = new Player(p1Frames,100,600);
 		//p1.setVine();
 		
 		Gdx.input.setInputProcessor(this);
@@ -67,6 +75,8 @@ public class SwingAlong extends ApplicationAdapter implements InputProcessor{
 		Gdx.gl.glClearColor(1, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
+		stateTime += Gdx.graphics.getDeltaTime();
+		
 		
 		batch.begin();
 		
@@ -78,25 +88,45 @@ public class SwingAlong extends ApplicationAdapter implements InputProcessor{
 		updateBkg();
 		
 		updateAngle();
-		
-		if(p1.onVine()){
-			p1.setRotation(angle-180);
-			p1.setPos();
-		}
 
-		p1.render(batch);
+		for(Vine v : vines){
+			if(p1.getPlayerRect().overlaps(v.getVine().getBoundingRectangle())){
+				p1.setVine(v);
+			}
+		}		
 		
-		for(int i=0; i<vines.length; i++){
+		if(animation){
+			p1.renderAnimation(stateTime, batch);
+			if(p1.isFinishedAnimation(stateTime)){
+				animation = false;
+			}
+		}
+		
+		else{
+			if(p1.onVine()){
+				p1.setPos();
+				if(vines.indexOf(p1.getVine())%2==0){
+					p1.setRotation(angle-180);
+				}
+				else{
+					p1.setRotation(-angle-180);
+				}
+			}
 			
-			if(i%2==0){
-				vines[i].setRotation(angle);
+			p1.render(batch);
+		}
+		
+		for(Vine v : vines){
+			
+			if(vines.indexOf(v)%2==0){
+				v.setRotation(angle);
 			}
 			
 			else{
-				vines[i].setRotation(-angle);
+				v.setRotation(-angle);
 			}
 			
-			vines[i].render(batch);
+			v.render(batch);
 		}
 		
 
@@ -104,6 +134,8 @@ public class SwingAlong extends ApplicationAdapter implements InputProcessor{
 		
 		sr.begin(ShapeType.Filled);
 		sr.setColor(Color.GREEN);
+		
+		sr.rect(p1.getPosRect().x, p1.getPosRect().y, p1.getPosRect().width, p1.getPosRect().height);
 		
 		//sr.rect(p1.getOriginX()+p1X, p1.getOriginY()+p1Y, 10, 10);
 		
@@ -117,7 +149,7 @@ public class SwingAlong extends ApplicationAdapter implements InputProcessor{
 		sr.end();
 		
 		try{
-			Thread.sleep(50);
+			Thread.sleep(100);
 		}
 		
 		catch(InterruptedException e){
@@ -126,19 +158,20 @@ public class SwingAlong extends ApplicationAdapter implements InputProcessor{
 	}
 	
 	public void updateAngle(){
-		if(angle<=270 && right){
+		if(angle<250 && right){
 			angle += 10;
 		}
 		
-		if(angle==270){
+		if(angle==250){
 			right = false;
+			angle-=10;
 		}
 		
-		if(angle<=270 && !right){
+		if(angle<250 && !right){
 			angle -= 10;
 		}
 		
-		if(angle==90 && !right){
+		if(angle==110 && !right){
 			right = true;
 		}
 	}
@@ -146,7 +179,7 @@ public class SwingAlong extends ApplicationAdapter implements InputProcessor{
 	public void updateBkg(){
 		if(bkgX1<0){
 			for(int i=0; i<bkgX1/-1000+1; i++){
-				batch.draw(bkg, 1000*(i+1)+bkgX1, 400, Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/2);
+				batch.draw(bkg, 1000*(i+1)+bkgX1, 400, Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/2);		
 			}
 		}
 	}
@@ -154,16 +187,26 @@ public class SwingAlong extends ApplicationAdapter implements InputProcessor{
 	//implement ALL methods of InputProcessor
 	public boolean keyDown(int keycode){
 		if(keycode == Keys.RIGHT){
-			bkgX1 -= 20;
-			for(Vine vine : vines){
-				vine.changeX(-20);
+			//p1.changePos(50,0);
+			//p1.updateFrame();
+			
+			animation = true;
+			stateTime = 0f;
+			bkgX1-=300;
+			for(Vine v : vines){
+				v.translateX(-300);
 			}
+
 		}
 		return true;
 	}
 	
 	public boolean keyUp(int keycode){
-		//if(keycode == Keys.UP || keycode == Keys.DOWN ||
+		if(keycode == Keys.UP || keycode == Keys.DOWN ||
+				keycode == Keys.RIGHT || keycode == Keys.LEFT){
+			//animation = false;
+			//p1.updateFrame();
+		}
 		
 		return true;
 	}

@@ -23,8 +23,6 @@ public class Vine {
 	public void setPos(float x, float y){
 		this.x = x;
 		this.y = y;
-		
-		vine.setPosition(x, y);
 	}
 	
 	public void setRotation(int angle){
@@ -32,11 +30,13 @@ public class Vine {
 		vine.setRotation(angle);
 	}
 	
-	public void changeX(int shift){
-		x += shift;
+	public void translateX(int tx){
+		x += tx;
 	}
 	
+	
 	public void render(SpriteBatch batch){
+		vine.setPosition(x, y);
 		vine.draw(batch);
 	}
 	
@@ -60,6 +60,8 @@ public class Vine {
 		return angle;
 	}
 	
-	
+	public Sprite getVine(){
+		return vine;
+	}
 	
 }

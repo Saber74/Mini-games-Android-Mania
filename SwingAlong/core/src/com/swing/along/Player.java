@@ -1,10 +1,12 @@
 package com.swing.along;
 
 import com.badlogic.gdx.graphics.Texture;
-
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
@@ -18,16 +20,36 @@ public class Player {
 	//stores player's x and y value
 	//stores the vine that the current player is on
 	Sprite player;
+	Texture[] playerTextures;
+	Texture currentFrame;
 	float x,y;
 	Vine vine;
 	
+	int frame = 0;
+	
+	Animation<Texture> jumpAnimation;
+	
 	//constructor method
-	public Player(String file, float x, float y){
-		player = new Sprite(new Texture(file));
+	public Player(String[] frames, float x, float y){
+		
+		player = new Sprite(new Texture("Megaman.png"));
+		
+		playerTextures = new Texture[frames.length];
+		
+		for(int i=0; i<frames.length; i++){
+			playerTextures[i] = new Texture(frames[i]);
+		}
+		
+		player = new Sprite(playerTextures[0]);
+		//player.setCenter(100, 100);
+		
+		jumpAnimation = new Animation<Texture>(0.1f, playerTextures);
+		
 		//starting position on platform
 		this.x = x;
 		this.y = y;
-		player.setPosition(x, y);
+		
+		//player.setPosition(x, y);
 	}
 	
 	public void setVine(Vine v){
@@ -42,21 +64,57 @@ public class Player {
 		return false;
 	}
 	
-	public void setPos(){
-		x = -80+(float)(vine.getX()-vine.getWidth()/2-vine.getHeight()*Math.cos(Math.toRadians(vine.getRotation()-90)));
-		y = -30+(float)(vine.getY()-vine.getHeight()/2-vine.getHeight()*Math.sin(Math.toRadians(vine.getRotation()-90)));
-		
-		player.setPosition(x, y);
+	public Vine getVine(){
+		return vine;
 	}
+	
+	public void changePos(float shiftX, float shiftY){
+		x += shiftX;
+		y += shiftY;
+		
+		//player.setPosition(x, y);
+	}
+	
+	public void setPos(){
+		x = (float)(vine.getX()-vine.getWidth()-vine.getHeight()*Math.cos(Math.toRadians(vine.getRotation()-90)));
+		y = (float)(vine.getY()-vine.getHeight()/2-vine.getHeight()*Math.sin(Math.toRadians(vine.getRotation()-90)));
+		
+		//player.setPosition(x, y);
+	}
+	
 	
 	public void setRotation(int angle){
 		player.setRotation(angle);
 	}
 	
+	
 	public void render(SpriteBatch batch){
 		player.draw(batch);
+		//batch.draw(playerTextures[0],x,y);
+	}
+	
+	public void renderAnimation(float time, SpriteBatch batch){
+		currentFrame = jumpAnimation.getKeyFrame(time, true);
+		x+=50;
+		
+		batch.draw(currentFrame,x,y);
+	}
+	
+	public boolean isFinishedAnimation(float stateTime){
+		
+		if(jumpAnimation.isAnimationFinished(stateTime)){
+			return true;
+		}
+		return false;
 	}
 	
 	
+	public Rectangle getPlayerRect(){
+		return new Rectangle(x,y,playerTextures[0].getWidth(),playerTextures[0].getHeight());
+	}
+	
+	public Rectangle getPosRect(){
+		return new Rectangle(x,y,10,10);
+	}
 	
 }
