@@ -75,7 +75,13 @@ public class Player {
     }
 
     public void goLeft() { // goes left
-        if (player.getX() > 0) x -= 8;
+        if (player.getX() > 0) {
+            x -= 8;
+            for (int i = 0; i < 8; i++) {
+                player = new Sprite(new Texture("Assets/SPRITES/Megaman/Zero/WalkL/"+i+".png"));
+            }
+//            player= new Sprite(new Texture("Assets/SPRITES/Megaman/Zero/WalkL/0.png"));
+        }
     }
 
     public void goRight() { // goes right
@@ -97,14 +103,6 @@ public class Player {
 
     public Rectangle getRect() { // returns the Rectangle
         return rect;
-    }
-
-    public void addPoints(int points) { // adds points when given a point value
-        this.points += points;
-    }
-
-    public int getPoints() { // returns the amount of points
-        return points;
     }
 
     public int getLives() { // returns the amount of lives
