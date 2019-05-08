@@ -75,11 +75,19 @@ public class Player {
 		//player.setPosition(x, y);
 	}
 	
-	public void setPos(){
-		x = (float)(vine.getX()-vine.getWidth()-vine.getHeight()*Math.cos(Math.toRadians(vine.getRotation()-90)));
-		y = (float)(vine.getY()-vine.getHeight()/2-vine.getHeight()*Math.sin(Math.toRadians(vine.getRotation()-90)));
+	
+	public void setPos(boolean right){
 		
-		//player.setPosition(x, y);
+		if(right){
+			x = (float)(vine.getX()-vine.getHeight()*Math.cos(Math.toRadians(vine.getRotation()-80)));
+			y = (float)(vine.getY()-vine.getHeight()*Math.sin(Math.toRadians(vine.getRotation()-80)));
+		}
+		
+		else{
+			x = (float)(vine.getX()-vine.getHeight()*Math.cos(Math.toRadians(vine.getRotation()-100)));
+			y = (float)(vine.getY()-vine.getHeight()*Math.sin(Math.toRadians(vine.getRotation()-100)));
+		}
+		player.setPosition(x, y);
 	}
 	
 	

@@ -104,13 +104,14 @@ public class SwingAlong extends ApplicationAdapter implements InputProcessor{
 		
 		else{
 			if(p1.onVine()){
-				p1.setPos();
 				if(vines.indexOf(p1.getVine())%2==0){
-					p1.setRotation(angle-180);
+					//p1.setRotation(angle-180);
 				}
 				else{
-					p1.setRotation(-angle-180);
+					//p1.setRotation(-angle-180);
 				}
+				
+				p1.setPos(right);
 			}
 			
 			p1.render(batch);
@@ -135,6 +136,7 @@ public class SwingAlong extends ApplicationAdapter implements InputProcessor{
 		sr.begin(ShapeType.Filled);
 		sr.setColor(Color.GREEN);
 		
+		//PENDULUM RECTANGLE 
 		sr.rect(p1.getPosRect().x, p1.getPosRect().y, p1.getPosRect().width, p1.getPosRect().height);
 		
 		//sr.rect(p1.getOriginX()+p1X, p1.getOriginY()+p1Y, 10, 10);
@@ -158,21 +160,20 @@ public class SwingAlong extends ApplicationAdapter implements InputProcessor{
 	}
 	
 	public void updateAngle(){
-		if(angle<250 && right){
+		if(angle==250){
+			right = false;
+		}
+		
+		if(angle==110){
+			right = true;
+		}
+		
+		if(right){
 			angle += 10;
 		}
 		
-		if(angle==250){
-			right = false;
-			angle-=10;
-		}
-		
-		if(angle<250 && !right){
+		else if(!right){
 			angle -= 10;
-		}
-		
-		if(angle==110 && !right){
-			right = true;
 		}
 	}
 	
