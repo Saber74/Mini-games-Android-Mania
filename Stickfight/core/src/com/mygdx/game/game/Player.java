@@ -1,5 +1,7 @@
 package com.mygdx.game.game;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import java.awt.*;
@@ -20,9 +22,24 @@ public class Player {
     private Sprite barrier = new Sprite(new Texture("Assets/barriers.png")); // sprite of the barrier
     boolean musicPlaying = false; // checks if music is playing
     Rectangle rect; // stores a rectangle of the player which is used for collision and more
+    String jump[]={"Assets/Zero/Jump/0.png","Assets/Zero/Jump/1.png","Assets/Zero/Jump/2.png","Assets/Zero/Jump/3.png","Assets/Zero/Jump/4.png","Assets/Zero/Jump/5.png","Assets/Zero/Jump/6.png","Assets/Zero/Jump/7.png","Assets/Zero/Jump/8.png","Assets/Zero/Jump/9.png","Assets/Zero/Jump/10.png","Assets/Zero/Jump/11.png","Assets/Zero/Jump/12.png","Assets/Zero/Jump/13.png","Assets/Zero/Jump/14.png","Assets/Zero/Jump/15.png"};
+    String left[]={};
+    String right[]={"Assets/Zero/Walk/0.png","Assets/Zero/Walk/1.png","Assets/Zero/Walk/2.png","Assets/Zero/Walk/3.png","Assets/Zero/Walk/4.png","Assets/Zero/Walk/5.png","Assets/Zero/Walk/6.png","Assets/Zero/Walk/7.png","Assets/Zero/Walk/8.png","Assets/Zero/Walk/9.png","Assets/Zero/Walk/10.png","Assets/Zero/Walk/11.png","Assets/Zero/Walk/12.png","Assets/Zero/Walk/13.png","Assets/Zero/Walk/14.png","Assets/Zero/Walk/15.png"};
+    String shoot[]={};
+    String sword[]={};
+    Texture currentFrame;
+    Texture[] jumpTextures =new Texture[jump.length];
+    Texture[] rightTextures =new Texture[right.length];
+    Animation<Texture> jumpAnimation= new Animation<Texture>(0.1f,jumpTextures);
+    Animation<Texture> shootAnimation;
+    Animation<Texture> leftAnimation;
+    Animation<Texture> rightAnimation= new Animation<Texture>(0.1f,rightTextures);
+    Animation<Texture> swordAnimation;
+    boolean animation=false;
+    int animationtype;
 
     public Player(float x, float y) { // constructor takes in x and y
-        player_sprite = new Texture("Assets/SPRITES/Megaman/0.png"); // loads in player sprite image
+        player_sprite = new Texture("Assets/Zero/Walk/0.png"); // loads in player sprite image
         player = new Sprite(player_sprite); // creates a sprite out of the image
         this.x = x; // sets the x variable
         this.y = y; // sets the y variable
@@ -45,12 +62,16 @@ public class Player {
 
     public void update(SpriteBatch batch) { // updates the position of the player and updates any abilities being used
         // sets the x and the y of the player
+        Float stateTime = Gdx.graphics.getDeltaTime();
         player.setX(x);
         player.setY(y);
         // creates a new rectangle
         rect = new Rectangle((int) player.getX(), (int) player.getY(), (int) player.getWidth(), (int) player.getHeight());
-        System.out.println(lives);
-        this.render(batch); // calls the render method
+        if (animation) {
+            this.renderAnimation(stateTime,batch);
+        } else {
+            this.render(batch); // calls the render method
+        }
     }
 
     public void usePowerup() { // uses a powerup when the shift button is pressed
@@ -60,6 +81,18 @@ public class Player {
                 powerupID.remove(0); // removes the powerup id as it is not used
             }
         }
+    }
+    public void renderAnimation(float time, SpriteBatch batch){
+        currentFrame = rightAnimation.getKeyFrame(time, true);
+        batch.draw(currentFrame,x,y);
+        animation=false;
+    }
+    public boolean isFinishedAnimation(float stateTime){
+
+        if(jumpAnimation.isAnimationFinished(stateTime)){
+            return true;
+        }
+        return false;
     }
 
     public void getPowerup(PowerUp powerup) { // called when the player collides with a powerup object
@@ -86,6 +119,7 @@ public class Player {
 
     public void goRight() { // goes right
         if (player.getX() + player.getWidth() < Main.WIDTH) x += 8;
+        animation=true;
     }
     public void goDown(){
         for(int i=0;i<8;i++){
