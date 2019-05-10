@@ -35,6 +35,7 @@ public class PowerUp {
     }
 
     public void update(SpriteBatch batch) {
+
         powerup.setY(powerup.getY() - fallSpeed); // will decrease the y according to the falling speed
         // updates the rectangle depending on the new y of the powerup sprite
         rect = new Rectangle((int) powerup.getX(), (int) powerup.getY(), (int) powerup.getWidth(), (int) powerup.getHeight());
