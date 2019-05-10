@@ -13,11 +13,14 @@ public class Vine {
 	float x,y;
 	int angle;
 	
-	public Vine(String file){
+	public Vine(String file, float x, float y){
 		vine = new Sprite(new Texture(file));
-		vine.setSize(vine.getWidth(), 200);
+		vine.setSize(vine.getWidth(), 100);
 		vine.setOrigin(0,0);
 		angle = 90;
+		
+		this.x = x;
+		this.y = y;
 	}
 	
 	public void setPos(float x, float y){

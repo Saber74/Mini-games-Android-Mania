@@ -54,15 +54,16 @@ public class SwingAlong extends ApplicationAdapter implements InputProcessor{
 		
 		vines = new LinkedList<Vine>();
 		
+		
+		
 		//15 vines
+		//each vine is 500 pixels apart
 		for(int i=0; i<15; i++){
-			vines.add(new Vine("vine.png"));
-			vines.get(i).setPos(400+i*500,800);
-			
+			vines.add(new Vine("vine.png", 350+i*350, 800));
 		}
 		
 		String[] p1Frames = {"megaman_1.png","megaman_2.png","megaman_3.png","megaman_4.png"};
-		p1 = new Player(p1Frames,100,600);
+		p1 = new Player(p1Frames,50,600);
 		//p1.setVine();
 		
 		Gdx.input.setInputProcessor(this);
@@ -92,6 +93,9 @@ public class SwingAlong extends ApplicationAdapter implements InputProcessor{
 		for(Vine v : vines){
 			if(p1.getPlayerRect().overlaps(v.getVine().getBoundingRectangle())){
 				p1.setVine(v);
+				if(p1.onPlatform){
+					p1.setPlatform(false);
+				}
 			}
 		}		
 		
@@ -104,12 +108,6 @@ public class SwingAlong extends ApplicationAdapter implements InputProcessor{
 		
 		else{
 			if(p1.onVine()){
-				if(vines.indexOf(p1.getVine())%2==0){
-					//p1.setRotation(angle-180);
-				}
-				else{
-					//p1.setRotation(-angle-180);
-				}
 				
 				p1.setPos(right);
 			}
@@ -172,7 +170,7 @@ public class SwingAlong extends ApplicationAdapter implements InputProcessor{
 			angle += 10;
 		}
 		
-		else if(!right){
+		else{
 			angle -= 10;
 		}
 	}
@@ -193,22 +191,19 @@ public class SwingAlong extends ApplicationAdapter implements InputProcessor{
 			
 			animation = true;
 			stateTime = 0f;
-			bkgX1-=300;
-			for(Vine v : vines){
-				v.translateX(-300);
-			}
 
 		}
 		return true;
 	}
 	
 	public boolean keyUp(int keycode){
-		if(keycode == Keys.UP || keycode == Keys.DOWN ||
-				keycode == Keys.RIGHT || keycode == Keys.LEFT){
-			//animation = false;
-			//p1.updateFrame();
+		if(animation){
+			bkgX1-=350;
+			for(Vine v : vines){
+				v.translateX(-350);
+			}
 		}
-		
+
 		return true;
 	}
 	

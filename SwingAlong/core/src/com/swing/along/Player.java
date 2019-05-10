@@ -19,7 +19,8 @@ import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 public class Player {
 	//stores player's x and y value
 	//stores the vine that the current player is on
-	Sprite player;
+	boolean onPlatform;
+	Texture startPlayer;
 	Texture[] playerTextures;
 	Texture currentFrame;
 	float x,y;
@@ -32,7 +33,10 @@ public class Player {
 	//constructor method
 	public Player(String[] frames, float x, float y){
 		
-		player = new Sprite(new Texture("Megaman.png"));
+		//player = new Sprite(new Texture("megaman_0.png"));
+		onPlatform = true;
+		
+		startPlayer = new Texture("megaman_0.png");
 		
 		playerTextures = new Texture[frames.length];
 		
@@ -40,7 +44,7 @@ public class Player {
 			playerTextures[i] = new Texture(frames[i]);
 		}
 		
-		player = new Sprite(playerTextures[0]);
+		//player = new Sprite(playerTextures[0]);
 		//player.setCenter(100, 100);
 		
 		jumpAnimation = new Animation<Texture>(0.1f, playerTextures);
@@ -50,6 +54,10 @@ public class Player {
 		this.y = y;
 		
 		//player.setPosition(x, y);
+	}
+	
+	public void setPlatform(boolean onPlat){
+		onPlatform = onPlat;
 	}
 	
 	public void setVine(Vine v){
@@ -77,33 +85,53 @@ public class Player {
 	
 	
 	public void setPos(boolean right){
-		
-		if(right){
-			x = (float)(vine.getX()-vine.getHeight()*Math.cos(Math.toRadians(vine.getRotation()-80)));
-			y = (float)(vine.getY()-vine.getHeight()*Math.sin(Math.toRadians(vine.getRotation()-80)));
+		float width = playerTextures[0].getWidth();
+		float height = playerTextures[0].getHeight();
+		if(vine.getRotation()>0){
+			if(right){
+				x = (float)(vine.getX()-width*0.72-vine.getHeight()*Math.cos(Math.toRadians(vine.getRotation()-80)));
+				y = (float)(vine.getY()-height*0.72-vine.getHeight()*Math.sin(Math.toRadians(vine.getRotation()-80)));
+			}
+			
+			else{
+				x = (float)(vine.getX()-width*0.72-vine.getHeight()*Math.cos(Math.toRadians(vine.getRotation()-100)));
+				y = (float)(vine.getY()-height*0.72-vine.getHeight()*Math.sin(Math.toRadians(vine.getRotation()-100)));
+			}
 		}
 		
 		else{
-			x = (float)(vine.getX()-vine.getHeight()*Math.cos(Math.toRadians(vine.getRotation()-100)));
-			y = (float)(vine.getY()-vine.getHeight()*Math.sin(Math.toRadians(vine.getRotation()-100)));
+			if(right){
+				x = (float)(vine.getX()-width*0.72-vine.getHeight()*Math.cos(Math.toRadians(vine.getRotation()-100)));
+				y = (float)(vine.getY()-height*0.72-vine.getHeight()*Math.sin(Math.toRadians(vine.getRotation()-100)));
+			}
+			
+			else{
+				x = (float)(vine.getX()-width*0.72-vine.getHeight()*Math.cos(Math.toRadians(vine.getRotation()-80)));
+				y = (float)(vine.getY()-height*0.72-vine.getHeight()*Math.sin(Math.toRadians(vine.getRotation()-80)));
+			}
 		}
-		player.setPosition(x, y);
-	}
-	
-	
-	public void setRotation(int angle){
-		player.setRotation(angle);
 	}
 	
 	
 	public void render(SpriteBatch batch){
-		player.draw(batch);
-		//batch.draw(playerTextures[0],x,y);
+		//player.draw(batch);
+		if(onPlatform){
+			batch.draw(startPlayer,x,y);
+		}
+		else{
+			batch.draw(playerTextures[0],x,y);
+		}
+		
 	}
 	
 	public void renderAnimation(float time, SpriteBatch batch){
 		currentFrame = jumpAnimation.getKeyFrame(time, true);
-		x+=50;
+		
+		if(onPlatform){
+			x+=100;
+		}
+		//x+=100;
+		//y+=50;
 		
 		batch.draw(currentFrame,x,y);
 	}
@@ -116,6 +144,13 @@ public class Player {
 		return false;
 	}
 	
+	public float getX(){
+		return x;
+	}
+	
+	public float getY(){
+		return y;
+	}
 	
 	public Rectangle getPlayerRect(){
 		return new Rectangle(x,y,playerTextures[0].getWidth(),playerTextures[0].getHeight());
