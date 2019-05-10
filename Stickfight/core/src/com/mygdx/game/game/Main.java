@@ -1,4 +1,4 @@
-package com.mygdx.game.game;
+    package com.mygdx.game.game;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -11,6 +11,7 @@ import java.util.Random;
 import static com.badlogic.gdx.Gdx.graphics;
 
 public class Main extends ApplicationAdapter {
+    boolean animation=false;
     private static SpriteBatch batch;
     boolean starting1 = false; //boolean to switch to 2nd phase of intro
     boolean starting2 = false; //boolean to switch to 3rd phase of intro
@@ -23,7 +24,7 @@ public class Main extends ApplicationAdapter {
     public static Texture[] explosion = new Texture[73]; // this array stores the sprites for the explosion for when an enemy dies
     private boolean playerAlive = true; // this will store a true or false value depending on whether the player is alive
     private boolean gameStarted = true; // this will store whether the game is started or not
-
+    float stateTime;
     @Override
     public void create() { // create method is used for loading various assets needed
         graphics.setWindowedMode(WIDTH, HEIGHT);
@@ -45,18 +46,33 @@ public class Main extends ApplicationAdapter {
         if (gameStarted) { // will only check for button presses for these methods when the game has started
             if (Gdx.input.isKeyPressed(Input.Keys.LEFT))
                 player.goLeft(); // player will go left when left arrow key pressed
-            if (Gdx.input.isKeyPressed(Input.Keys.RIGHT))
+            if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
                 player.goRight(); // player will go right when right arrow key pressed
+                stateTime = 0f;
+                animation = true;
+            }
             // if the left or right shift is pressed, then the player will use a powerup
-            if(Gdx.input.isKeyPressed(Input.Keys.UP))
+            if (Gdx.input.isKeyPressed(Input.Keys.UP))
                 player.goUp();
             if (Gdx.input.isKeyPressed(Input.Keys.SHIFT_LEFT) || Gdx.input.isKeyPressed(Input.Keys.SHIFT_RIGHT))
                 player.usePowerup();
             // if the player presses the space button and the player is not shooting, the player shoots a bullet
         }
+        stateTime += Gdx.graphics.getDeltaTime();
         batch.begin(); // begins the batch which will allow for items to be drawn upon it so that it can be seen on the screen
+//        player.renderAnimation(stateTime,batch);
+        if (animation) {
+            player.renderAnimation(stateTime, batch);
+            if (player.isFinishedAnimation(stateTime)) {
+                animation = false;
+            }
+        }
+        else{
+            player.render(batch);
+
+        }
+
 //        intro(); // this will run the introfn
-        player.update(batch); // this will update the player's position and powerups the play has activated and received
 //        dropPowerup(); // will randomly drop a powerup
 //        isPlayerShot(); // this will check if the player is shot and will take away a life (unless a powerup prevents that)
 //        isPlayerDead(); // this will check if the player is dead
@@ -121,11 +137,6 @@ public class Main extends ApplicationAdapter {
 ////            }
 ////        }
 //    }
-
-
-
-
-
 //    private void isPlayerDead() { // will check if the player is dead
 //        if (player.getLives() <= 0) { // if the lives left is less than 0
 //            playerAlive = false; // will set the playerAlive to false
@@ -133,22 +144,4 @@ public class Main extends ApplicationAdapter {
 //    }
 
 //    private void intro() { // this is the intro for the game before the game actually starts
-//        if (end == false) { //intro starts here
-//            if (Gdx.input.isKeyPressed(Input.Keys.SPACE) && starting1 == false) {//starting to play
-//
-//            }
-//            if ((Gdx.input.isKeyPressed(Input.Keys.X) && starting2 == true) || Gdx.input.isKeyPressed(Input.Keys.P)) {//to skip intro quickly/advance into game from third phase
-//                end = true; //boolean that intro has ended
-//            }
-////            batch.draw(background, 0, 0);
-//            if (starting1 == false) { //drawing lots of texts and diagrams
-//            }
-//            if (starting2 == false) { //second phase including explosion
-//            }
-//            else if (starting2 = true) { //3rd phase screen including ships powerups and controls
-//            }
-//        } else { // after everything else is done the gameStarted will be made true so that the game can start
-//            gameStarted = true;
-//        }
-//    }
 }

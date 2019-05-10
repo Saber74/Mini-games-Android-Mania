@@ -22,19 +22,19 @@ public class Player {
     private Sprite barrier = new Sprite(new Texture("Assets/barriers.png")); // sprite of the barrier
     boolean musicPlaying = false; // checks if music is playing
     Rectangle rect; // stores a rectangle of the player which is used for collision and more
-    String jump[]={"Assets/Zero/Jump/0.png","Assets/Zero/Jump/1.png","Assets/Zero/Jump/2.png","Assets/Zero/Jump/3.png","Assets/Zero/Jump/4.png","Assets/Zero/Jump/5.png","Assets/Zero/Jump/6.png","Assets/Zero/Jump/7.png","Assets/Zero/Jump/8.png","Assets/Zero/Jump/9.png","Assets/Zero/Jump/10.png","Assets/Zero/Jump/11.png","Assets/Zero/Jump/12.png","Assets/Zero/Jump/13.png","Assets/Zero/Jump/14.png","Assets/Zero/Jump/15.png"};
-    String left[]={};
-    String right[]={"Assets/Zero/Walk/0.png","Assets/Zero/Walk/1.png","Assets/Zero/Walk/2.png","Assets/Zero/Walk/3.png","Assets/Zero/Walk/4.png","Assets/Zero/Walk/5.png","Assets/Zero/Walk/6.png","Assets/Zero/Walk/7.png","Assets/Zero/Walk/8.png","Assets/Zero/Walk/9.png","Assets/Zero/Walk/10.png","Assets/Zero/Walk/11.png","Assets/Zero/Walk/12.png","Assets/Zero/Walk/13.png","Assets/Zero/Walk/14.png","Assets/Zero/Walk/15.png"};
-    String shoot[]={};
-    String sword[]={};
+    String jump[]={"Assets/Zero/Jump/0.png","Assets/Zero/Jump/1.png","Assets/Zero/Jump/8.png","Assets/Zero/Jump/9.png","Assets/Zero/Jump/10.png","Assets/Zero/Jump/11.png","Assets/Zero/Jump/12.png","Assets/Zero/Jump/13.png","Assets/Zero/Jump/14.png","Assets/Zero/Jump/15.png"};
+//    String left[]={};
+    String right[]={"Assets/Zero/Walk/1.png","Assets/Zero/Walk/2.png","Assets/Zero/Walk/3.png","Assets/Zero/Walk/4.png","Assets/Zero/Walk/5.png","Assets/Zero/Walk/6.png","Assets/Zero/Walk/7.png","Assets/Zero/Walk/8.png","Assets/Zero/Walk/9.png","Assets/Zero/Walk/10.png","Assets/Zero/Walk/11.png","Assets/Zero/Walk/12.png","Assets/Zero/Walk/13.png","Assets/Zero/Walk/14.png","Assets/Zero/Walk/15.png"};
+//    String shoot[]={};
+//    String sword[]={};
     Texture currentFrame;
     Texture[] jumpTextures =new Texture[jump.length];
     Texture[] rightTextures =new Texture[right.length];
-    Animation<Texture> jumpAnimation= new Animation<Texture>(0.1f,jumpTextures);
-    Animation<Texture> shootAnimation;
-    Animation<Texture> leftAnimation;
-    Animation<Texture> rightAnimation= new Animation<Texture>(0.1f,rightTextures);
-    Animation<Texture> swordAnimation;
+//    Animation<Texture> shootAnimation;
+    //    Animation<Texture> leftAnimation;
+    Animation<Texture> jumpAnimation;
+    Animation<Texture> rightAnimation;
+//    Animation<Texture> swordAnimation;
     boolean animation=false;
     int animationtype;
 
@@ -46,10 +46,19 @@ public class Player {
         player.setX(x); // sets the player's x
         player.setY(y); // sets the player's y
         rect = new Rectangle((int) player.getX(), (int) player.getY(), (int) player.getWidth(), (int) player.getHeight()); // creates a rect based on the sprite's dimensions
+        for(int i=0; i<right.length; i++){
+            rightTextures[i] = new Texture(right[i]);
+        }
+        rightAnimation = new Animation<Texture>(0.05f,rightTextures);
+//        Animation<Texture> jumpAnimation= new Animation<Texture>(0.1f,jumpTextures);
     }
 
     //updates character's position
-    private void render(SpriteBatch batch) { // renders in the player and the invincibility circle if the ability is active
+    public void render(SpriteBatch batch) { // renders in the player and the invincibility circle if the ability is active
+        player.setX(x);
+        player.setY(y);
+        // creates a new rectangle
+        rect = new Rectangle((int) player.getX(), (int) player.getY(), (int) player.getWidth(), (int) player.getHeight());
         if (invincible) { // if the player is invincible
             // ther barrier sprite's x and y is set corresponding to the player's x and y
             barrier.setX(player.getX() - 35);
@@ -60,19 +69,6 @@ public class Player {
         player.draw(batch); // draws the player on to the screen
     }
 
-    public void update(SpriteBatch batch) { // updates the position of the player and updates any abilities being used
-        // sets the x and the y of the player
-        Float stateTime = Gdx.graphics.getDeltaTime();
-        player.setX(x);
-        player.setY(y);
-        // creates a new rectangle
-        rect = new Rectangle((int) player.getX(), (int) player.getY(), (int) player.getWidth(), (int) player.getHeight());
-        if (animation) {
-            this.renderAnimation(stateTime,batch);
-        } else {
-            this.render(batch); // calls the render method
-        }
-    }
 
     public void usePowerup() { // uses a powerup when the shift button is pressed
         if (powerupID.size() > 0) { // if there is a powerup that is present
@@ -85,11 +81,11 @@ public class Player {
     public void renderAnimation(float time, SpriteBatch batch){
         currentFrame = rightAnimation.getKeyFrame(time, true);
         batch.draw(currentFrame,x,y);
+        x+=0.1;
         animation=false;
     }
     public boolean isFinishedAnimation(float stateTime){
-
-        if(jumpAnimation.isAnimationFinished(stateTime)){
+        if(rightAnimation.isAnimationFinished(stateTime)){
             return true;
         }
         return false;
@@ -110,11 +106,8 @@ public class Player {
     public void goLeft() { // goes left
         if (player.getX() > 0) {
             x -= 8;
-            for (int i = 0; i < 8; i++) {
-                player = new Sprite(new Texture("Assets/SPRITES/Megaman/Zero/WalkL/"+i+".png"));
-            }
-//            player= new Sprite(new Texture("Assets/SPRITES/Megaman/Zero/WalkL/0.png"));
         }
+        animation=true;
     }
 
     public void goRight() { // goes right
@@ -128,6 +121,7 @@ public class Player {
     }
     public void goUp(){
         if(player.getY()+player.getHeight()<Main.HEIGHT) y+=8;
+        animation=true;
         goDown();
     }
 
@@ -153,9 +147,4 @@ public class Player {
     public float getypos(){
         return player.getY();
     }
-
-    public void kill(){ // kills the player immediately
-        lives = 0;
-    }
-
 }
