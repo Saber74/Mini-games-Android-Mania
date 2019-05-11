@@ -37,6 +37,9 @@ public class Player {
 //    Animation<Texture> swordAnimation;
     boolean animation=false;
     int animationtype;
+    private static final int UP=1;
+    private static final int RIGHT=2;
+    private static final int LEFT=3;
 
     public Player(float x, float y) { // constructor takes in x and y
         player_sprite = new Texture("Assets/Zero/Walk/0.png"); // loads in player sprite image
@@ -78,7 +81,10 @@ public class Player {
             }
         }
     }
-    public void renderAnimation(float time, SpriteBatch batch){
+    public void renderAnimation(int animationtype,float time, SpriteBatch batch){
+        if(animationtype==3){
+            spriteBatch.draw(currentFrame, true, x+width : x, y, flip ? -width : width, height);
+        }
         currentFrame = rightAnimation.getKeyFrame(time, true);
         batch.draw(currentFrame,x,y);
         x+=0.1;

@@ -49,7 +49,7 @@ public class Main extends ApplicationAdapter {
             if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
                 player.goRight(); // player will go right when right arrow key pressed
                 stateTime = 0f;
-                animation = true;
+                animation=true;
             }
             // if the left or right shift is pressed, then the player will use a powerup
             if (Gdx.input.isKeyPressed(Input.Keys.UP))
