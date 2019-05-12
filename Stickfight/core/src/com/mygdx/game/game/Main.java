@@ -19,14 +19,15 @@ public class Main extends ApplicationAdapter {
     private static final int SWORD=5;
     boolean animation=false;
     private static SpriteBatch batch;
-    boolean starting1 = false; //boolean to switch to 2nd phase of intro
-    boolean starting2 = false; //boolean to switch to 3rd phase of intro
     ArrayList<PowerUp> powerups = new ArrayList<PowerUp>(); // this stores the powerups
     public static final int WIDTH = 1024; // this is the width of the screen
     public static final int HEIGHT = 1024; // this sets the height of the screen
     private Texture bg;
+    Texture bullet;
     public static Player player; // this is the player object and it is static so that it can be accessed from different classes
+    public static Player player2;
     public static HUD hud; // this is the heads up display
+    public static HUD hud2;
     public static Texture[] explosion = new Texture[73]; // this array stores the sprites for the explosion for when an enemy dies
     private boolean playerAlive = true; // this will store a true or false value depending on whether the player is alive
     private boolean gameStarted = true; // this will store whether the game is started or not
@@ -36,9 +37,11 @@ public class Main extends ApplicationAdapter {
         graphics.setWindowedMode(WIDTH, HEIGHT);
         batch = new SpriteBatch(); // initialized the new batch
         player = new Player(0, 50); // initializes the player and sets the x and y
+        player2= new Player(100,50);
         hud = new HUD(); // initializes the heads up display
+        hud2=new HUD();
         bg = new Texture("Assets/bg.jpg");
-
+        bullet = new Texture("Assets/Zero/Shoot/7.png");
         for (int i = 0; i < 73; i++) { // this will load in the images for the explosion animation
             explosion[i] = new Texture("Assets/EXPLOSION/" + i + ".png"); // assigns a part of the array to a certain image
         }
@@ -68,18 +71,31 @@ public class Main extends ApplicationAdapter {
                 animation = true;
                 animationType = RIGHT;
             }
+            if (Gdx.input.isKeyPressed(Input.Keys.SPACE) && !player.isShooting() && player.bullets.size() == 0) {
+                player.bullets.add(player.shootBullet());
+            }
             // if the left or right shift is pressed, then the player will use a powerup
-            if (Gdx.input.isKeyPressed(Input.Keys.UP)){
-                player.goUp(); // player will go up when left arrow key pressed
-                if (animation != true) {
-                    stateTime = 0f;
+            if (Gdx.input.isKeyJustPressed(Input.Keys.UP)){
+                if(!player.isJumping()) {
+                    player.goUp(); // player will go up when left arrow key pressed
+                    if (animation != true) {
+                        stateTime = 0f;
+                    }
+                    animationType = UP;
+                    animation = true;
                 }
-                animationType = UP;
-                animation = true;
             }
             if (Gdx.input.isKeyPressed(Input.Keys.SHIFT_LEFT) || Gdx.input.isKeyPressed(Input.Keys.SHIFT_RIGHT))
                 player.usePowerup();
             // if the player presses the space button and the player is not shooting, the player shoots a bullet
+            if(Gdx.input.isKeyPressed(Input.Keys.X)){
+                player.swordAttack();
+                if (animation != true) {
+                    stateTime = 0f;
+                }
+                animationType = SWORD;
+                animation = true;
+            }
         }
         stateTime += Gdx.graphics.getDeltaTime();
         batch.begin(); // begins the batch which will allow for items to be drawn upon it so that it can be seen on the screen
@@ -91,14 +107,16 @@ public class Main extends ApplicationAdapter {
             }
         }
         else{
+            player2.render(batch);
             player.render(batch);
         }
 //        System.out.println(player.test);
 
-//        intro(); // this will run the introfn
-//        dropPowerup(); // will randomly drop a powerup
-//        isPlayerShot(); // this will check if the player is shot and will take away a life (unless a powerup prevents that)
-//        isPlayerDead(); // this will check if the player is dead
+        dropPowerup(); // will randomly drop a powerup
+        isPlayerShot(player,player2); // this will check if the player is shot and will take away a life (unless a powerup prevents that)
+        isPlayerShot(player2,player);
+        isPlayerDead(player); // this will check if the player is dead
+        isPlayerDead(player2); // this will check if the player is dead
         hud.update(batch); // this will update the heads up display
         batch.end(); // ends the batch
     }
@@ -138,33 +156,31 @@ public class Main extends ApplicationAdapter {
 //    }
 //
 //
-//    private void dropPowerup() { // this will decide at random when to drop a powerup
-//        Random powerupDrop = new Random(); // creates a random object
-//        int isDrop = powerupDrop.nextInt(1000); // this will get a random number within the given range
-//        if (isDrop < 2 && powerups.size() == 0) powerups.add(new PowerUp()); // creates a new powerup if the random number is less than 2 and if there are no other powerups on the screen
-//        for (int i = 0; i < powerups.size(); i++) { // this will go through the powerups
-//            powerups.get(i).update(batch); // this will update the powerup
-//            if (powerups.get(i).getRect().y + powerups.get(i).getRect().height < 0) { // removes the powerup if it is offscreen
-//                powerups.remove(i);
-//            } else if (player.isCollidingWith(powerups.get(i))) { // will remove and run a player method when the player collides with the powerup
-//                player.getPowerup(powerups.get(i)); // this will get the powerup for the player
-//                powerups.remove(i); // removes the powerup
-//            }
-//        }
-//    }
-//    private void isPlayerShot() { // will check if the player is shot
-////        for (int i = 0; i < enemybullets.size(); i++) {
-////            if (player.isCollidingWith(enemybullets.get(i))) { // if the player is colliding with a bullet
-////                enemybullets.remove(i); // removes the enemy bullet
-////                player.takeAwayLife(); // takes a life
-////            }
-////        }
-//    }
-//    private void isPlayerDead() { // will check if the player is dead
-//        if (player.getLives() <= 0) { // if the lives left is less than 0
-//            playerAlive = false; // will set the playerAlive to false
-//        }
-//    }
-
-//    private void intro() { // this is the intro for the game before the game actually starts
+    private void dropPowerup() { // this will decide at random when to drop a powerup
+        Random powerupDrop = new Random(); // creates a random object
+        int isDrop = powerupDrop.nextInt(10000); // this will get a random number within the given range
+        if (isDrop < 2 && powerups.size() == 0) powerups.add(new PowerUp()); // creates a new powerup if the random number is less than 2 and if there are no other powerups on the screen
+        for (int i = 0; i < powerups.size(); i++) { // this will go through the powerups
+            powerups.get(i).update(batch); // this will update the powerup
+            if (powerups.get(i).getRect().y + powerups.get(i).getRect().height < 0) { // removes the powerup if it is offscreen
+                powerups.remove(i);
+            } else if (player.isCollidingWith(powerups.get(i))) { // will remove and run a player method when the player collides with the powerup
+                player.getPowerup(powerups.get(i)); // this will get the powerup for the player
+                powerups.remove(i); // removes the powerup
+            }
+        }
+    }
+    private void isPlayerShot(Player p1,Player enemey) { // will check if the player is shot
+        for (int i = 0; i < enemey.bullets.size(); i++) {
+            if (player.isCollidingWith(enemey.bullets.get(i))) { // if the player is colliding with a bullet
+                enemey.bullets.remove(i); // removes the enemy bullet
+                player.takeAwayLife(); // takes a life
+            }
+        }
+    }
+    private void isPlayerDead(Player player) { // will check if the player is dead
+        if (player.getLives() <= 0) { // if the lives left is less than 0
+            playerAlive = false; // will set the playerAlive to false
+        }
+    }
 }
