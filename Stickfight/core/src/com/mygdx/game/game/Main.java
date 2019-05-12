@@ -11,13 +11,15 @@ import java.util.Random;
 import static com.badlogic.gdx.Gdx.graphics;
 
 public class Main extends ApplicationAdapter {
-    int animationType;
+    int p1animationType;
+    int p2animationType;
     private static final int UP=1;
     private static final int RIGHT=2;
     private static final int LEFT=3;
     private static final int SHOOT=4;
     private static final int SWORD=5;
-    boolean animation=false;
+    boolean p1animation=false;
+    boolean p2animation=false;
     private static SpriteBatch batch;
     ArrayList<PowerUp> powerups = new ArrayList<PowerUp>(); // this stores the powerups
     public static final int WIDTH = 1024; // this is the width of the screen
@@ -38,6 +40,7 @@ public class Main extends ApplicationAdapter {
         batch = new SpriteBatch(); // initialized the new batch
         player = new Player(0, 50); // initializes the player and sets the x and y
         player2= new Player(100,50);
+        player2.direction=LEFT;
         hud = new HUD(); // initializes the heads up display
         hud2=new HUD();
         bg = new Texture("Assets/bg.jpg");
@@ -56,59 +59,109 @@ public class Main extends ApplicationAdapter {
             if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
                 player.goLeft(); // player will go left when left arrow key pressed
                 System.out.println(player.direction);
-                if (animation != true) {
+                if (p1animation != true) {
                     stateTime = 0f;
                 }
-                animation = true;
-                animationType = RIGHT;
+                p1animation = true;
+                p1animationType = RIGHT;
 //                System.out.println(animationType);
             }
             if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
                 player.goRight(); // player will go right when right arrow key pressed
-                if (animation != true) {
+                if (p1animation != true) {
                     stateTime = 0f;
                 }
-                animation = true;
-                animationType = RIGHT;
+                p1animation = true;
+                p1animationType = RIGHT;
             }
             if (Gdx.input.isKeyPressed(Input.Keys.SPACE) && !player.isShooting() && player.bullets.size() == 0) {
                 player.bullets.add(player.shootBullet());
             }
             // if the left or right shift is pressed, then the player will use a powerup
-            if (Gdx.input.isKeyJustPressed(Input.Keys.UP)){
-                if(!player.isJumping()) {
+            if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
+                if (!player.isJumping()) {
                     player.goUp(); // player will go up when left arrow key pressed
-                    if (animation != true) {
+                    if (p1animation != true) {
                         stateTime = 0f;
                     }
-                    animationType = UP;
-                    animation = true;
+                    p1animationType = UP;
+                    p1animation = true;
                 }
             }
-            if (Gdx.input.isKeyPressed(Input.Keys.SHIFT_LEFT) || Gdx.input.isKeyPressed(Input.Keys.SHIFT_RIGHT))
+            if(Gdx.input.isKeyPressed(Input.Keys.SHIFT_LEFT));
                 player.usePowerup();
             // if the player presses the space button and the player is not shooting, the player shoots a bullet
             if(Gdx.input.isKeyPressed(Input.Keys.X)){
                 player.swordAttack();
-                if (animation != true) {
+                if (p1animation != true) {
                     stateTime = 0f;
                 }
-                animationType = SWORD;
-                animation = true;
+                p1animationType = SWORD;
+                p1animation = true;
+            }
+            if (Gdx.input.isKeyPressed(Input.Keys.A)) {
+                player2.goLeft(); // player will go left when left arrow key pressed
+                if (p2animation != true) {
+                    stateTime = 0f;
+                }
+                p2animation = true;
+                p2animationType = RIGHT;
+//                System.out.println(animationType);
+            }
+            if (Gdx.input.isKeyPressed(Input.Keys.D)) {
+                player2.goRight(); // player will go right when right arrow key pressed
+                if (p2animation != true) {
+                    stateTime = 0f;
+                }
+                p2animation = true;
+                p2animationType = RIGHT;
+            }
+            if (Gdx.input.isKeyPressed(Input.Keys.Q) && !player2.isShooting() && player2.bullets.size() == 0) {
+                player2.bullets.add(player2.shootBullet());
+            }
+            // if the left or right shift is pressed, then the player will use a powerup
+            if (Gdx.input.isKeyJustPressed(Input.Keys.UP)){
+                if(!player2.isJumping()) {
+                    player2.goUp(); // player will go up when left arrow key pressed
+                    if (p1animation != true) {
+                        stateTime = 0f;
+                    }
+                    p2animationType = UP;
+                    p2animation = true;
+                }
+            }
+            if (Gdx.input.isKeyPressed(Input.Keys.SHIFT_RIGHT));
+                player2.usePowerup();
+            // if the player presses the space button and the player is not shooting, the player shoots a bullet
+            if(Gdx.input.isKeyPressed(Input.Keys.X)){
+                player.swordAttack();
+                if (p2animation != true) {
+                    stateTime = 0f;
+                }
+                p2animationType = SWORD;
+                p2animation = true;
             }
         }
         stateTime += Gdx.graphics.getDeltaTime();
         batch.begin(); // begins the batch which will allow for items to be drawn upon it so that it can be seen on the screen
         batch.draw(bg,0,0);
-        if (animation) {
-            player.renderAnimation(animationType,stateTime, batch);
+        if (p1animation) {
+            player.renderAnimation(p1animationType,stateTime, batch);
             if (player.isFinishedAnimation(stateTime)) {
-                animation = false;
+                p1animation = false;
+            }
+        }
+        else{
+            player.render(batch);
+        }
+        if(p2animation){
+            player2.renderAnimation(p2animationType,stateTime, batch);
+            if (player2.isFinishedAnimation(stateTime)) {
+                p2animation = false;
             }
         }
         else{
             player2.render(batch);
-            player.render(batch);
         }
 //        System.out.println(player.test);
 
