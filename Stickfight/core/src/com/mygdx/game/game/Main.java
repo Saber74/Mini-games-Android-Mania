@@ -11,6 +11,12 @@ import java.util.Random;
 import static com.badlogic.gdx.Gdx.graphics;
 
 public class Main extends ApplicationAdapter {
+    int animationType;
+    private static final int UP=1;
+    private static final int RIGHT=2;
+    private static final int LEFT=3;
+    private static final int SHOOT=4;
+    private static final int SWORD=5;
     boolean animation=false;
     private static SpriteBatch batch;
     boolean starting1 = false; //boolean to switch to 2nd phase of intro
@@ -44,37 +50,50 @@ public class Main extends ApplicationAdapter {
         Gdx.gl.glClearColor(100, 100, 100, 1); // sets the background colour to black
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         if (gameStarted) { // will only check for button presses for these methods when the game has started
-            if (Gdx.input.isKeyPressed(Input.Keys.LEFT))
+            if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
                 player.goLeft(); // player will go left when left arrow key pressed
+                System.out.println(player.direction);
+                if (animation != true) {
+                    stateTime = 0f;
+                }
+                animation = true;
+                animationType = RIGHT;
+//                System.out.println(animationType);
+            }
             if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
                 player.goRight(); // player will go right when right arrow key pressed
                 if (animation != true) {
                     stateTime = 0f;
                 }
                 animation = true;
-            } else {
-                animation = false;
+                animationType = RIGHT;
             }
             // if the left or right shift is pressed, then the player will use a powerup
-            if (Gdx.input.isKeyPressed(Input.Keys.UP))
-                player.goUp();
+            if (Gdx.input.isKeyPressed(Input.Keys.UP)){
+                player.goUp(); // player will go up when left arrow key pressed
+                if (animation != true) {
+                    stateTime = 0f;
+                }
+                animationType = UP;
+                animation = true;
+            }
             if (Gdx.input.isKeyPressed(Input.Keys.SHIFT_LEFT) || Gdx.input.isKeyPressed(Input.Keys.SHIFT_RIGHT))
                 player.usePowerup();
             // if the player presses the space button and the player is not shooting, the player shoots a bullet
         }
         stateTime += Gdx.graphics.getDeltaTime();
         batch.begin(); // begins the batch which will allow for items to be drawn upon it so that it can be seen on the screen
-//        player.renderAnimation(stateTime,batch);
+        batch.draw(bg,0,0);
         if (animation) {
-            player.renderAnimation(0,stateTime, batch);
+            player.renderAnimation(animationType,stateTime, batch);
             if (player.isFinishedAnimation(stateTime)) {
                 animation = false;
             }
         }
         else{
             player.render(batch);
-
         }
+//        System.out.println(player.test);
 
 //        intro(); // this will run the introfn
 //        dropPowerup(); // will randomly drop a powerup

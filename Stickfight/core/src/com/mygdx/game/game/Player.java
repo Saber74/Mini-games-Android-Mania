@@ -23,7 +23,6 @@ public class Player {
     boolean musicPlaying = false; // checks if music is playing
     Rectangle rect; // stores a rectangle of the player which is used for collision and more
     String jump[]={"Assets/Zero/Jump/0.png","Assets/Zero/Jump/1.png","Assets/Zero/Jump/8.png","Assets/Zero/Jump/9.png","Assets/Zero/Jump/10.png","Assets/Zero/Jump/11.png","Assets/Zero/Jump/12.png","Assets/Zero/Jump/13.png","Assets/Zero/Jump/14.png","Assets/Zero/Jump/15.png"};
-//    String left[]={};
     String right[]={"Assets/Zero/Walk/1.png","Assets/Zero/Walk/2.png","Assets/Zero/Walk/3.png","Assets/Zero/Walk/4.png","Assets/Zero/Walk/5.png","Assets/Zero/Walk/6.png","Assets/Zero/Walk/7.png","Assets/Zero/Walk/8.png","Assets/Zero/Walk/9.png","Assets/Zero/Walk/10.png","Assets/Zero/Walk/11.png","Assets/Zero/Walk/12.png","Assets/Zero/Walk/13.png","Assets/Zero/Walk/14.png","Assets/Zero/Walk/15.png"};
 //    String shoot[]={};
 //    String sword[]={};
@@ -36,10 +35,11 @@ public class Player {
     Animation<Texture> rightAnimation;
 //    Animation<Texture> swordAnimation;
     boolean animation=false;
-    int animationtype;
+    int direction;
     private static final int UP=1;
     private static final int RIGHT=2;
     private static final int LEFT=3;
+    public int test=0;
 
     public Player(float x, float y) { // constructor takes in x and y
         player_sprite = new Texture("Assets/Zero/Walk/0.png"); // loads in player sprite image
@@ -52,8 +52,11 @@ public class Player {
         for(int i=0; i<right.length; i++){
             rightTextures[i] = new Texture(right[i]);
         }
-        rightAnimation = new Animation<Texture>(0.05f,rightTextures);
-//        Animation<Texture> jumpAnimation= new Animation<Texture>(0.1f,jumpTextures);
+        rightAnimation = new Animation<Texture>(0.04f,rightTextures);
+        for(int i=0; i<jump.length; i++){
+            jumpTextures[i] = new Texture(jump[i]);
+        }
+        jumpAnimation= new Animation<Texture>(0.04f,jumpTextures);
     }
 
     //updates character's position
@@ -81,11 +84,23 @@ public class Player {
             }
         }
     }
-    public void renderAnimation(int animationtype,float time, SpriteBatch batch){
-        currentFrame = rightAnimation.getKeyFrame(time, false);
-        batch.draw(currentFrame,x,y);
-        x+=0.1;
-        animation=false;
+    public void renderAnimation(int animationtype,float time, SpriteBatch batch) {
+        if (animationtype == RIGHT) {
+            currentFrame = rightAnimation.getKeyFrame(time, true);
+        }
+        else if (animationtype == UP) {
+            currentFrame = jumpAnimation.getKeyFrame(time, true);
+        }
+        if(direction==LEFT){
+            Sprite frame=new Sprite(currentFrame);
+            frame.flip(true,false);
+            batch.draw(frame,x,y);
+        }
+        else{
+            batch.draw(currentFrame, x, y);
+        }
+
+        animation = false;
     }
     public boolean isFinishedAnimation(float stateTime){
         if(rightAnimation.isAnimationFinished(stateTime)){
@@ -110,22 +125,19 @@ public class Player {
         if (player.getX() > 0) {
             x -= 8;
         }
+        direction=LEFT;
         animation=true;
     }
 
     public void goRight() { // goes right
         if (player.getX() + player.getWidth() < Main.WIDTH) x += 8;
         animation=true;
-    }
-    public void goDown(){
-        for(int i=0;i<8;i++){
-            y-=1;
-        }
+        direction=RIGHT;
     }
     public void goUp(){
+        int v=10;
         if(player.getY()+player.getHeight()<Main.HEIGHT) y+=8;
         animation=true;
-        goDown();
     }
 
     public boolean isCollidingWith(PowerUp powerup) { // checks if the player is colliding with a powerup object and return a boolean
