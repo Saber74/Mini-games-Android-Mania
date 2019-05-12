@@ -82,10 +82,7 @@ public class Player {
         }
     }
     public void renderAnimation(int animationtype,float time, SpriteBatch batch){
-        if(animationtype==3){
-            spriteBatch.draw(currentFrame, true, x+width : x, y, flip ? -width : width, height);
-        }
-        currentFrame = rightAnimation.getKeyFrame(time, true);
+        currentFrame = rightAnimation.getKeyFrame(time, false);
         batch.draw(currentFrame,x,y);
         x+=0.1;
         animation=false;

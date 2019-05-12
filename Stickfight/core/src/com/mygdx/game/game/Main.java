@@ -1,4 +1,4 @@
-    package com.mygdx.game.game;
+package com.mygdx.game.game;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -48,8 +48,12 @@ public class Main extends ApplicationAdapter {
                 player.goLeft(); // player will go left when left arrow key pressed
             if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
                 player.goRight(); // player will go right when right arrow key pressed
-                stateTime = 0f;
-                animation=true;
+                if (animation != true) {
+                    stateTime = 0f;
+                }
+                animation = true;
+            } else {
+                animation = false;
             }
             // if the left or right shift is pressed, then the player will use a powerup
             if (Gdx.input.isKeyPressed(Input.Keys.UP))
@@ -62,7 +66,7 @@ public class Main extends ApplicationAdapter {
         batch.begin(); // begins the batch which will allow for items to be drawn upon it so that it can be seen on the screen
 //        player.renderAnimation(stateTime,batch);
         if (animation) {
-            player.renderAnimation(stateTime, batch);
+            player.renderAnimation(0,stateTime, batch);
             if (player.isFinishedAnimation(stateTime)) {
                 animation = false;
             }
