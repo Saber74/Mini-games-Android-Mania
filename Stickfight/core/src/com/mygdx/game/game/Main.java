@@ -5,12 +5,14 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import java.util.ArrayList;
 import java.util.Random;
 import static com.badlogic.gdx.Gdx.graphics;
 
 public class Main extends ApplicationAdapter {
+    BitmapFont diedFont;
     int p1animationType;
     int p2animationType;
     private static final int UP=1;
@@ -36,6 +38,7 @@ public class Main extends ApplicationAdapter {
     float stateTime;
     @Override
     public void create() { // create method is used for loading various assets needed
+        diedFont = new BitmapFont(Gdx.files.internal("ASSETS/died.fnt"));
         graphics.setWindowedMode(WIDTH, HEIGHT);
         batch = new SpriteBatch(); // initialized the new batch
         player = new Player(0, 50); // initializes the player and sets the x and y
@@ -120,7 +123,7 @@ public class Main extends ApplicationAdapter {
                 player2.bullets.add(player2.shootBullet());
             }
             // if the left or right shift is pressed, then the player will use a powerup
-            if (Gdx.input.isKeyJustPressed(Input.Keys.UP)){
+            if (Gdx.input.isKeyJustPressed(Input.Keys.W)){
                 if(!player2.isJumping()) {
                     player2.goUp(); // player will go up when left arrow key pressed
                     if (p1animation != true) {
@@ -179,36 +182,29 @@ public class Main extends ApplicationAdapter {
         batch.dispose();
     }
 //
-//    private void youWin(){ // displays text and will
-////        music.stop(); // stops the music
-////        Music win= Gdx.audio.newMusic(Gdx.files.internal("Assets/Sound/win.mp3")); // will load the win audio
-////        if(soundPlayed==false) { // plays the sound once
-////            win.play();
-////            soundPlayed = true;
-////        }
-//        if (Gdx.input.isKeyPressed(Input.Keys.Y)){
-//            restart(); // restarts the game if yes
-//        }else if (Gdx.input.isKeyPressed(Input.Keys.N)) {
-//            System.exit(0); // exits the game if no
-//        }
-//    }
-//
-//    private void youDied(){ // this will display choice words and a sound when the player loses
-//        if (Gdx.input.isKeyPressed(Input.Keys.Y)){
-//            restart();// restarts the game if yes
-//        }else if (Gdx.input.isKeyPressed(Input.Keys.N)) {
-//            System.exit(0); // exits the game if no
-//        }
-//    }
-//
-//    public void restart(){ // this method will restart the game
-//        playerAlive = true; // this will store a true or false value depending on whether the player is alive
-//        powerups = new ArrayList<PowerUp>(); // this stores the powerups
-//        player = new Player(500, 500);
-//        hud = new HUD(); // initializes the heads up display
-//    }
-//
-//
+    private void youWin(){ // displays text and will
+        if(player2.getLives()==0){
+            diedFont.draw(batch,"PLAYER ONE WON!!!",300,612); // displays "YOU WON" on the screen
+        }
+        else if(player.getLives()==0) {
+            diedFont.draw(batch, "PLAYER ONE WON!!!", 300, 612); // displays "YOU WON" on the screen
+        }
+        diedFont.draw(batch,"Continue?",335,512); // displays "YOU WON" on the screen
+        diedFont.draw(batch,"Yes - Y",385,412); // displays "YOU WON" on the screen
+        diedFont.draw(batch,"No - N",385,312); // displays "YOU WON" on the screen
+        if (Gdx.input.isKeyPressed(Input.Keys.Y)){
+            restart(); // restarts the game if yes
+        }else if (Gdx.input.isKeyPressed(Input.Keys.N)) {
+            System.exit(0); // exits the game if no
+        }
+    }
+
+    public void restart(){ // this method will restart the game
+        playerAlive = true; // this will store a true or false value depending on whether the player is alive
+        powerups = new ArrayList<PowerUp>(); // this stores the powerups
+        player = new Player(500, 500);
+        hud = new HUD(); // initializes the heads up display
+    }
     private void dropPowerup() { // this will decide at random when to drop a powerup
         Random powerupDrop = new Random(); // creates a random object
         int isDrop = powerupDrop.nextInt(10000); // this will get a random number within the given range

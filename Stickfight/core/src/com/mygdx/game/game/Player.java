@@ -20,7 +20,6 @@ public class Player {
     private final static int INVINCIBLE = 1;
     private final static int HEART = 2;
     private ArrayList<Integer> powerupID = new ArrayList<Integer>(); // will store the id of the powerup
-    private int points = 0; // will store the points
     private int lives = 3; // stores the amount of lives left
     private boolean invincible = true; // used to determine invincibility
     private Sprite barrier = new Sprite(new Texture("Assets/barriers.png")); // sprite of the barrier
