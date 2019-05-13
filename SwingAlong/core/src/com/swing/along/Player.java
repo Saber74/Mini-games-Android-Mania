@@ -31,12 +31,12 @@ public class Player {
 	Animation<Texture> jumpAnimation;
 	
 	//constructor method
-	public Player(String[] frames, float x, float y){
+	public Player(String start, String[] frames, float x, float y){
 		
 		//player = new Sprite(new Texture("megaman_0.png"));
 		onPlatform = true;
 		
-		startPlayer = new Texture("megaman_0.png");
+		startPlayer = new Texture(start);
 		
 		playerTextures = new Texture[frames.length];
 		
@@ -47,7 +47,7 @@ public class Player {
 		//player = new Sprite(playerTextures[0]);
 		//player.setCenter(100, 100);
 		
-		jumpAnimation = new Animation<Texture>(0.1f, playerTextures);
+		jumpAnimation = new Animation<Texture>(0.12f, playerTextures);
 		
 		//starting position on platform
 		this.x = x;
@@ -64,6 +64,7 @@ public class Player {
 		vine = v;
 	}
 	
+	
 	public boolean onVine(){
 		if(vine!=null){
 			return true;
@@ -76,11 +77,10 @@ public class Player {
 		return vine;
 	}
 	
-	public void changePos(float shiftX, float shiftY){
-		x += shiftX;
-		y += shiftY;
-		
-		//player.setPosition(x, y);
+	//Method overloading	
+	public void setPos(float x, float y){
+		this.x = x;
+		this.y = y;
 	}
 	
 	
@@ -89,34 +89,38 @@ public class Player {
 		float height = playerTextures[0].getHeight();
 		if(vine.getRotation()>0){
 			if(right){
-				x = (float)(vine.getX()-width*0.72-vine.getHeight()*Math.cos(Math.toRadians(vine.getRotation()-80)));
-				y = (float)(vine.getY()-height*0.72-vine.getHeight()*Math.sin(Math.toRadians(vine.getRotation()-80)));
+				x = (float)(vine.getX()-width*0.72-vine.getHeight()*Math.cos(Math.toRadians(vine.getRotation()-88)));
+				y = (float)(vine.getY()-height*0.72-vine.getHeight()*Math.sin(Math.toRadians(vine.getRotation()-88)));
 			}
 			
 			else{
-				x = (float)(vine.getX()-width*0.72-vine.getHeight()*Math.cos(Math.toRadians(vine.getRotation()-100)));
-				y = (float)(vine.getY()-height*0.72-vine.getHeight()*Math.sin(Math.toRadians(vine.getRotation()-100)));
+				x = (float)(vine.getX()-width*0.72-vine.getHeight()*Math.cos(Math.toRadians(vine.getRotation()-92)));
+				y = (float)(vine.getY()-height*0.72-vine.getHeight()*Math.sin(Math.toRadians(vine.getRotation()-92)));
 			}
 		}
 		
 		else{
 			if(right){
-				x = (float)(vine.getX()-width*0.72-vine.getHeight()*Math.cos(Math.toRadians(vine.getRotation()-100)));
-				y = (float)(vine.getY()-height*0.72-vine.getHeight()*Math.sin(Math.toRadians(vine.getRotation()-100)));
+				x = (float)(vine.getX()-width*0.72-vine.getHeight()*Math.cos(Math.toRadians(vine.getRotation()-92)));
+				y = (float)(vine.getY()-height*0.72-vine.getHeight()*Math.sin(Math.toRadians(vine.getRotation()-92)));
 			}
 			
 			else{
-				x = (float)(vine.getX()-width*0.72-vine.getHeight()*Math.cos(Math.toRadians(vine.getRotation()-80)));
-				y = (float)(vine.getY()-height*0.72-vine.getHeight()*Math.sin(Math.toRadians(vine.getRotation()-80)));
+				x = (float)(vine.getX()-width*0.72-vine.getHeight()*Math.cos(Math.toRadians(vine.getRotation()-88)));
+				y = (float)(vine.getY()-height*0.72-vine.getHeight()*Math.sin(Math.toRadians(vine.getRotation()-88)));
 			}
 		}
+	}
+	
+	public void translateX(int tx){
+		x+=tx;
 	}
 	
 	
 	public void render(SpriteBatch batch){
 		//player.draw(batch);
 		if(onPlatform){
-			batch.draw(startPlayer,x,y);
+			batch.draw(startPlayer,x,y,110,110);
 		}
 		else{
 			batch.draw(playerTextures[0],x,y);
@@ -126,10 +130,10 @@ public class Player {
 	
 	public void renderAnimation(float time, SpriteBatch batch){
 		currentFrame = jumpAnimation.getKeyFrame(time, true);
-		
+		/*
 		if(onPlatform){
 			x+=100;
-		}
+		}*/
 		//x+=100;
 		//y+=50;
 		
@@ -158,6 +162,10 @@ public class Player {
 	
 	public Rectangle getPosRect(){
 		return new Rectangle(x,y,10,10);
+	}
+	
+	public float getWidth(){
+		return playerTextures[0].getWidth();
 	}
 	
 }

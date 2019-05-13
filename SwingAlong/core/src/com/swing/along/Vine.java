@@ -10,12 +10,15 @@ public class Vine {
 	//setPos
 	
 	Sprite vine;
+	double height;
 	float x,y;
 	int angle;
 	
-	public Vine(String file, float x, float y){
+	public Vine(String file, float x, float y, double h){
 		vine = new Sprite(new Texture(file));
-		vine.setSize(vine.getWidth(), 100);
+		height = h;
+		vine.setSize(vine.getWidth(), (float)height);
+		//System.out.println(length);
 		vine.setOrigin(0,0);
 		angle = 90;
 		
@@ -63,7 +66,7 @@ public class Vine {
 		return angle;
 	}
 	
-	public Sprite getVine(){
+	public Sprite getVineSprite(){
 		return vine;
 	}
 	
