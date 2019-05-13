@@ -7,7 +7,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
-
 public class Player {
     private float x, y; // stores the x and the y of the player
     private Texture player_sprite;
@@ -23,7 +22,6 @@ public class Player {
     private int lives = 3; // stores the amount of lives left
     private boolean invincible = true; // used to determine invincibility
     private Sprite barrier = new Sprite(new Texture("Assets/barriers.png")); // sprite of the barrier
-    boolean musicPlaying = false; // checks if music is playing
     Rectangle rect; // stores a rectangle of the player which is used for collision and more
     String jump[]={"Assets/Zero/Jump/1.png","Assets/Zero/Jump/2.png","Assets/Zero/Jump/3.png","Assets/Zero/Jump/4.png","Assets/Zero/Jump/5.png","Assets/Zero/Jump/6.png","Assets/Zero/Jump/7.png"};
     String right[]={"Assets/Zero/Walk/1.png","Assets/Zero/Walk/2.png","Assets/Zero/Walk/3.png","Assets/Zero/Walk/4.png","Assets/Zero/Walk/5.png","Assets/Zero/Walk/6.png","Assets/Zero/Walk/7.png","Assets/Zero/Walk/8.png","Assets/Zero/Walk/9.png","Assets/Zero/Walk/10.png","Assets/Zero/Walk/11.png","Assets/Zero/Walk/12.png","Assets/Zero/Walk/13.png","Assets/Zero/Walk/14.png","Assets/Zero/Walk/15.png"};
@@ -124,12 +122,11 @@ public class Player {
         if(direction==LEFT){
             Sprite frame=new Sprite(currentFrame);
             frame.flip(true,false);
-            batch.draw(frame,x,y);
+            batch.draw(frame,x+20,y);
         }
         else{
             batch.draw(currentFrame, x, y);
         }
-
         animation = false;
         attacking=false;
         shooting=false;
@@ -147,6 +144,9 @@ public class Player {
             if (type == INVINCIBLE) { // if the type is invincible
                 powerupID.add(INVINCIBLE); // adds the ID to the arraylist
             }
+        }
+        else if(type==SPIRITBOMB){
+            powerupID.add(SPIRITBOMB);
         }
         else if (type == HEART) { // will add a life if not already maxed out
             lives += (lives == 3 ? 0 : 1);
@@ -218,7 +218,6 @@ public class Player {
     public boolean isShooting() { // returns the shooting boolean
         return shooting;
     }
-
     public void setShooting(boolean shooting) { // sets the shooting boolean
         this.shooting = shooting;
     }

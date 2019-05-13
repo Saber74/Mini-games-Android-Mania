@@ -27,7 +27,6 @@ public class Bullet {
         // rect created
         rect = new Rectangle((int) bullet.getX(), (int) bullet.getY(), (int) bullet.getWidth(), (int) bullet.getHeight());
     }
-
     public void render(SpriteBatch batch) { // renders the bullet
         bullet.setX(x + width / 2 - bullet.getWidth() / 2); // sets the x of the bullet
         // sets a new rect
@@ -36,11 +35,10 @@ public class Bullet {
     }
 
     public void update(SpriteBatch batch) {// moves the bullet in the appropriate direction
-        y += speed;
+        x += speed;
         bullet.setY(y); // sets the y for the sprite
         this.render(batch); // calls the render method
     }
-
     public float getY() {
         return y;
     } // returns the y position
@@ -52,5 +50,4 @@ public class Bullet {
     public int getType() {
         return type;
     } // returns the type
-
 }

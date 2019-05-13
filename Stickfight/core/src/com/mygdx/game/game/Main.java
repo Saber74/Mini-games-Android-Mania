@@ -10,7 +10,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import java.util.ArrayList;
 import java.util.Random;
 import static com.badlogic.gdx.Gdx.graphics;
-
 public class Main extends ApplicationAdapter {
     BitmapFont diedFont;
     int p1animationType;
@@ -147,7 +146,7 @@ public class Main extends ApplicationAdapter {
         }
         stateTime += Gdx.graphics.getDeltaTime();
         batch.begin(); // begins the batch which will allow for items to be drawn upon it so that it can be seen on the screen
-        batch.draw(bg,0,0);
+//        batch.draw(bg,0,0);
         if (p1animation) {
             player.renderAnimation(p1animationType,stateTime, batch);
             if (player.isFinishedAnimation(stateTime)) {
@@ -174,6 +173,7 @@ public class Main extends ApplicationAdapter {
         isPlayerDead(player); // this will check if the player is dead
         isPlayerDead(player2); // this will check if the player is dead
         hud.update(batch); // this will update the heads up display
+        hud2.update(batch);
         batch.end(); // ends the batch
     }
 
@@ -203,7 +203,9 @@ public class Main extends ApplicationAdapter {
         playerAlive = true; // this will store a true or false value depending on whether the player is alive
         powerups = new ArrayList<PowerUp>(); // this stores the powerups
         player = new Player(500, 500);
+        player2= new Player(700,500);
         hud = new HUD(); // initializes the heads up display
+        hud2= new HUD();//
     }
     private void dropPowerup() { // this will decide at random when to drop a powerup
         Random powerupDrop = new Random(); // creates a random object
@@ -215,6 +217,9 @@ public class Main extends ApplicationAdapter {
                 powerups.remove(i);
             } else if (player.isCollidingWith(powerups.get(i))) { // will remove and run a player method when the player collides with the powerup
                 player.getPowerup(powerups.get(i)); // this will get the powerup for the player
+                powerups.remove(i); // removes the powerup
+            } else if (player2.isCollidingWith(powerups.get(i))) { // will remove and run a player method when the player collides with the powerup
+                player2.getPowerup(powerups.get(i)); // this will get the powerup for the player
                 powerups.remove(i); // removes the powerup
             }
         }
