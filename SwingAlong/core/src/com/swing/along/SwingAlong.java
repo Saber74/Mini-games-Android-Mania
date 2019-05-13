@@ -37,6 +37,8 @@ public class SwingAlong extends ApplicationAdapter implements InputProcessor{
 	
 	Texture bkg;
 	Texture platform;
+	Texture p1Mark;
+	Texture p2Mark;
 	Texture p1win;
 	Texture p2win;
 	
@@ -44,6 +46,7 @@ public class SwingAlong extends ApplicationAdapter implements InputProcessor{
 	Vine[] vines2;
 
 	Player p1, p2;
+	float x1, x2;
 	
 	int vIndex1, vIndex2;
 	
@@ -64,8 +67,13 @@ public class SwingAlong extends ApplicationAdapter implements InputProcessor{
 		bkgX1 = 0;
 		bkgX2 = 0;
 		
+		x1 = 0;
+		x2 = 0;
+		
 		bkg = new Texture("bkg.png");
 		platform = new Texture("platform.png");
+		p1Mark = new Texture("p1head.png");
+		p2Mark = new Texture("p2head.png");
 		p1win = new Texture("p1win.png");
 		p2win = new Texture("p2win.png");
 		
@@ -75,11 +83,11 @@ public class SwingAlong extends ApplicationAdapter implements InputProcessor{
 		//15 vines
 		//each vine is 500 pixels apart
 		for(int i=0; i<vines1.length; i++){
-			vines1[i] = new Vine("vine.png", 250+i*325, 800, 100+Math.random()*50);
+			vines1[i] = new Vine("vine.png", 275+i*350, 800, 100+Math.random()*50);
 		}
 		
 		for(int i=0; i<vines2.length; i++){
-			vines2[i] = new Vine("vine.png", 250+i*325, 400, 100+Math.random()*50);
+			vines2[i] = new Vine("vine.png", 275+i*350, 400, 100+Math.random()*50);
 		}
 		
 		String[] p1Frames = {"megaman1_1.png","megaman1_2.png","megaman1_3.png","megaman1_4.png"};
@@ -111,6 +119,7 @@ public class SwingAlong extends ApplicationAdapter implements InputProcessor{
 			if(p1.onPlatform){
 				p1.setPlatform(false);
 			}
+			updateMarker1();
 		}
 		
 		//p2 moves onto first vine
@@ -120,6 +129,7 @@ public class SwingAlong extends ApplicationAdapter implements InputProcessor{
 			if(p2.onPlatform){
 				p2.setPlatform(false);
 			}
+			updateMarker2();
 		}
 		
 		batch.begin();
@@ -131,9 +141,12 @@ public class SwingAlong extends ApplicationAdapter implements InputProcessor{
 		//lower background
 		batch.draw(bkg, bkgX2, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/2);
 		batch.draw(platform, bkgX2, 190, 200,10);
-		updateBkg();
 		
+		updateBkg();
 		updateAngle();
+		
+		batch.draw(p1Mark, x1, 400, 40,40);
+		batch.draw(p2Mark, x2, 350, 40,40);
 		
 		if(animation1){
 			p1.renderAnimation(stateTime1, batch);
@@ -144,7 +157,6 @@ public class SwingAlong extends ApplicationAdapter implements InputProcessor{
 		
 		else{
 			if(p1.onVine()){
-				
 				p1.setPos(right);
 			}
 			
@@ -234,6 +246,7 @@ public class SwingAlong extends ApplicationAdapter implements InputProcessor{
 		bkgX1 = 0;
 		String[] p1Frames = {"megaman1_1.png","megaman1_2.png","megaman1_3.png","megaman1_4.png"};
 		p1 = new Player("megaman1_0.png",p1Frames,0,600);
+		x1 = 0;
 	}
 	
 	public void restart2(){
@@ -245,6 +258,7 @@ public class SwingAlong extends ApplicationAdapter implements InputProcessor{
 		bkgX2 = 0;
 		String[] p1Frames = {"megaman2_1.png","megaman2_2.png","megaman2_3.png","megaman2_4.png"};
 		p2 = new Player("megaman2_0.png",p1Frames,0,200);
+		x2 = 0;
 	}
 	
 	public void updateAngle(){
@@ -278,6 +292,14 @@ public class SwingAlong extends ApplicationAdapter implements InputProcessor{
 			}
 		}
 	}
+	
+	public void updateMarker1(){
+		x1 = 1000/vines1.length*(vIndex1+1);
+	}
+	
+	public void updateMarker2(){
+		x2 = 1000/vines2.length*(vIndex2+1);
+	}
 
 	//implement ALL methods of InputProcessor
 	public boolean keyDown(int keycode){
@@ -285,7 +307,7 @@ public class SwingAlong extends ApplicationAdapter implements InputProcessor{
 
 			float px1 = p1.getX()+p1.getWidth();
 			float vx1 = (float)(vines1[vIndex1+1].getX()-vines1[vIndex1+1].getHeight()*Math.cos(Math.toRadians(vines1[vIndex1+1].getRotation()-90)));
-			System.out.println(Math.abs(px1-vx1));
+			//System.out.println(Math.abs(px1-vx1));
 			if(Math.abs(px1-vx1)<=160){
 				animation1 = true;
 				stateTime1 = 0f;
@@ -294,13 +316,14 @@ public class SwingAlong extends ApplicationAdapter implements InputProcessor{
 				System.out.println("startover");
 				restart1();
 			}
+			
 
 		}
 		
 		if(keycode == Keys.D){
 			float px2 = p2.getX()+p2.getWidth();
 			float vx2 = (float)(vines2[vIndex2+1].getX()-vines2[vIndex2+1].getHeight()*Math.cos(Math.toRadians(vines2[vIndex2+1].getRotation()-90)));
-			System.out.println(Math.abs(px2-vx2));
+			//System.out.println(Math.abs(px2-vx2));
 			if(Math.abs(px2-vx2)<=160){
 				animation2 = true;
 				stateTime2 = 0f;
@@ -321,8 +344,7 @@ public class SwingAlong extends ApplicationAdapter implements InputProcessor{
 					v.translateX(-100);
 				}
 			}
-		
-			//150*cos(20degrees)
+
 			else{
 				bkgX1-=200;
 				for(Vine v : vines1){
@@ -332,7 +354,7 @@ public class SwingAlong extends ApplicationAdapter implements InputProcessor{
 			
 		}
 		
-		if(p1.getX()>500){
+		if(p1.getX()>400){
 			bkgX1-=100;
 			for(Vine v : vines1){
 				v.translateX(-100);
@@ -349,7 +371,6 @@ public class SwingAlong extends ApplicationAdapter implements InputProcessor{
 				}
 			}
 		
-			//150*cos(20degrees)
 			else{
 				bkgX2-=200;
 				for(Vine v : vines2){
@@ -359,7 +380,7 @@ public class SwingAlong extends ApplicationAdapter implements InputProcessor{
 			
 		}
 		
-		if(p2.getX()>500){
+		if(p2.getX()>400){
 			bkgX2-=100;
 			for(Vine v : vines2){
 				v.translateX(-100);
