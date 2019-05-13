@@ -6,37 +6,46 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.LinkedList;
+
 public class Player {
     private float x, y; // stores the x and the y of the player
     private Texture player_sprite;
     private Sprite player;
     private boolean shooting = false;
+    private boolean attacking=false;
+    private boolean jumping=false;
     // powerup types
     private final static int SPIRITBOMB = 0;
     private final static int INVINCIBLE = 1;
     private final static int HEART = 2;
     private ArrayList<Integer> powerupID = new ArrayList<Integer>(); // will store the id of the powerup
-    private int points = 0; // will store the points
     private int lives = 3; // stores the amount of lives left
     private boolean invincible = true; // used to determine invincibility
     private Sprite barrier = new Sprite(new Texture("Assets/barriers.png")); // sprite of the barrier
     boolean musicPlaying = false; // checks if music is playing
     Rectangle rect; // stores a rectangle of the player which is used for collision and more
-    String jump[]={"Assets/Zero/Jump/0.png","Assets/Zero/Jump/1.png","Assets/Zero/Jump/2.png","Assets/Zero/Jump/3.png","Assets/Zero/Jump/4.png","Assets/Zero/Jump/5.png","Assets/Zero/Jump/6.png","Assets/Zero/Jump/7.png","Assets/Zero/Jump/8.png","Assets/Zero/Jump/9.png","Assets/Zero/Jump/10.png","Assets/Zero/Jump/11.png","Assets/Zero/Jump/12.png","Assets/Zero/Jump/13.png","Assets/Zero/Jump/14.png","Assets/Zero/Jump/15.png"};
-    String left[]={};
-    String right[]={"Assets/Zero/Walk/0.png","Assets/Zero/Walk/1.png","Assets/Zero/Walk/2.png","Assets/Zero/Walk/3.png","Assets/Zero/Walk/4.png","Assets/Zero/Walk/5.png","Assets/Zero/Walk/6.png","Assets/Zero/Walk/7.png","Assets/Zero/Walk/8.png","Assets/Zero/Walk/9.png","Assets/Zero/Walk/10.png","Assets/Zero/Walk/11.png","Assets/Zero/Walk/12.png","Assets/Zero/Walk/13.png","Assets/Zero/Walk/14.png","Assets/Zero/Walk/15.png"};
-    String shoot[]={};
-    String sword[]={};
+    String jump[]={"Assets/Zero/Jump/1.png","Assets/Zero/Jump/2.png","Assets/Zero/Jump/3.png","Assets/Zero/Jump/4.png","Assets/Zero/Jump/5.png","Assets/Zero/Jump/6.png","Assets/Zero/Jump/7.png"};
+    String right[]={"Assets/Zero/Walk/1.png","Assets/Zero/Walk/2.png","Assets/Zero/Walk/3.png","Assets/Zero/Walk/4.png","Assets/Zero/Walk/5.png","Assets/Zero/Walk/6.png","Assets/Zero/Walk/7.png","Assets/Zero/Walk/8.png","Assets/Zero/Walk/9.png","Assets/Zero/Walk/10.png","Assets/Zero/Walk/11.png","Assets/Zero/Walk/12.png","Assets/Zero/Walk/13.png","Assets/Zero/Walk/14.png","Assets/Zero/Walk/15.png"};
+    String sword[]={"Assets/Zero/Blade/1.png","Assets/Zero/Blade/2.png","Assets/Zero/Blade/3.png","Assets/Zero/Blade/4.png","Assets/Zero/Blade/5.png","Assets/Zero/Blade/6.png","Assets/Zero/Blade/7.png","Assets/Zero/Blade/8.png","Assets/Zero/Blade/9.png","Assets/Zero/Blade/10.png","Assets/Zero/Blade/11.png"};
+    String shoot[]={"Assets/Zero/Shoot/1.png","Assets/Zero/Shoot/2.png","Assets/Zero/Shoot/3.png","Assets/Zero/Shoot/4.png","Assets/Zero/Shoot/5.png","Assets/Zero/Shoot/6.png"};
     Texture currentFrame;
     Texture[] jumpTextures =new Texture[jump.length];
     Texture[] rightTextures =new Texture[right.length];
-    Animation<Texture> jumpAnimation= new Animation<Texture>(0.1f,jumpTextures);
+    Texture[] swordTextures=new Texture[sword.length];
+    Texture[] shootTextures= new Texture[shoot.length];
     Animation<Texture> shootAnimation;
-    Animation<Texture> leftAnimation;
-    Animation<Texture> rightAnimation= new Animation<Texture>(0.1f,rightTextures);
+    Animation<Texture> jumpAnimation;
+    Animation<Texture> rightAnimation;
     Animation<Texture> swordAnimation;
+    public static LinkedList<Bullet> bullets = new LinkedList<Bullet>(); // arraylist that stores the enemy bullets
     boolean animation=false;
-    int animationtype;
+    int direction;
+    private static final int UP=1;
+    private static final int RIGHT=2;
+    private static final int LEFT=3;
+    private static final int SWORD=4;
+    private static final int SHOOT=5;
 
     public Player(float x, float y) { // constructor takes in x and y
         player_sprite = new Texture("Assets/Zero/Walk/0.png"); // loads in player sprite image
@@ -46,10 +55,33 @@ public class Player {
         player.setX(x); // sets the player's x
         player.setY(y); // sets the player's y
         rect = new Rectangle((int) player.getX(), (int) player.getY(), (int) player.getWidth(), (int) player.getHeight()); // creates a rect based on the sprite's dimensions
+        for(int i=0; i<right.length; i++){
+            rightTextures[i] = new Texture(right[i]);
+        }
+        rightAnimation = new Animation<Texture>(0.04f,rightTextures);
+        for(int i=0; i<jump.length; i++){
+            jumpTextures[i] = new Texture(jump[i]);
+        }
+        jumpAnimation= new Animation<Texture>(0.04f,jumpTextures);
+        for(int i=0;i<sword.length;i++){
+            swordTextures[i]= new Texture(sword[i]);
+        }
+        swordAnimation= new Animation<Texture>(0.04f,swordTextures);
+        for(int i=0;i<shoot.length;i++){
+            shootTextures[i]=new Texture(shoot[i]);
+        }
+        shootAnimation= new Animation<Texture>(0.04f,shootTextures);
     }
 
     //updates character's position
-    private void render(SpriteBatch batch) { // renders in the player and the invincibility circle if the ability is active
+    public void render(SpriteBatch batch) { // renders in the player and the invincibility circle if the ability is active
+        if(isJumping()){
+            y-=10;
+        }
+        player.setX(x);
+        player.setY(y);
+        // creates a new rectangle
+        rect = new Rectangle((int) player.getX(), (int) player.getY(), (int) player.getWidth(), (int) player.getHeight());
         if (invincible) { // if the player is invincible
             // ther barrier sprite's x and y is set corresponding to the player's x and y
             barrier.setX(player.getX() - 35);
@@ -57,22 +89,16 @@ public class Player {
             barrier.rotate(1); // will rotate the barrier
             barrier.draw(batch); // draws the barrier onto the screen
         }
-        player.draw(batch); // draws the player on to the screen
-    }
-
-    public void update(SpriteBatch batch) { // updates the position of the player and updates any abilities being used
-        // sets the x and the y of the player
-        Float stateTime = Gdx.graphics.getDeltaTime();
-        player.setX(x);
-        player.setY(y);
-        // creates a new rectangle
-        rect = new Rectangle((int) player.getX(), (int) player.getY(), (int) player.getWidth(), (int) player.getHeight());
-        if (animation) {
-            this.renderAnimation(stateTime,batch);
-        } else {
-            this.render(batch); // calls the render method
+        if(direction==LEFT){
+            Sprite flipped=player;
+            flipped.flip(true,false);
+            batch.draw(flipped,x,y);
+        }
+        else{
+            batch.draw(player,x,y);
         }
     }
+
 
     public void usePowerup() { // uses a powerup when the shift button is pressed
         if (powerupID.size() > 0) { // if there is a powerup that is present
@@ -82,14 +108,34 @@ public class Player {
             }
         }
     }
-    public void renderAnimation(float time, SpriteBatch batch){
-        currentFrame = rightAnimation.getKeyFrame(time, true);
-        batch.draw(currentFrame,x,y);
-        animation=false;
+    public void renderAnimation(int animationtype,float time, SpriteBatch batch) {
+        if (animationtype == RIGHT) {
+            currentFrame = rightAnimation.getKeyFrame(time, true);
+        }
+        else if (animationtype == UP) {
+            currentFrame = jumpAnimation.getKeyFrame(time, true);
+        }
+        else if(animationtype==SWORD){
+            currentFrame=swordAnimation.getKeyFrame(time,true);
+        }
+        else if(animationtype==SHOOT){
+            currentFrame=shootAnimation.getKeyFrame(time,true);
+        }
+        if(direction==LEFT){
+            Sprite frame=new Sprite(currentFrame);
+            frame.flip(true,false);
+            batch.draw(frame,x,y);
+        }
+        else{
+            batch.draw(currentFrame, x, y);
+        }
+
+        animation = false;
+        attacking=false;
+        shooting=false;
     }
     public boolean isFinishedAnimation(float stateTime){
-
-        if(jumpAnimation.isAnimationFinished(stateTime)){
+        if(rightAnimation.isAnimationFinished(stateTime)){
             return true;
         }
         return false;
@@ -110,25 +156,36 @@ public class Player {
     public void goLeft() { // goes left
         if (player.getX() > 0) {
             x -= 8;
-            for (int i = 0; i < 8; i++) {
-                player = new Sprite(new Texture("Assets/SPRITES/Megaman/Zero/WalkL/"+i+".png"));
-            }
-//            player= new Sprite(new Texture("Assets/SPRITES/Megaman/Zero/WalkL/0.png"));
         }
+        direction=LEFT;
+        animation=true;
     }
 
     public void goRight() { // goes right
         if (player.getX() + player.getWidth() < Main.WIDTH) x += 8;
         animation=true;
-    }
-    public void goDown(){
-        for(int i=0;i<8;i++){
-            y-=1;
-        }
+        direction=RIGHT;
     }
     public void goUp(){
-        if(player.getY()+player.getHeight()<Main.HEIGHT) y+=8;
-        goDown();
+        if(player.getY()+player.getHeight()<Main.HEIGHT&&!isJumping()){
+            y+=10;
+        }
+        animation=true;
+        jumping=true;
+    }
+    public boolean isJumping(){
+        if(player.getY()>50){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    public void swordAttack() {
+        if (!attacking) {
+            attacking = true;
+            animation = true;
+        }
     }
 
     public boolean isCollidingWith(PowerUp powerup) { // checks if the player is colliding with a powerup object and return a boolean
@@ -153,9 +210,19 @@ public class Player {
     public float getypos(){
         return player.getY();
     }
-
-    public void kill(){ // kills the player immediately
-        lives = 0;
+    public Bullet shootBullet() { // sets shooting to true and returns a new bullet object
+        shooting = true;
+        return new Bullet(player.getX(), player.getY(), player.getWidth(), 0);
     }
 
+    public boolean isShooting() { // returns the shooting boolean
+        return shooting;
+    }
+
+    public void setShooting(boolean shooting) { // sets the shooting boolean
+        this.shooting = shooting;
+    }
+    public boolean isCollidingWith(Bullet bullet) { // checks if the player is colliding with a bullet and returns a boolean
+        return bullet.getRect().intersects(this.getRect());
+    }
 }

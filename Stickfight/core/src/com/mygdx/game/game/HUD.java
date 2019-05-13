@@ -8,19 +8,16 @@ import java.util.ArrayList;
 
 public class HUD {
     private Texture powerups_hud; // the background for the powerups HUD
-    private Texture points_hud; // the COOL text for the points
     private Texture heart; // the texture for the heart to display the players life
     private ArrayList<Texture> powerup_sprites = new ArrayList<Texture>(); //will store the powerup texture
 
     public HUD() {// will load in various textures
         powerups_hud = new Texture("Assets/powerupsHUD.png");
-        points_hud = new Texture("Assets/points.png");
         heart = new Texture("Assets/heart.png");
     }
 
     public void render(SpriteBatch batch) { // this will render all the information that is to be displayed
         batch.draw(powerups_hud, Main.WIDTH - powerups_hud.getWidth(), Main.HEIGHT - powerups_hud.getHeight()); // draws the powerup HUD background
-        batch.draw(points_hud, 0, Main.HEIGHT - points_hud.getHeight()); // draws the COOL text for points
     }
 
     public void update(SpriteBatch batch) { // calls the render method only in this case
