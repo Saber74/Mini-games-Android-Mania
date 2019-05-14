@@ -135,7 +135,7 @@ public class Main extends ApplicationAdapter {
             if (Gdx.input.isKeyPressed(Input.Keys.SHIFT_RIGHT));
                 player2.usePowerup();
             // if the player presses the space button and the player is not shooting, the player shoots a bullet
-            if(Gdx.input.isKeyPressed(Input.Keys.X)){
+            if(Gdx.input.isKeyPressed(Input.Keys.R)){
                 player.swordAttack();
                 if (p2animation != true) {
                     stateTime = 0f;
@@ -198,7 +198,6 @@ public class Main extends ApplicationAdapter {
             System.exit(0); // exits the game if no
         }
     }
-
     public void restart(){ // this method will restart the game
         playerAlive = true; // this will store a true or false value depending on whether the player is alive
         powerups = new ArrayList<PowerUp>(); // this stores the powerups

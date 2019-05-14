@@ -214,7 +214,6 @@ public class Player {
         shooting = true;
         return new Bullet(player.getX(), player.getY(), player.getWidth(), 0);
     }
-
     public boolean isShooting() { // returns the shooting boolean
         return shooting;
     }
