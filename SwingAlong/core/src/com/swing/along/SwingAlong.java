@@ -90,8 +90,11 @@ public class SwingAlong extends ApplicationAdapter implements InputProcessor{
 			vines2[i] = new Vine("vine.png", 275+i*350, 400, 100+Math.random()*50);
 		}
 		
-		String[] p1Frames = {"megaman1_1.png","megaman1_2.png","megaman1_3.png","megaman1_4.png"};
-		p1 = new Player("megaman1_0.png",p1Frames,0,600);
+		//string formatting
+		//pass in "megaman1_%d.png",
+		//String[] p1Frames = {"megaman1_1.png","megaman1_2.png","megaman1_3.png","megaman1_4.png"};
+		
+		p1 = new Player("megaman1_",5,0,600);
 		
 
 		String[] p2Frames = {"megaman2_1.png","megaman2_2.png","megaman2_3.png","megaman2_4.png"};
@@ -339,9 +342,9 @@ public class SwingAlong extends ApplicationAdapter implements InputProcessor{
 	public boolean keyUp(int keycode){
 		if(animation1){
 			if(p1.onPlatform){
-				bkgX1-=100;
+				bkgX1-=50;
 				for(Vine v : vines1){
-					v.translateX(-100);
+					v.translateX(-50);
 				}
 			}
 

@@ -21,7 +21,7 @@ public class Player {
 	//stores the vine that the current player is on
 	boolean onPlatform;
 	Texture startPlayer;
-	Texture[] playerTextures;
+	Texture[] jumpTextures;
 	Texture currentFrame;
 	float x,y;
 	Vine vine;
@@ -31,16 +31,17 @@ public class Player {
 	Animation<Texture> jumpAnimation;
 	
 	//constructor method
-	public Player(String start, String[] frames, float x, float y){
+	public Player(String name, int n, float x, float y){
 		
 		//player = new Sprite(new Texture("megaman_0.png"));
 		onPlatform = true;
 		
-		startPlayer = new Texture(start);
+		startPlayer = new Texture(String.format("%s%d.png", name,0));
 		
-		playerTextures = new Texture[frames.length];
+		jumpTextures = new Texture[n-1];
+		//don't include first image in play
 		
-		for(int i=0; i<frames.length; i++){
+		for(int i=1; i<jumpTextures.length; i++){
 			playerTextures[i] = new Texture(frames[i]);
 		}
 		
