@@ -6,7 +6,8 @@
 
 package com.swing.along;
 
-import java.util.*;
+//import java.util.*;
+
 
 import com.badlogic.gdx.ApplicationAdapter;
 
@@ -17,7 +18,6 @@ import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
@@ -90,15 +90,9 @@ public class SwingAlong extends ApplicationAdapter implements InputProcessor{
 			vines2[i] = new Vine("vine.png", 275+i*350, 400, 100+Math.random()*50);
 		}
 		
-		//string formatting
-		//pass in "megaman1_%d.png",
-		//String[] p1Frames = {"megaman1_1.png","megaman1_2.png","megaman1_3.png","megaman1_4.png"};
-		
 		p1 = new Player("megaman1_",5,0,600);
 		
-
-		String[] p2Frames = {"megaman2_1.png","megaman2_2.png","megaman2_3.png","megaman2_4.png"};
-		p2 = new Player("megaman2_0.png",p2Frames,0,200);
+		p2 = new Player("megaman2_",5,0,200);
 		
 		
 		Gdx.input.setInputProcessor(this);
@@ -114,9 +108,9 @@ public class SwingAlong extends ApplicationAdapter implements InputProcessor{
 		stateTime1 += Gdx.graphics.getDeltaTime();
 		stateTime2 += Gdx.graphics.getDeltaTime();
 		
-		
 		//p1 moves onto first vine
-		if(vIndex1<vines1.length-1 && p1.getPlayerRect().overlaps(vines1[vIndex1+1].getVineSprite().getBoundingRectangle())){
+		
+		if(vIndex1<vines1.length-1 && p1.getPlayerRect().overlaps((vines1[vIndex1+1].getVineSprite()).getBoundingRectangle())){
 			vIndex1++;
 			p1.setVine(vines1[vIndex1]);
 			if(p1.onPlatform){
@@ -247,8 +241,7 @@ public class SwingAlong extends ApplicationAdapter implements InputProcessor{
 		stateTime1 = 0f;
 		vIndex1 = -1;
 		bkgX1 = 0;
-		String[] p1Frames = {"megaman1_1.png","megaman1_2.png","megaman1_3.png","megaman1_4.png"};
-		p1 = new Player("megaman1_0.png",p1Frames,0,600);
+		p1 = new Player("megaman1_",5,0,600);
 		x1 = 0;
 	}
 	
@@ -259,8 +252,7 @@ public class SwingAlong extends ApplicationAdapter implements InputProcessor{
 		stateTime2 = 0f;
 		vIndex2 = -1;
 		bkgX2 = 0;
-		String[] p1Frames = {"megaman2_1.png","megaman2_2.png","megaman2_3.png","megaman2_4.png"};
-		p2 = new Player("megaman2_0.png",p1Frames,0,200);
+		p2 = new Player("megaman2_",5,0,200);
 		x2 = 0;
 	}
 	
@@ -342,9 +334,9 @@ public class SwingAlong extends ApplicationAdapter implements InputProcessor{
 	public boolean keyUp(int keycode){
 		if(animation1){
 			if(p1.onPlatform){
-				bkgX1-=50;
+				bkgX1-=70;
 				for(Vine v : vines1){
-					v.translateX(-50);
+					v.translateX(-70);
 				}
 			}
 

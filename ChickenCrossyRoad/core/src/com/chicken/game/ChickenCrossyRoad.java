@@ -232,7 +232,7 @@ public class ChickenCrossyRoad extends ApplicationAdapter implements InputProces
 		
 		Gdx.gl.glEnable(GL20.GL_BLEND);//enable alpha with GL_BLEND
 		Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
-		
+		//System.out.println("H");
 		//title page!
 		if(!game && !start){
 			count++;

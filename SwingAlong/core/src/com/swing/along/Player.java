@@ -1,20 +1,13 @@
 package com.swing.along;
 
 import com.badlogic.gdx.graphics.Texture;
+
 import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.Sprite;
+//import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.math.MathUtils;
+
 import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.Body;
-import com.badlogic.gdx.physics.box2d.BodyDef;
-import com.badlogic.gdx.physics.box2d.CircleShape;
-import com.badlogic.gdx.physics.box2d.Fixture;
-import com.badlogic.gdx.physics.box2d.FixtureDef;
-import com.badlogic.gdx.physics.box2d.World;
-import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
+
 
 public class Player {
 	//stores player's x and y value
@@ -33,22 +26,21 @@ public class Player {
 	//constructor method
 	public Player(String name, int n, float x, float y){
 		
-		//player = new Sprite(new Texture("megaman_0.png"));
 		onPlatform = true;
-		
 		startPlayer = new Texture(String.format("%s%d.png", name,0));
 		
 		jumpTextures = new Texture[n-1];
 		//don't include first image in play
 		
-		for(int i=1; i<jumpTextures.length; i++){
-			playerTextures[i] = new Texture(frames[i]);
+		for(int i=0; i<jumpTextures.length; i++){
+			String pic = String.format("%s%d.png",name,i+1);
+			jumpTextures[i] = new Texture(pic);
 		}
 		
 		//player = new Sprite(playerTextures[0]);
 		//player.setCenter(100, 100);
 		
-		jumpAnimation = new Animation<Texture>(0.12f, playerTextures);
+		jumpAnimation = new Animation<Texture>(0.12f, jumpTextures);
 		
 		//starting position on platform
 		this.x = x;
@@ -86,8 +78,8 @@ public class Player {
 	
 	
 	public void setPos(boolean right){
-		float width = playerTextures[0].getWidth();
-		float height = playerTextures[0].getHeight();
+		float width = jumpTextures[0].getWidth();
+		float height = jumpTextures[0].getHeight();
 		if(vine.getRotation()>0){
 			if(right){
 				x = (float)(vine.getX()-width*0.72-vine.getHeight()*Math.cos(Math.toRadians(vine.getRotation()-88)));
@@ -124,7 +116,7 @@ public class Player {
 			batch.draw(startPlayer,x,y,110,110);
 		}
 		else{
-			batch.draw(playerTextures[0],x,y);
+			batch.draw(jumpTextures[0],x,y);
 		}
 		
 	}
@@ -158,7 +150,7 @@ public class Player {
 	}
 	
 	public Rectangle getPlayerRect(){
-		return new Rectangle(x,y,playerTextures[0].getWidth(),playerTextures[0].getHeight());
+		return new Rectangle(x,y,jumpTextures[0].getWidth(),jumpTextures[0].getHeight());
 	}
 	
 	public Rectangle getPosRect(){
@@ -166,7 +158,7 @@ public class Player {
 	}
 	
 	public float getWidth(){
-		return playerTextures[0].getWidth();
+		return jumpTextures[0].getWidth();
 	}
 	
 }
