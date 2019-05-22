@@ -16,13 +16,9 @@ class TestServerSocket {
             OutputStream os = socket.getOutputStream();
             PrintWriter pw = new PrintWriter(os, true);
             pw.println("Hi what's ur name ");
-
             BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             String str = br.readLine();
-
             pw.println("Hello, " + str);
-            str=br.readLine();
-            pw.println("it works"+str);
 //            pw.close();
 //            socket.close();
 
