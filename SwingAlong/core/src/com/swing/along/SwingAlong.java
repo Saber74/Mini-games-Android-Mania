@@ -12,6 +12,7 @@ package com.swing.along;
 import com.badlogic.gdx.ApplicationAdapter;
 
 
+import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
@@ -23,8 +24,9 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Rectangle;
 
-
-public class SwingAlong extends ApplicationAdapter implements InputProcessor{
+public class SwingAlong extends ApplicationAdapter implements ApplicationListener,InputProcessor{
+	GL20 gl;
+	ActionResolver actionResolver;
 	SpriteBatch batch;
 	ShapeRenderer sr;
 	int angle = 90;
@@ -51,13 +53,18 @@ public class SwingAlong extends ApplicationAdapter implements InputProcessor{
 	int vIndex1, vIndex2;
 	
 	float stateTime1, stateTime2;
-	
+
+
+	//SwingAlong(ActionResolver actionResolver){this.actionResolver = actionResolver;}
+
 	@Override
 	public void create () {
 		Gdx.graphics.setWindowedMode(1000,800);
 		batch = new SpriteBatch();
 		sr = new ShapeRenderer();
-		
+
+		//https://code.google.com/archive/p/libgdx-users/wikis/IntegratingAndroidNativeUiElements3TierProjectSetup.wiki
+
 		stateTime1 = 0f;
 		stateTime2 = 0f;
 		
@@ -93,8 +100,8 @@ public class SwingAlong extends ApplicationAdapter implements InputProcessor{
 		p1 = new Player("megaman1_",5,0,600);
 		
 		p2 = new Player("megaman2_",5,0,200);
-		
-		
+
+		//actionResolver.showToast("Tap screen to open AlertBox", 5000);
 		Gdx.input.setInputProcessor(this);
 		
 	}
@@ -390,9 +397,12 @@ public class SwingAlong extends ApplicationAdapter implements InputProcessor{
 	    return false;
 	}
 
-	public boolean touchDown (int x, int y, int pointer, int button) {
-		return false;
+	@Override public boolean touchDown(int x, int y, int pointer, int button) {
+		//actionResolver.showAlertBox("AlertBox title", "AlertBox message", "Button text");
+		// actionResolver.openUri("http://www.google.com/");
+		return true;
 	}
+
 
 	public boolean touchUp (int x, int y, int pointer, int button) {
 		return false;
