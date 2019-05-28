@@ -1,0 +1,3 @@
+include ':app', ':desktop', ':core'
+project(':desktop').projectDir = new File('SwingAlong/desktop')
+project(':core').projectDir = new File('SwingAlong/core')

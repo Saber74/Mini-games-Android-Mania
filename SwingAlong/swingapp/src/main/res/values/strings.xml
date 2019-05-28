@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">FirstSwingTest</string>
+    <string name="crossy_button">Crossy Road</string>
+    <string name="invaders_button">Space Invaders</string>
+    <string name="swing_button">Swing Along</string>
+    <string name="fight_button">Mega Fight</string>
+    <string name="bomb_button">Bomb Luck</string>
+
+    <string name="crossyControls_name">Crossy Road Controls</string>
+    <string name="invadersControls_name">Space Invaders Controls</string>
+    <string name="swingControls_name">Swing Controls</string>
+    <string name="fightControls_name">Mega Fight Controls</string>
+    <string name="bombControls_name">Bomb Luck Controls</string>
+</resources>
