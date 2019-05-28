@@ -15,7 +15,7 @@ public class Server {
     int clientcount = 0;
 
     public static void main(String[] args) throws IOException {
-        Server serverobj = new Server(5013);
+        Server serverobj = new Server(5014);
         serverobj.startServer();
     }
 
@@ -26,7 +26,7 @@ public class Server {
 
     public void startServer() throws IOException {
 
-        server = new ServerSocket(5013);
+        server = new ServerSocket(5014);
         System.out.println("Server Booted");
         System.out.println("Any client can stop the server by sending -1");
         while (true) {
@@ -62,25 +62,20 @@ public class Server {
 
         @Override
         public void run() {
+            int w=0;
             int x = 1;
             try {
                 while (true) {
                     s = cin.readLine();
-
-                    System.out.print("Client(" + id + ") :" + s + "\n");
-                    System.out.print("Server : ");
+                    System.out.println(s);
                     //s=stdin.readLine();
-                    s = sc.nextLine();
                     if (s.equalsIgnoreCase("bye")) {
                         cout.println("BYE");
                         x = 0;
                         System.out.println("Connection ended by server");
                         break;
                     }
-                    cout.println(s);
                 }
-
-
                 cin.close();
                 client.close();
                 cout.close();
