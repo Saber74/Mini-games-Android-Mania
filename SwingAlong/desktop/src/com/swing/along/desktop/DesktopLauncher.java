@@ -1,6 +1,9 @@
 /*
  - intro screen
- - make crossy roads and
+ - make crossy roads and space invaders 2 player
+ 	- **crossy roads - 2 chickens
+ 	- **recolour sprites - Stick Fight
+ - detect
  */
 
 
@@ -14,7 +17,7 @@ import com.swing.along.SwingAlong;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-		new LwjglApplication(new Intro(), config);
+		new LwjglApplication(new SwingAlong(), config);
 
 		//check which game is picked
 		//if statements open new configuration
