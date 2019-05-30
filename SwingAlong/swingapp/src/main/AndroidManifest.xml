@@ -6,6 +6,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:screenOrientation="portrait"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -16,16 +17,19 @@
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.firstswingtest.MainActivity" />
+                android:value="com.example.firstswingtest.MainActivity"
+                android:screenOrientation="portrait"/>
         </activity>
 
         <activity
             android:name=".FightControlActivity"
             android:label="@string/fightControls_name"
+            android:screenOrientation="landscape"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.firstswingtest.MainActivity" />
+                android:value="com.example.firstswingtest.MainActivity"
+                android:screenOrientation="portrait"/>
         </activity>
 
         <activity
@@ -35,13 +39,15 @@
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.firstswingtest.MainActivity" />
+                android:value="com.example.firstswingtest.MainActivity"
+                android:screenOrientation="portrait"/>
         </activity>
 
 
         <activity
             android:name=".InvadersControlActivity"
             android:label="@string/invadersControls_name"
+            android:screenOrientation="landscape"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -54,10 +60,12 @@
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.firstswingtest.MainActivity" />
+                android:value="com.example.firstswingtest.MainActivity"
+                android:screenOrientation="portrait"/>
         </activity>
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

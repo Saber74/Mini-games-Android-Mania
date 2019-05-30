@@ -11,4 +11,21 @@
     <string name="swingControls_name">Swing Controls</string>
     <string name="fightControls_name">Mega Fight Controls</string>
     <string name="bombControls_name">Bomb Luck Controls</string>
+
+    <string name="jump">Jump!</string>
+    <string name="shoot">Shoot!</string>
+    <string name="attack">Attack!</string>
+    <string name="powerup">Use Power Up!</string>
+    <string name="switch1">Switch 1</string>
+    <string name="switch2">Switch 2</string>
+    <string name="switch3">Switch 3</string>
+    <string name="switch4">Switch 4</string>
+    <string name="switch5">Switch 5</string>
+    <string name="switch6">Switch 6</string>
+
+    <string name="left">Left Arrow</string>
+    <string name="right">Right Arrow</string>
+    <string name="up">Up Arrow</string>
+    <string name="down">Down Arrow</string>
+
 </resources>
