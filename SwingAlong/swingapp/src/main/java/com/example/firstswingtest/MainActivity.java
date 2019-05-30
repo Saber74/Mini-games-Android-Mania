@@ -20,10 +20,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void launchSwingApp(View view) {
-        //Log.d(LOG_TAG,"CLICKED");
+        //Log.d("MainActivity","CLICKED");
 
         Intent intent = new Intent(this, SwingControlActivity.class);
         startActivity(intent);
+
+        //server
     }
 
     public void launchInvadersApp(View view) {

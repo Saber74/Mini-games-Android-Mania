@@ -77,12 +77,12 @@ public class SwingAlong extends ApplicationAdapter implements ApplicationListene
 		x1 = 0;
 		x2 = 0;
 		
-		bkg = new Texture("bkg.png");
-		platform = new Texture("platform.png");
-		p1Mark = new Texture("p1head.png");
-		p2Mark = new Texture("p2head.png");
-		p1win = new Texture("p1win.png");
-		p2win = new Texture("p2win.png");
+		bkg = new Texture("SwingAlong/bkg.png");
+		platform = new Texture("SwingAlong/platform.png");
+		p1Mark = new Texture("SwingAlong/p1head.png");
+		p2Mark = new Texture("SwingAlong/p2head.png");
+		p1win = new Texture("SwingAlong/p1win.png");
+		p2win = new Texture("SwingAlong/p2win.png");
 		
 		vines1 = new Vine[15];
 		vines2 = new Vine[15];
@@ -90,16 +90,16 @@ public class SwingAlong extends ApplicationAdapter implements ApplicationListene
 		//15 vines
 		//each vine is 500 pixels apart
 		for(int i=0; i<vines1.length; i++){
-			vines1[i] = new Vine("vine.png", 275+i*350, 800, 100+Math.random()*50);
+			vines1[i] = new Vine("SwingAlong/vine.png", 275+i*350, 800, 100+Math.random()*50);
 		}
 		
 		for(int i=0; i<vines2.length; i++){
-			vines2[i] = new Vine("vine.png", 275+i*350, 400, 100+Math.random()*50);
+			vines2[i] = new Vine("SwingAlong/vine.png", 275+i*350, 400, 100+Math.random()*50);
 		}
 		
-		p1 = new Player("megaman1_",5,0,600);
+		p1 = new Player("SwingAlong/megaman1_",5,0,600);
 		
-		p2 = new Player("megaman2_",5,0,200);
+		p2 = new Player("SwingAlong/megaman2_",5,0,200);
 
 		//actionResolver.showToast("Tap screen to open AlertBox", 5000);
 		Gdx.input.setInputProcessor(this);

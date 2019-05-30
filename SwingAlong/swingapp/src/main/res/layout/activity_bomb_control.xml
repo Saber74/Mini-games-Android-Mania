@@ -7,10 +7,104 @@
     tools:context=".BombControlActivity">
 
     <Switch
-        android:id="@+id/switch1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Switch"
-        tools:layout_editor_absoluteX="190dp"
-        tools:layout_editor_absoluteY="174dp" />
+        android:id="@+id/wire1"
+        android:layout_width="119dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="32dp"
+        android:text="@string/switch1"
+        android:thumbTint="@color/red"
+        android:trackTint="@color/lightRed"
+        android:checked="true"
+        app:layout_constraintBottom_toTopOf="@+id/wire2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Switch
+        android:id="@+id/wire2"
+        android:layout_width="119dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="32dp"
+        android:text="@string/switch2"
+        android:thumbTint="@color/orange"
+        android:trackTint="@color/lightOrange"
+        android:checked="true"
+        app:layout_constraintBottom_toTopOf="@+id/wire3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Switch
+        android:id="@+id/wire3"
+        android:layout_width="119dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="32dp"
+        android:text="@string/switch3"
+        android:thumbTint="@color/yellow"
+        android:trackTint="@color/lightYellow"
+        android:checked="true"
+        app:layout_constraintBottom_toTopOf="@+id/wire4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Switch
+        android:id="@+id/wire4"
+        android:layout_width="119dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="32dp"
+        android:text="@string/switch4"
+        android:thumbTint="@color/green"
+        android:trackTint="@color/lightGreen"
+        android:checked="true"
+        app:layout_constraintBottom_toTopOf="@+id/wire5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Switch
+        android:id="@+id/wire5"
+        android:layout_width="119dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="32dp"
+        android:text="@string/switch5"
+        android:thumbTint="@color/blue"
+        android:trackTint="@color/lightBlue"
+        android:checked="true"
+        app:layout_constraintBottom_toTopOf="@+id/wire6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Switch
+        android:id="@+id/wire6"
+        android:layout_width="119dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="60dp"
+        android:thumbTint="@color/purple"
+        android:trackTint="@color/lightPurple"
+        android:checked="true"
+        android:text="@string/switch6"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </android.support.constraint.ConstraintLayout>

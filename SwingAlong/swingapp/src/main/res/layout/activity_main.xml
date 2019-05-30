@@ -67,8 +67,7 @@
         app:layout_constraintBottom_toTopOf="@+id/invaders"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="OnClick" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/bomb"
