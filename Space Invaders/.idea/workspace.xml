@@ -1,50 +1,170 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e65f07b6-d7b5-4ad6-a02d-5a3accac7f16" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/AttemptN2/core/src/com/mygdx/game/game/Enemies.java" afterDir="false" />
+    <list default="true" id="48d48914-290c-4a8f-8591-d7915c03ba4a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../SocketTest/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SocketTest/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/SimpleGame.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/Enemies.java" beforeDir="false" afterPath="$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/Enemies.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/Bullet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/Space_Bullet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/Space_Enemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/HUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/Space_HUD.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/Space_Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/Mirror.java" beforeDir="false" afterPath="$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/Mirror.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/Space_Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/PowerUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/Space_PowerUp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/SpiritBomb.java" beforeDir="false" afterPath="$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/SpiritBomb.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/desktop/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Game/desktop/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/desktop/src/com/mygdx/game/desktop/DesktopLauncher.java" beforeDir="false" afterPath="$PROJECT_DIR$/Game/desktop/src/com/mygdx/game/desktop/DesktopLauncher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/caches/build_file_checksums.ser" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/caches/gradle_models.ser" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/libraries/Gradle__gdx_1_9_8.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/libraries/Gradle__gdx_1_9_8_sources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/libraries/Gradle__gdx_backend_gwt_1_9_8.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/libraries/Gradle__gdx_backend_gwt_1_9_8_sources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/libraries/Gradle__gdx_backend_lwjgl_1_9_8.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/libraries/Gradle__gdx_platform_1_9_8_natives_desktop.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/libraries/Gradle__gwt_user_2_8_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/libraries/Gradle__javax_servlet_api_3_1_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/libraries/Gradle__jinput_2_0_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/libraries/Gradle__jinput_platform_2_0_5_natives_linux.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/libraries/Gradle__jinput_platform_2_0_5_natives_osx.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/libraries/Gradle__jinput_platform_2_0_5_natives_windows.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/libraries/Gradle__jlayer_1_0_1_gdx.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/libraries/Gradle__jorbis_0_0_17.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/libraries/Gradle__jsinterop_annotations_1_0_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/libraries/Gradle__jsinterop_annotations_1_0_1_sources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/libraries/Gradle__jutils_1_0_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/libraries/Gradle__lwjgl_2_9_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/libraries/Gradle__lwjgl_platform_2_9_2_natives_linux.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/libraries/Gradle__lwjgl_platform_2_9_2_natives_osx.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/libraries/Gradle__lwjgl_platform_2_9_2_natives_windows.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/libraries/Gradle__lwjgl_util_2_9_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/libraries/Gradle__sac_1_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/libraries/Gradle__validation_api_1_0_0_GA.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/libraries/Gradle__validation_api_1_0_0_GA_sources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Stickfight/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Stickfight/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Stickfight/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/core/core.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../Stickfight/core/core.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/desktop/desktop.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../Stickfight/desktop/desktop.iml" afterDir="false" />
     </list>
+    <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+    <leaf>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/Walls.java">
+        <entry file="file://$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/Space_Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="16" column="54" selection-start-line="16" selection-start-column="54" selection-end-line="16" selection-end-column="54" />
+            <state relative-caret-position="17">
+              <caret line="1" column="20" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/Player.java">
+        <entry file="file://$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/Mirror.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22">
-              <caret line="6" column="27" selection-end-line="230" />
+            <state relative-caret-position="17">
+              <caret line="1" column="20" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/Main.java">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/Enemies.java">
+        <entry file="file://$PROJECT_DIR$/Game/desktop/src/com/mygdx/game/desktop/DesktopLauncher.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
+            <state relative-caret-position="255">
+              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
               <folding>
-                <element signature="e#493#494#0" expanded="true" />
-                <element signature="e#526#527#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/Space_Bullet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="595">
+              <caret line="39" selection-start-line="39" selection-end-line="39" />
+              <folding>
+                <element signature="e#0#2825#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/Space_Enemy.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" column="20" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/Space_HUD.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" column="8" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/Space_PowerUp.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <element signature="e#0#2458#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/SpiritBomb.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" column="23" lean-forward="true" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/Game/Assets/runnable-hiero.jar!/com/badlogic/gdx/graphics/Pixmap.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="26" column="19" lean-forward="true" selection-start-line="26" selection-start-column="19" selection-end-line="26" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/Space_Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" column="20" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1893#1917#0" expanded="true" />
+                <element signature="e#12719#12732#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -52,13 +172,33 @@
       </file>
     </leaf>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>enemiessho</find>
+      <find>choosesh</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/Enemies.java" />
+        <option value="$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/Bullet.java" />
+        <option value="$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/Enemy.java" />
+        <option value="$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/HUD.java" />
+        <option value="$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/PowerUp.java" />
+        <option value="$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/Player.java" />
+        <option value="$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/Main.java" />
+        <option value="$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/Space_Bullet.java" />
+        <option value="$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/Space_PowerUp.java" />
+        <option value="$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/Space_HUD.java" />
+        <option value="$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/Mirror.java" />
+        <option value="$PROJECT_DIR$/Game/desktop/src/com/mygdx/game/desktop/DesktopLauncher.java" />
+        <option value="$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/Space_Enemy.java" />
+        <option value="$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/Space_Main.java" />
+        <option value="$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/Space_Player.java" />
+        <option value="$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/SpiritBomb.java" />
       </list>
     </option>
   </component>
@@ -67,6 +207,7 @@
     <option name="width" value="846" />
     <option name="height" value="775" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -76,89 +217,38 @@
         <subPane>
           <expand>
             <path>
-              <item name="SimpleGame" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SimpleGame" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SimpleGame" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SimpleGame" type="462c0819:PsiDirectoryNode" />
-              <item name="AttemptN2" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SimpleGame" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SimpleGame" type="462c0819:PsiDirectoryNode" />
-              <item name="AttemptN2" type="462c0819:PsiDirectoryNode" />
+              <item name="Space Invaders" type="b2602c69:ProjectViewProjectNode" />
               <item name="core" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="SimpleGame" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SimpleGame" type="462c0819:PsiDirectoryNode" />
-              <item name="AttemptN2" type="462c0819:PsiDirectoryNode" />
+              <item name="Space Invaders" type="b2602c69:ProjectViewProjectNode" />
               <item name="core" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="SimpleGame" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SimpleGame" type="462c0819:PsiDirectoryNode" />
-              <item name="AttemptN2" type="462c0819:PsiDirectoryNode" />
+              <item name="Space Invaders" type="b2602c69:ProjectViewProjectNode" />
               <item name="core" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SimpleGame" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SimpleGame" type="462c0819:PsiDirectoryNode" />
-              <item name="AttemptN2" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="mygdx" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SimpleGame" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SimpleGame" type="462c0819:PsiDirectoryNode" />
-              <item name="AttemptN2" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="mygdx" type="462c0819:PsiDirectoryNode" />
               <item name="game" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="SimpleGame" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SimpleGame" type="462c0819:PsiDirectoryNode" />
-              <item name="AttemptN2" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="mygdx" type="462c0819:PsiDirectoryNode" />
-              <item name="game" type="462c0819:PsiDirectoryNode" />
-              <item name="game" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SimpleGame" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SimpleGame" type="462c0819:PsiDirectoryNode" />
-              <item name="Game" type="462c0819:PsiDirectoryNode" />
+              <item name="Space Invaders" type="b2602c69:ProjectViewProjectNode" />
+              <item name="desktop" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549218743939" />
-    <property name="external.system.task.project.file.to.start" value="$PROJECT_DIR$" />
-    <property name="js.buildTools.grunt.grunt-cli.package" value="" />
-    <property name="js.buildTools.gulp.gulp_package_dir" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/AttemptN2" />
-    <property name="nodejs.jest.jest_package" value="" />
-    <property name="nodejs.protractor.protractor_package" value="" />
-    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Game" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -173,36 +263,13 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list />
-        </option>
-        <option name="vmOptions" value="" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="js.build_tools.grunt">
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="js.build_tools.gulp">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <gulpfile />
-      <tasks />
-      <arguments />
-      <envs />
-      <method v="2" />
+    <configuration name="DesktopLauncher" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.mygdx.game.desktop.DesktopLauncher" />
+      <module name="desktop" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Game" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
   </component>
   <component name="SvnConfiguration">
@@ -210,94 +277,181 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="e65f07b6-d7b5-4ad6-a02d-5a3accac7f16" name="Default Changelist" comment="" />
-      <created>1549217494278</created>
+      <changelist id="48d48914-290c-4a8f-8591-d7915c03ba4a" name="Default Changelist" comment="" />
+      <created>1559517762876</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1549217494278</updated>
-      <workItem from="1549217524664" duration="140000" />
-      <workItem from="1549217713649" duration="1034000" />
+      <updated>1559517762876</updated>
     </task>
     <servers />
-  </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1174000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25340393" />
+      <window_info id="Image Layers" />
+      <window_info id="Designer" />
+      <window_info id="UI Designer" />
+      <window_info id="Capture Tool" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24962178" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Image Layers" order="2" />
-      <window_info id="Designer" order="3" />
-      <window_info id="UI Designer" order="4" />
-      <window_info id="Capture Tool" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" weight="0.32872504" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32872504" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" />
-      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="right" id="Palette" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info anchor="right" id="Maven" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="right" id="Palette&#9;" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Theme Preview" order="4" />
-      <window_info anchor="right" id="Maven" order="5" />
-      <window_info anchor="right" id="Capture Analysis" order="6" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="right" id="Database" order="8" />
     </layout>
   </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
-  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/Main.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AttemptN2/core/src/com/mygdx/game/game/Main.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/Walls.java">
+    <entry file="file://$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/Mirror.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="16" column="54" selection-start-line="16" selection-start-column="54" selection-end-line="16" selection-end-column="54" />
+        <state relative-caret-position="17">
+          <caret line="1" column="20" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/Player.java">
+    <entry file="file://$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/Space_Bullet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="6" column="27" selection-end-line="230" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Game/core/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/Enemies.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
+        <state relative-caret-position="595">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
           <folding>
-            <element signature="e#493#494#0" expanded="true" />
-            <element signature="e#526#527#0" expanded="true" />
+            <element signature="e#0#2825#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/Space_Enemy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="20" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/Space_HUD.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="8" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/Space_Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="20" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1893#1917#0" expanded="true" />
+            <element signature="e#12719#12732#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/Space_Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="20" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/Space_PowerUp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#2458#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Game/core/src/com/mygdx/game/game/SpiritBomb.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="23" lean-forward="true" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/Game/Assets/runnable-hiero.jar!/com/badlogic/gdx/graphics/Pixmap.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="26" column="19" lean-forward="true" selection-start-line="26" selection-start-column="19" selection-end-line="26" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Game/desktop/src/com/mygdx/game/desktop/DesktopLauncher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>

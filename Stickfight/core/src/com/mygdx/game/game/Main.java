@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Random;
 import static com.badlogic.gdx.Gdx.graphics;
 public class Main extends ApplicationAdapter {
@@ -22,15 +23,15 @@ public class Main extends ApplicationAdapter {
     boolean p1animation=false;
     boolean p2animation=false;
     private static SpriteBatch batch;
-    ArrayList<PowerUp> powerups = new ArrayList<PowerUp>(); // this stores the powerups
+    LinkedList<Stick_PowerUp> powerups = new LinkedList<Stick_PowerUp>(); // this stores the powerups
     public static final int WIDTH = 1024; // this is the width of the screen
     public static final int HEIGHT = 1024; // this sets the height of the screen
     private Texture bg;
     Texture bullet;
-    public static Player player; // this is the player object and it is static so that it can be accessed from different classes
-    public static Player player2;
-    public static HUD hud; // this is the heads up display
-    public static HUD hud2;
+    public static Stick_Player player; // this is the player object and it is static so that it can be accessed from different classes
+    public static Stick_Player player2;
+    public static Stick_HUD hud; // this is the heads up display
+    public static Stick_HUD hud2;
     public static Texture[] explosion = new Texture[73]; // this array stores the sprites for the explosion for when an enemy dies
     private boolean playerAlive = true; // this will store a true or false value depending on whether the player is alive
     private boolean gameStarted = true; // this will store whether the game is started or not
@@ -40,11 +41,11 @@ public class Main extends ApplicationAdapter {
         diedFont = new BitmapFont(Gdx.files.internal("ASSETS/died.fnt"));
         graphics.setWindowedMode(WIDTH, HEIGHT);
         batch = new SpriteBatch(); // initialized the new batch
-        player = new Player(0, 50); // initializes the player and sets the x and y
-        player2= new Player(100,50);
+        player = new Stick_Player(0, 50); // initializes the player and sets the x and y
+        player2= new Stick_Player(100,50);
         player2.direction=LEFT;
-        hud = new HUD(); // initializes the heads up display
-        hud2=new HUD();
+        hud = new Stick_HUD(); // initializes the heads up display
+        hud2=new Stick_HUD();
         bg = new Texture("Assets/bg.jpg");
         bullet = new Texture("Assets/Zero/Shoot/7.png");
         for (int i = 0; i < 73; i++) { // this will load in the images for the explosion animation
@@ -200,16 +201,16 @@ public class Main extends ApplicationAdapter {
     }
     public void restart(){ // this method will restart the game
         playerAlive = true; // this will store a true or false value depending on whether the player is alive
-        powerups = new ArrayList<PowerUp>(); // this stores the powerups
-        player = new Player(500, 500);
-        player2= new Player(700,500);
-        hud = new HUD(); // initializes the heads up display
-        hud2= new HUD();//
+        powerups = new LinkedList<Stick_PowerUp>(); // this stores the powerups
+        player = new Stick_Player(500, 500);
+        player2= new Stick_Player(700,500);
+        hud = new Stick_HUD(); // initializes the heads up display
+        hud2= new Stick_HUD();//
     }
     private void dropPowerup() { // this will decide at random when to drop a powerup
         Random powerupDrop = new Random(); // creates a random object
         int isDrop = powerupDrop.nextInt(10000); // this will get a random number within the given range
-        if (isDrop < 2 && powerups.size() == 0) powerups.add(new PowerUp()); // creates a new powerup if the random number is less than 2 and if there are no other powerups on the screen
+        if (isDrop < 2 && powerups.size() == 0) powerups.add(new Stick_PowerUp()); // creates a new powerup if the random number is less than 2 and if there are no other powerups on the screen
         for (int i = 0; i < powerups.size(); i++) { // this will go through the powerups
             powerups.get(i).update(batch); // this will update the powerup
             if (powerups.get(i).getRect().y + powerups.get(i).getRect().height < 0) { // removes the powerup if it is offscreen
@@ -223,7 +224,7 @@ public class Main extends ApplicationAdapter {
             }
         }
     }
-    private void isPlayerShot(Player p1,Player enemey) { // will check if the player is shot
+    private void isPlayerShot(Stick_Player p1,Stick_Player enemey) { // will check if the player is shot
         for (int i = 0; i < enemey.bullets.size(); i++) {
             if (player.isCollidingWith(enemey.bullets.get(i))) { // if the player is colliding with a bullet
                 enemey.bullets.remove(i); // removes the enemy bullet
@@ -231,7 +232,7 @@ public class Main extends ApplicationAdapter {
             }
         }
     }
-    private void isPlayerDead(Player player) { // will check if the player is dead
+    private void isPlayerDead(Stick_Player player) { // will check if the player is dead
         if (player.getLives() <= 0) { // if the lives left is less than 0
             playerAlive = false; // will set the playerAlive to false
         }

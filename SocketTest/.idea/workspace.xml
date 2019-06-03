@@ -3,8 +3,85 @@
   <component name="ChangeListManager">
     <list default="true" id="5128aaf4-5ec3-4a1b-8dcc-417f51554f32" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SwingAlong/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../SwingAlong/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Invaders/.idea/SimpleGame.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Invaders/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Invaders/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Space Invaders/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Invaders/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Space Invaders/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Invaders/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Space Invaders/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Invaders/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Space Invaders/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Invaders/Game/Assets/ASU_19/ASU.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Invaders/Game/Assets/ASU_19/ASU.exe.config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Invaders/Game/Assets/ASU_19/ASU.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Invaders/Game/Assets/ASU_19/ASU.vshost.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Invaders/Game/Assets/ASU_19/ASU.vshost.exe.config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Invaders/Game/Assets/ASU_19/ASU.vshost.exe.manifest" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Invaders/Game/Assets/ASU_19/ForkandBeard.Logic.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Invaders/Game/Assets/ASU_19/ForkandBeard.Logic.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Invaders/Game/Assets/ASU_19/ForkandBeard.Util.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Invaders/Game/Assets/ASU_19/ForkandBeard.Util.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Invaders/Game/Assets/ASU_19/ImageQuantizers.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Invaders/Game/Assets/ASU_19/READ_ME.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Invaders/Game/Assets/ASU_19/kisspng-sprite-spaceshiptwo-spacecraft-spaceshipone-openga-space-invaders-5acc8596a36e17.6179693015233529826694.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Invaders/Game/Assets/ASU_19/third_party_image_converter/Formats.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Invaders/Game/Assets/ASU_19/third_party_image_converter/Help.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Invaders/Game/Assets/ASU_19/third_party_image_converter/Plugins.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Invaders/Game/Assets/ASU_19/third_party_image_converter/ReadMe.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Invaders/Game/Assets/ASU_19/third_party_image_converter/Usage.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Invaders/Game/Assets/ASU_19/third_party_image_converter/WhatsNew.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Invaders/Game/Assets/ASU_19/third_party_image_converter/license.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Invaders/Game/Assets/ASU_19/third_party_image_converter/nconvert.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Invaders/Game/core/src/com/mygdx/game/game/Mirror.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Invaders/Game/core/src/com/mygdx/game/game/Space_Bullet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Invaders/Game/core/src/com/mygdx/game/game/Space_Enemy.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Invaders/Game/core/src/com/mygdx/game/game/Space_HUD.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Invaders/Game/core/src/com/mygdx/game/game/Space_Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Invaders/Game/core/src/com/mygdx/game/game/Space_Player.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Invaders/Game/core/src/com/mygdx/game/game/Space_PowerUp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Invaders/Game/core/src/com/mygdx/game/game/SpiritBomb.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Invaders/Game/desktop/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../Space Invaders/Game/desktop/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Space Invaders/Game/desktop/src/com/mygdx/game/desktop/DesktopLauncher.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Space Invaders/Game/desktop/src/com/mygdx/game/desktop/DesktopLauncher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.gradle/4.6/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../Stickfight/.gradle/4.6/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.gradle/4.6/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../Stickfight/.gradle/4.6/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/caches/build_file_checksums.ser" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/caches/gradle_models.ser" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Stickfight/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/libraries/Gradle__gdx_1_9_8.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/libraries/Gradle__gdx_1_9_8_sources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/libraries/Gradle__gdx_backend_gwt_1_9_8.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/libraries/Gradle__gdx_backend_gwt_1_9_8_sources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/libraries/Gradle__gdx_backend_lwjgl_1_9_8.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/libraries/Gradle__gdx_platform_1_9_8_natives_desktop.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/libraries/Gradle__gwt_user_2_8_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/libraries/Gradle__javax_servlet_api_3_1_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/libraries/Gradle__jinput_2_0_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/libraries/Gradle__jinput_platform_2_0_5_natives_linux.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/libraries/Gradle__jinput_platform_2_0_5_natives_osx.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/libraries/Gradle__jinput_platform_2_0_5_natives_windows.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/libraries/Gradle__jlayer_1_0_1_gdx.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/libraries/Gradle__jorbis_0_0_17.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/libraries/Gradle__jsinterop_annotations_1_0_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/libraries/Gradle__jsinterop_annotations_1_0_1_sources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/libraries/Gradle__jutils_1_0_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/libraries/Gradle__lwjgl_2_9_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/libraries/Gradle__lwjgl_platform_2_9_2_natives_linux.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/libraries/Gradle__lwjgl_platform_2_9_2_natives_osx.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/libraries/Gradle__lwjgl_platform_2_9_2_natives_windows.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/libraries/Gradle__lwjgl_util_2_9_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/libraries/Gradle__sac_1_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/libraries/Gradle__validation_api_1_0_0_GA.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/libraries/Gradle__validation_api_1_0_0_GA_sources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Stickfight/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Stickfight/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/runConfigurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Stickfight/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/core/core.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../Stickfight/core/core.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/core/src/com/mygdx/game/game/Bullet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Stickfight/core/src/com/mygdx/game/game/Stick_Bullet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/core/src/com/mygdx/game/game/HUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Stickfight/core/src/com/mygdx/game/game/HUD.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/core/src/com/mygdx/game/game/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Stickfight/core/src/com/mygdx/game/game/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/core/src/com/mygdx/game/game/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Stickfight/core/src/com/mygdx/game/game/Stick_Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/core/src/com/mygdx/game/game/PowerUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Stickfight/core/src/com/mygdx/game/game/Stick_PowerUp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stickfight/desktop/desktop.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../Stickfight/desktop/desktop.iml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,7 +98,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Server.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
+            <state relative-caret-position="1258">
               <caret line="82" column="13" selection-start-line="82" selection-start-column="13" selection-end-line="82" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -33,8 +110,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Client.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="31" selection-start-line="31" selection-end-line="31" />
+            <state relative-caret-position="433">
+              <caret line="27" column="21" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -140,7 +217,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.24962178" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -213,7 +289,7 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Server.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
+        <state relative-caret-position="1258">
           <caret line="82" column="13" selection-start-line="82" selection-start-column="13" selection-end-line="82" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -223,8 +299,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Client.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="31" selection-start-line="31" selection-end-line="31" />
+        <state relative-caret-position="433">
+          <caret line="27" column="21" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
