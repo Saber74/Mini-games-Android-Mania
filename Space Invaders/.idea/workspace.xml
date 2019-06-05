@@ -1,7 +1,145 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="48d48914-290c-4a8f-8591-d7915c03ba4a" name="Default Changelist" comment="" />
+    <list default="true" id="48d48914-290c-4a8f-8591-d7915c03ba4a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../SwingAlong/core/src/com/space/Mirror.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SwingAlong/core/src/com/space/Space_Bullet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SwingAlong/core/src/com/space/Space_Enemy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SwingAlong/core/src/com/space/Space_HUD.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SwingAlong/core/src/com/space/Space_Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SwingAlong/core/src/com/space/Space_Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/1.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/1flipped.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/1rotated.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/11.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/12.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/13.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/14.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/15.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/17.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/18.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/19.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/20.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/21.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/22.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/23.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/24.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/25.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/26.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/27.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/28.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/29.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/30.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/31.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/32.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/33.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/34.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/35.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/36.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/37.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/38.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/39.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/40.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/41.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/42.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/43.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/44.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/45.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/46.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/47.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/48.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/49.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/50.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/51.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/52.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/53.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/54.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/55.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/56.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/57.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/58.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/59.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/60.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/61.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/62.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/63.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/64.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/65.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/66.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/67.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/68.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/69.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/70.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/71.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/72.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/EXPLOSION/9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/Enemies/0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/Enemies/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/Enemies/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/Intro.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/Mirror.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/Mirror/0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/MirrorP.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/ORBS.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/Sound/death.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/Sound/kill.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/Sound/kill2.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/Sound/kill3.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/Sound/kill4.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/Sound/losealife.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/Sound/main.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/Sound/powerup.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/Sound/start.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/Sound/start0.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/Sound/start2.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/Sound/win.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/barriers.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/heart.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/invincible.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/jpgs/space-1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/jpgs/space-2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/license.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/one/adventures.fnt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/one/adventures.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/one/died.fnt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/one/died.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/one/impact.fnt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/one/impact1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/one/impact2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/one/impact3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/one/impact4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/one/impact5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/one/intro.fnt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/one/intro.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/one/sub.fnt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/one/sub.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/one/text.fnt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/one/text.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/points.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/powerupsHUD.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/runnable-hiero.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/spiritBomb.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/spiritbomb_attack.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/spritesheet1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Assets/start.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SwingAlong/android/project.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../SwingAlong/android/project.properties" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,23 +152,74 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Game/desktop/src/com/mygdx/game/desktop/DesktopLauncher.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="68">
+              <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/Game/Assets/runnable-hiero.jar!/com/badlogic/gdx/graphics/Pixmap.class">
+        <entry file="file://$PROJECT_DIR$/Game/core/src/com/mygdx/game/Space Invaders/Space_Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="26" column="19" selection-start-line="26" selection-start-column="19" selection-end-line="26" selection-end-column="19" />
+            <state relative-caret-position="136">
+              <caret line="26" column="33" selection-end-line="394" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Game/core/src/com/mygdx/game/Space Invaders/Space_Bullet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="14" column="13" selection-end-line="75" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Game/core/src/com/mygdx/game/Space Invaders/Space_Player.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret lean-forward="true" selection-end-line="195" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Game/core/src/com/mygdx/game/Space Invaders/Mirror.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Game/core/src/com/mygdx/game/Space Invaders/Space_Enemy.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="18" column="13" selection-end-line="155" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Game/core/src/com/mygdx/game/Space Invaders/Space_HUD.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="18" column="21" lean-forward="true" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Game/core/src/com/mygdx/game/Space Invaders/Space_PowerUp.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="16" column="13" selection-end-line="59" />
             </state>
           </provider>
         </entry>
@@ -121,17 +310,13 @@
             </path>
             <path>
               <item name="Space Invaders" type="b2602c69:ProjectViewProjectNode" />
-              <item name="desktop" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="game" type="462c0819:PsiDirectoryNode" />
+              <item name="Space Invaders" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Space Invaders" type="b2602c69:ProjectViewProjectNode" />
-              <item name="desktop" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Space Invaders" type="b2602c69:ProjectViewProjectNode" />
-              <item name="desktop" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="desktop" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -188,7 +373,7 @@
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25718608" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25718608" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -197,7 +382,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32872504" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32872504" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -347,11 +532,57 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Game/desktop/src/com/mygdx/game/desktop/DesktopLauncher.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="68">
+          <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Game/core/src/com/mygdx/game/Space Invaders/Space_Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="26" column="33" selection-end-line="394" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Game/core/src/com/mygdx/game/Space Invaders/Space_Bullet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="14" column="13" selection-end-line="75" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Game/core/src/com/mygdx/game/Space Invaders/Space_Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" selection-end-line="195" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Game/core/src/com/mygdx/game/Space Invaders/Mirror.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Game/core/src/com/mygdx/game/Space Invaders/Space_Enemy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="18" column="13" selection-end-line="155" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Game/core/src/com/mygdx/game/Space Invaders/Space_HUD.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="18" column="21" lean-forward="true" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Game/core/src/com/mygdx/game/Space Invaders/Space_PowerUp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="16" column="13" selection-end-line="59" />
         </state>
       </provider>
     </entry>
