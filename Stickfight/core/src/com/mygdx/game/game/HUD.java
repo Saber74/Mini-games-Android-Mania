@@ -6,12 +6,12 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import java.util.ArrayList;
 
-public class HUD {
+public class Stick_HUD {
     private Texture powerups_hud; // the background for the powerups HUD
     private Texture heart; // the texture for the heart to display the players life
     private ArrayList<Texture> powerup_sprites = new ArrayList<Texture>(); //will store the powerup texture
 
-    public HUD() {// will load in various textures
+    public Stick_HUD() {// will load in various textures
         powerups_hud = new Texture("Assets/powerupsHUD.png");
         heart = new Texture("Assets/heart.png");
     }
