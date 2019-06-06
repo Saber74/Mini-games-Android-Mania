@@ -1,4 +1,4 @@
-package com.swing.along;
+package com.mygdx.game;
 
 import com.badlogic.gdx.graphics.Texture;
 

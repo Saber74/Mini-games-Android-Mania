@@ -66,7 +66,7 @@ public class GamePickScreen extends ScreenAdapter {
             public boolean keyDown(int keyCode) {
                 if (keyCode == Input.Keys.SPACE) {
                     if (gamenum == SWING) {
-//                game.setScreen(new Swing);
+                        game.setScreen(new SwingAlong(game));
                     } else if (gamenum == STICK) {
                         //                game.setScreen(new Swing);
 
@@ -77,7 +77,7 @@ public class GamePickScreen extends ScreenAdapter {
                         //                game.setScreen(new Swing);
 
                     } else if (gamenum == ROAD) {
-                        //                game.setScreen(new Swing);
+                        game.setScreen(new ChickenCrossyRoad(game));
 
                     }
                 }

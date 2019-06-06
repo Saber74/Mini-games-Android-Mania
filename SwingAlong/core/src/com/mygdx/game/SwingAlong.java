@@ -8,7 +8,7 @@
 //sprite frames for megaman
 
 
-package com.swing.along;
+package com.mygdx.game;
 
 //import java.util.*;
 
@@ -19,18 +19,21 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
-import com.badlogic.gdx.math.Rectangle;
+import com.swing.along.ActionResolver;
 
-public class SwingAlong extends ApplicationAdapter implements ApplicationListener,InputProcessor{
-	GL20 gl;
-	ActionResolver actionResolver;
+public class SwingAlong extends ScreenAdapter {
+
+	MyGdxGame game;
+
 	SpriteBatch batch;
 	ShapeRenderer sr;
 	int angle = 90;
@@ -59,12 +62,11 @@ public class SwingAlong extends ApplicationAdapter implements ApplicationListene
 	float stateTime1, stateTime2;
 
 
-	//SwingAlong(ActionResolver actionResolver){this.actionResolver = actionResolver;}
-
-	@Override
-	public void create () {
+	public SwingAlong(MyGdxGame game){
 		Gdx.graphics.setWindowedMode(1000,800);
-		batch = new SpriteBatch();
+
+		this.game = game;
+		batch = game.batch;
 		sr = new ShapeRenderer();
 
 		//https://code.google.com/archive/p/libgdx-users/wikis/IntegratingAndroidNativeUiElements3TierProjectSetup.wiki
@@ -105,13 +107,11 @@ public class SwingAlong extends ApplicationAdapter implements ApplicationListene
 		
 		p2 = new Player("SwingAlong/megaman2_",5,0,200);
 
-		//actionResolver.showToast("Tap screen to open AlertBox", 5000);
-		Gdx.input.setInputProcessor(this);
 		
 	}
 
 	@Override
-	public void render () {
+	public void render (float delta) {
 		
 		Gdx.gl.glClearColor(1, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -307,125 +307,106 @@ public class SwingAlong extends ApplicationAdapter implements ApplicationListene
 		x2 = 1000/vines2.length*(vIndex2+1);
 	}
 
-	//implement ALL methods of InputProcessor
-	public boolean keyDown(int keycode){
-		if(keycode == Keys.RIGHT){
+	@Override
+	public void show(){
+		Gdx.input.setInputProcessor(new InputAdapter(){
+			//implement ALL methods of InputProcessor
+			public boolean keyDown(int keycode){
+				if(keycode == Keys.RIGHT){
 
-			float px1 = p1.getX()+p1.getWidth();
-			float vx1 = (float)(vines1[vIndex1+1].getX()-vines1[vIndex1+1].getHeight()*Math.cos(Math.toRadians(vines1[vIndex1+1].getRotation()-90)));
-			//System.out.println(Math.abs(px1-vx1));
-			if(Math.abs(px1-vx1)<=160){
-				animation1 = true;
-				stateTime1 = 0f;
-			}
-			else{
-				System.out.println("startover");
-				restart1();
-			}
-			
+					float px1 = p1.getX()+p1.getWidth();
+					float vx1 = (float)(vines1[vIndex1+1].getX()-vines1[vIndex1+1].getHeight()*Math.cos(Math.toRadians(vines1[vIndex1+1].getRotation()-90)));
+					//System.out.println(Math.abs(px1-vx1));
+					if(Math.abs(px1-vx1)<=160){
+						animation1 = true;
+						stateTime1 = 0f;
+					}
+					else{
+						System.out.println("startover");
+						restart1();
+					}
 
-		}
-		
-		if(keycode == Keys.D){
-			float px2 = p2.getX()+p2.getWidth();
-			float vx2 = (float)(vines2[vIndex2+1].getX()-vines2[vIndex2+1].getHeight()*Math.cos(Math.toRadians(vines2[vIndex2+1].getRotation()-90)));
-			//System.out.println(Math.abs(px2-vx2));
-			if(Math.abs(px2-vx2)<=160){
-				animation2 = true;
-				stateTime2 = 0f;
-			}
-			else{
-				System.out.println("startover");
-				restart2();
-			}
-		}
-		return true;
-	}
-	
-	public boolean keyUp(int keycode){
-		if(animation1){
-			if(p1.onPlatform){
-				bkgX1-=70;
-				for(Vine v : vines1){
-					v.translateX(-70);
+
 				}
-			}
 
-			else{
-				bkgX1-=200;
-				for(Vine v : vines1){
-					v.translateX(-200);
+				if(keycode == Keys.D){
+					float px2 = p2.getX()+p2.getWidth();
+					float vx2 = (float)(vines2[vIndex2+1].getX()-vines2[vIndex2+1].getHeight()*Math.cos(Math.toRadians(vines2[vIndex2+1].getRotation()-90)));
+					//System.out.println(Math.abs(px2-vx2));
+					if(Math.abs(px2-vx2)<=160){
+						animation2 = true;
+						stateTime2 = 0f;
+					}
+					else{
+						System.out.println("startover");
+						restart2();
+					}
 				}
+				return true;
 			}
-			
-		}
-		
-		if(p1.getX()>400){
-			bkgX1-=100;
-			for(Vine v : vines1){
-				v.translateX(-100);
-			}
-			p1.translateX(-100);
-		}
 
-		
-		if(animation2){
-			if(p2.onPlatform){
-				bkgX2-=100;
-				for(Vine v : vines2){
-					v.translateX(-100);
+			public boolean keyUp(int keycode){
+				if(animation1){
+					if(p1.onPlatform){
+						bkgX1-=70;
+						for(Vine v : vines1){
+							v.translateX(-70);
+						}
+					}
+
+					else{
+						bkgX1-=200;
+						for(Vine v : vines1){
+							v.translateX(-200);
+						}
+					}
+
 				}
-			}
-		
-			else{
-				bkgX2-=200;
-				for(Vine v : vines2){
-					v.translateX(-200);
+
+				if(p1.getX()>400){
+					bkgX1-=100;
+					for(Vine v : vines1){
+						v.translateX(-100);
+					}
+					p1.translateX(-100);
 				}
+
+
+				if(animation2){
+					if(p2.onPlatform){
+						bkgX2-=100;
+						for(Vine v : vines2){
+							v.translateX(-100);
+						}
+					}
+
+					else{
+						bkgX2-=200;
+						for(Vine v : vines2){
+							v.translateX(-200);
+						}
+					}
+
+				}
+
+				if(p2.getX()>400){
+					bkgX2-=100;
+					for(Vine v : vines2){
+						v.translateX(-100);
+					}
+					p2.translateX(-100);
+				}
+
+				return true;
 			}
-			
-		}
-		
-		if(p2.getX()>400){
-			bkgX2-=100;
-			for(Vine v : vines2){
-				v.translateX(-100);
-			}
-			p2.translateX(-100);
-		}
-		
-		return true;
-	}
-	
-	public boolean keyTyped (char character) {
-	    return false;
-	}
-
-	@Override public boolean touchDown(int x, int y, int pointer, int button) {
-		//actionResolver.showAlertBox("AlertBox title", "AlertBox message", "Button text");
-		// actionResolver.openUri("http://www.google.com/");
-		return true;
+		});
 	}
 
 
-	public boolean touchUp (int x, int y, int pointer, int button) {
-		return false;
-	}
 
-	public boolean touchDragged (int x, int y, int pointer) {
-		return false;
-	}
-
-	public boolean mouseMoved (int x, int y) {
-	    return false;
-	}
-
-	public boolean scrolled (int amount) {
-	    return false;
-	}
 	
 	@Override
-	public void dispose () {
-		batch.dispose();
+	public void hide () {
+		Gdx.input.setInputProcessor(null);
 	}
 }
