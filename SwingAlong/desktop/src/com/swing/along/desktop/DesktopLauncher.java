@@ -21,7 +21,7 @@ import com.mega.bomb.MegaBomb;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-		new LwjglApplication(new Space_Main(), config);
+		new LwjglApplication(new MegaBomb(), config);
 
 		//check which game is picked
 		//if statements open new configuration

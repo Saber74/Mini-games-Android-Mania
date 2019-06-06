@@ -1,4 +1,6 @@
-package com.mega.bomb;
+package com.com.mega.bomb;
+import java.io.*;
+import java.net.*;
 
 //6 wires: 1 wire will defuse the bomb. The first person to choose the correct wire WINS.
 //OR the person who is up to choose once the time runs out loses
@@ -264,3 +266,5 @@ public class MegaBomb extends ApplicationAdapter implements InputProcessor {
 		bomb.dispose();
 	}
 }
+
+
