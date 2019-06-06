@@ -99,8 +99,8 @@ public class Space_Enemy {
         return bullet.getRect().intersects(this.getRect()) && !this.isDead();
     }
 
-    public boolean isCollidingWith(SpiritBomb spiritBomb) { //if enemy is hit with a bomb
-        return spiritBomb.getRect().intersects(this.getRect()) && !this.isDead();
+    public boolean isCollidingWith(Space_SpiritBomb spaceSpiritBomb) { //if enemy is hit with a bomb
+        return spaceSpiritBomb.getRect().intersects(this.getRect()) && !this.isDead();
     }
 
     public Rectangle getRect() {

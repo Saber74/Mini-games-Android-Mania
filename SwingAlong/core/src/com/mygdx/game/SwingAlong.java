@@ -409,4 +409,9 @@ public class SwingAlong extends ScreenAdapter {
 	public void hide () {
 		Gdx.input.setInputProcessor(null);
 	}
+	@Override
+	public void resize(int width, int height) {
+		System.out.println("resized");
+		super.resize(width, height);
+	}
 }

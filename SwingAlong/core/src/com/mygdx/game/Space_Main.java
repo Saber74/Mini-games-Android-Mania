@@ -64,7 +64,6 @@ public class Space_Main extends ScreenAdapter {
     //create method
     public Space_Main(MyGdxGame game) { // create method is used for loading various assets needed
         this.game=game;
-        game.resize(100,100);
         // loading music
         start0 = Gdx.audio.newMusic(Gdx.files.internal("SpaceInvaders/Sound/start0.mp3")); //first sound in intro
         start = Gdx.audio.newMusic(Gdx.files.internal("SpaceInvaders/Sound/start.mp3")); //2nd
@@ -141,32 +140,44 @@ public class Space_Main extends ScreenAdapter {
         batch.end(); // ends the batch
     }
     @Override
-    public void show(){Gdx.input.setInputProcessor(new InputAdapter(){
-        public boolean keyDown(int keycode) {
-            if(gameStarted) {
-                if (keycode == Input.Keys.LEFT) {
+    public void show() {
+        Gdx.input.setInputProcessor(new InputAdapter() {
+            @Override
+            public boolean keyDown(int keyCode) {
+                if (Gdx.input.isKeyPressed(Input.Keys.LEFT))
                     player.goLeft(); // player will go left when left arrow key pressed
-                }
-                if (keycode == Input.Keys.RIGHT) {
+                if (Gdx.input.isKeyPressed(Input.Keys.RIGHT))
                     player.goRight(); // player will go right when right arrow key pressed
-                }
-                if (keycode == Input.Keys.SHIFT_LEFT) {
-                    player.usePowerup(); // if the leftshift is pressed, then the player will use a powerup
-
-                }
-                if (keycode == Input.Keys.SPACE && !player.isShooting() && bullets.size() == 0) {
-                    // if the player presses the space button and the player is not shooting, the player shoots a bullet
+                // if the left or right shift is pressed, then the player will use a powerup
+                if (Gdx.input.isKeyPressed(Input.Keys.SHIFT_LEFT) || Gdx.input.isKeyPressed(Input.Keys.SHIFT_RIGHT))
+                    player.usePowerup();
+                // if the player presses the space button and the player is not shooting, the player shoots a bullet
+                if (Gdx.input.isKeyPressed(Input.Keys.SPACE) && !player.isShooting() && bullets.size() == 0)
                     bullets.add(player.shootBullet());
-                }
+                return true;
+
             }
-
-
-            return true;
-        }
-
-    });
+        });
     }
 
+//                if (keycode == Input.Keys.LEFT) {
+//                    player.goLeft(); // player will go left when left arrow key pressed
+//                }
+//                if (keycode == Input.Keys.RIGHT) {
+//                    player.goRight(); // player will go right when right arrow key pressed
+//                }
+//                if (keycode == Input.Keys.SHIFT_LEFT) {
+//                    player.usePowerup(); // if the leftshift is pressed, then the player will use a powerup
+//
+//                }
+//                if (keycode == Input.Keys.SPACE && !player.isShooting() && bullets.size() == 0) {
+//                    // if the player presses the space button and the player is not shooting, the player shoots a bullet
+//                    bullets.add(player.shootBullet());
+//                }
+//
+//
+//            return true;
+//        }
     @Override
     public void hide() {
         Gdx.input.setInputProcessor(null);
@@ -408,5 +419,10 @@ public class Space_Main extends ScreenAdapter {
         } else { // after everything else is done the gameStarted will be made true so that the game can start
             gameStarted = true;
         }
+    }
+    @Override
+    public void resize(int width, int height) {
+        System.out.println("resized");
+        super.resize(width, height);
     }
 }

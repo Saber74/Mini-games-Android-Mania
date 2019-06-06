@@ -29,5 +29,10 @@ public class MyGdxGame extends Game {
 		shapeRenderer.dispose();
 		font.dispose();
 	}
+	@Override
+	public void resize(int width, int height) {
+		System.out.println("resized");
+		super.resize(width, height);
+	}
 }
 

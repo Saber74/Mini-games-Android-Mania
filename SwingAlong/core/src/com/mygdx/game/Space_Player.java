@@ -25,7 +25,7 @@ public class Space_Player {
     private final static int MIRROR = 2;
     private final static int HEART = 3;
     private boolean using_spiritbomb = false; // will be used to determine if spiritbomb powerup is being used
-    private SpiritBomb spiritbomb; // creates a SpiritBomb object
+    private Space_SpiritBomb spiritbomb; // creates a SpiritBomb object
     private ArrayList<Integer> powerupID = new ArrayList<Integer>(); // will store the id of the powerup
     private int points = 0; // will store the points
     private int lives = 3; // stores the amount of lives left
@@ -102,7 +102,7 @@ public class Space_Player {
         if (powerupID.size() > 0) { // if there is a powerup that is present
             if (powerupID.get(0) == SPIRITBOMB) { // if the powerup is a spiritbomb
                 using_spiritbomb = true; // sets using_spiritbomb to true
-                spiritbomb = new SpiritBomb(player.getX(), player.getY(), player.getWidth()); // initializes the spiritbomb object
+                spiritbomb = new Space_SpiritBomb(player.getX(), player.getY(), player.getWidth()); // initializes the spiritbomb object
             } else if (powerupID.get(0) == INVINCIBLE) { // if the powerup is invincible
                 invincible = true; // invincible  is set to true
             }else if (powerupID.get(0) == MIRROR){ // if the powerup is a mirror

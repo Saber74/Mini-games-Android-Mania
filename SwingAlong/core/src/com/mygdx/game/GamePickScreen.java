@@ -57,7 +57,7 @@ public class GamePickScreen extends ScreenAdapter {
                         //                game.setScreen(new Swing);
 
                     } else if (gamenum == BOMB) {
-                        game.setScreen(new Space_MegaBomb(game));
+                        game.setScreen(new MegaBomb(game));
 
                     } else if (gamenum == SPACE) {
                         game.setScreen(new Space_Main(game));
@@ -109,5 +109,10 @@ public class GamePickScreen extends ScreenAdapter {
     @Override
     public void hide() {
         Gdx.input.setInputProcessor(null);
+    }
+    @Override
+    public void resize(int width, int height) {
+        System.out.println("resized");
+        super.resize(width, height);
     }
 }
