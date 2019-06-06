@@ -1,4 +1,4 @@
-package com.space;
+package com.mygdx.game;
 
 /*
     Author: Anita Hu, Nizar Alrifai

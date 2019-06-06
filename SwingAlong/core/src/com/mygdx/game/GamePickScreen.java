@@ -74,7 +74,7 @@ public class GamePickScreen extends ScreenAdapter {
                         game.setScreen(new MegaBomb(game));
 
                     } else if (gamenum == SPACE) {
-                        //                game.setScreen(new Swing);
+                        game.setScreen(new Space_Main(game));
 
                     } else if (gamenum == ROAD) {
                         game.setScreen(new ChickenCrossyRoad(game));
