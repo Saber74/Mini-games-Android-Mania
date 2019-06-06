@@ -17,7 +17,8 @@ import com.space.Space_Main;
 import com.swing.along.Intro;
 import com.swing.along.SwingAlong;
 import com.chicken.game.ChickenCrossyRoad;
-import com.mega.bomb.MegaBomb;
+import com.mygdx.game.MegaBomb;
+import com.mygdx.game.MyGdxGame;
 
 
 public class DesktopLauncher {

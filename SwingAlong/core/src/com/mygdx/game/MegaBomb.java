@@ -1,5 +1,5 @@
 
-package com.com.mega.bomb;
+package com.mygdx.game;
 import java.io.*;
 import java.net.*;
 
@@ -20,6 +20,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.mygdx.game.MyGdxGame;
 
 import java.util.Arrays;
 import java.util.Timer;
