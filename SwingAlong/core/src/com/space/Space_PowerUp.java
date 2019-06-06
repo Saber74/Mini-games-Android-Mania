@@ -24,7 +24,7 @@ public class Space_PowerUp {
 
     public Space_PowerUp() {
         // texture arraylist which stores the textures of the different powerups
-        Texture[] powerups = {new Texture("Assets/spiritBomb.png"), new Texture("Assets/invincible.png"), new Texture("Assets/Mirror.png"), new Texture("Assets/heart.png")};
+        Texture[] powerups = {new Texture("SpaceInvaders/spiritBomb.png"), new Texture("SpaceInvaders/invincible.png"), new Texture("SpaceInvaders/Mirror.png"), new Texture("SpaceInvaders/heart.png")};
         type = rand.nextInt(powerups.length); // will get a random type
         powerup_sprite = powerups[type]; // will create a texture out of the random type
         powerup = new Sprite(powerup_sprite); // creates a sprite

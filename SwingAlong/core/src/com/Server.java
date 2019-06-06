@@ -1,3 +1,4 @@
+package com;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -14,14 +15,15 @@ public class Server {
     ExecutorService pool = null;
     int clientcount = 0;
 
-    public static void main(String[] args) throws IOException {
-        Server serverobj = new Server(5014);
-        serverobj.startServer();
+    public static void main(String[] args) throws Exception {
+        new Server();
     }
 
-    Server(int port) {
-        this.port = port;
+    public Server()
+            throws Exception {
+        this.port = 5014;
         pool = Executors.newFixedThreadPool(5);
+        startServer();
     }
 
     public void startServer() throws IOException {
@@ -91,3 +93,4 @@ public class Server {
         }
     }
 }
+

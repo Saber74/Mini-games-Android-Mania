@@ -28,9 +28,9 @@ public class Space_Bullet {
         this.width = width;
         this.type = type;
         if (type == PLAYER) { // will load a texture that points the bullets towards the enemies
-            bullet_sprite = new Texture("Assets/1.png");
+            bullet_sprite = new Texture("SpaceInvaders/1.png");
         } else if (type == ENEMY) { // will load a texture that points the bullets towards the player
-            bullet_sprite = new Texture("Assets/1flipped.png");
+            bullet_sprite = new Texture("SpaceInvaders/1flipped.png");
         }
         speed = (type == 0 ? 12 : -12); // will determine the direction depending on the type
         bullet = new Sprite(bullet_sprite); // creates a bullet sprite
@@ -65,7 +65,7 @@ public class Space_Bullet {
 
     public void reflect() { // will reflect the bullet towards the enemies
         speed *= -1; // the direction is reversed
-        bullet_sprite = new Texture("Assets/1.png"); // changes the bullet sprite
+        bullet_sprite = new Texture("SpaceInvaders/1.png"); // changes the bullet sprite
         bullet = new Sprite(bullet_sprite); // creates a new sprite based on the new sprite image
         type = 0; // type is changed to 0
         Space_Main.enemybullets.remove(Space_Main.enemybullets.indexOf(this)); // removes from the enemy bullets

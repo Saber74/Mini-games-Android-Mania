@@ -61,35 +61,35 @@ public class Space_Main extends ApplicationAdapter {
     @Override
     public void create() { // create method is used for loading various assets needed
         // loading music
-        start0 = Gdx.audio.newMusic(Gdx.files.internal("Assets/Sound/start0.mp3")); //first sound in intro
-        start = Gdx.audio.newMusic(Gdx.files.internal("Assets/Sound/start.mp3")); //2nd
-        start2 = Gdx.audio.newMusic(Gdx.files.internal("Assets/Sound/start2.mp3")); //3rd
+        start0 = Gdx.audio.newMusic(Gdx.files.internal("SpaceInvaders/Sound/start0.mp3")); //first sound in intro
+        start = Gdx.audio.newMusic(Gdx.files.internal("SpaceInvaders/Sound/start.mp3")); //2nd
+        start2 = Gdx.audio.newMusic(Gdx.files.internal("SpaceInvaders/Sound/start2.mp3")); //3rd
         // loading a bunch of images
-        intro_player = new Texture("Assets/0.png");
-        bullet = new Texture("Assets/1.png");
-        bulletside = new Texture("Assets/1rotated.png");
-        ship = new Texture("Assets/2.png");
-        enemy1 = new Texture("Assets/Enemies/0.png");
-        enemy2 = new Texture("Assets/Enemies/1.png");
-        enemy3 = new Texture("Assets/Enemies/2.png");
-        powerup1 = new Texture("Assets/mirror.png");
-        powerup2 = new Texture("Assets/spiritBomb.png");
-        powerup3 = new Texture("Assets/invincible.png");
-        intro_explosion = new Texture("Assets/Explosion/29.png");
+        intro_player = new Texture("SpaceInvaders/0.png");
+        bullet = new Texture("SpaceInvaders/1.png");
+        bulletside = new Texture("SpaceInvaders/1rotated.png");
+        ship = new Texture("SpaceInvaders/2.png");
+        enemy1 = new Texture("SpaceInvaders/Enemies/0.png");
+        enemy2 = new Texture("SpaceInvaders/Enemies/1.png");
+        enemy3 = new Texture("SpaceInvaders/Enemies/2.png");
+        powerup1 = new Texture("SpaceInvaders/mirror.png");
+        powerup2 = new Texture("SpaceInvaders/spiritBomb.png");
+        powerup3 = new Texture("SpaceInvaders/invincible.png");
+        intro_explosion = new Texture("SpaceInvaders/Explosion/29.png");
         // loading a bunch of fonts
-        font2 = new BitmapFont(Gdx.files.internal("Assets/one/intro.fnt")); //description font
-        font3 = new BitmapFont(Gdx.files.internal("Assets/one/sub.fnt")); //description but smaller
-        font4 = new BitmapFont(Gdx.files.internal("Assets/one/sub.fnt")); //for instructions
-        diedFont = new BitmapFont(Gdx.files.internal("ASSETS/one/died.fnt"));
+        font2 = new BitmapFont(Gdx.files.internal("SpaceInvaders/one/intro.fnt")); //description font
+        font3 = new BitmapFont(Gdx.files.internal("SpaceInvaders/one/sub.fnt")); //description but smaller
+        font4 = new BitmapFont(Gdx.files.internal("SpaceInvaders/one/sub.fnt")); //for instructions
+        diedFont = new BitmapFont(Gdx.files.internal("SpaceInvaders/one/died.fnt"));
         font3.getData().setScale(2f);
         font2.getData().setScale(0.8f);
-        background = new Texture("Assets/start.jpg"); // background for intro screen
-        intro_music = Gdx.audio.newMusic(Gdx.files.internal("Assets/1.mp3"));
+        background = new Texture("SpaceInvaders/start.jpg"); // background for intro screen
+        intro_music = Gdx.audio.newMusic(Gdx.files.internal("SpaceInvaders/1.mp3"));
         intro_music.play();
         //next up are assets used in main game
-        music = Gdx.audio.newMusic(Gdx.files.internal("Assets/Sound/main.mp3"));
+        music = Gdx.audio.newMusic(Gdx.files.internal("SpaceInvaders/Sound/main.mp3"));
         graphics.setWindowedMode(WIDTH, HEIGHT);
-        bg = new Texture("Assets/jpgs/space-1.jpg");
+        bg = new Texture("SpaceInvaders/jpgs/space-1.jpg");
         batch = new SpriteBatch(); // initialized the new batch
         player = new Space_Player(0, 50); // initializes the player and sets the x and y
         createEnemies(); // creates enemies
@@ -97,7 +97,7 @@ public class Space_Main extends ApplicationAdapter {
         hud = new Space_HUD(); // initializes the heads up display
 
         for (int i = 0; i < 73; i++) { // this will load in the images for the explosion animation
-            explosion[i] = new Texture("Assets/EXPLOSION/" + i + ".png"); // assigns a part of the array to a certain image
+            explosion[i] = new Texture("SpaceInvaders/EXPLOSION/" + i + ".png"); // assigns a part of the array to a certain image
         }
     }
 
@@ -184,7 +184,7 @@ public class Space_Main extends ApplicationAdapter {
 
     private void youWin(){ // displays text and will
         music.stop(); // stops the music
-        Music win= Gdx.audio.newMusic(Gdx.files.internal("Assets/Sound/win.mp3")); // will load the win audio
+        Music win= Gdx.audio.newMusic(Gdx.files.internal("SpaceInvaders/Sound/win.mp3")); // will load the win audio
         if(soundPlayed==false) { // plays the sound once
             win.play();
             soundPlayed = true;
