@@ -1,4 +1,4 @@
-package space;
+package com.space;
 
 /*
     Author: Anita Hu, Nizar Alrifai
@@ -30,14 +30,14 @@ public class Space_Player {
     private int points = 0; // will store the points
     private int lives = 3; // stores the amount of lives left
     private boolean invincible = true; // used to determine invincibility
-    private Sprite barrier = new Sprite(new Texture("Assets/barriers.png")); // sprite of the barrier
+    private Sprite barrier = new Sprite(new Texture("SpaceInvaders/barriers.png")); // sprite of the barrier
     boolean musicPlaying = false; // checks if music is playing
     private boolean mirror_activated = false; // checks if the mirror powerup is active
     private Mirror[] mirrors = new Mirror[3]; // stores three mirror if the power up is used
     Rectangle rect; // stores a rectangle of the player which is used for collision and more
 
     public Space_Player(float x, float y) { // constructor takes in x and y
-        player_sprite = new Texture("Assets/0.png"); // loads in player sprite image
+        player_sprite = new Texture("SpaceInvaders/0.png"); // loads in player sprite image
         player = new Sprite(player_sprite); // creates a sprite out of the image
         this.x = x; // sets the x variable
         this.y = y; // sets the y variable
@@ -120,13 +120,13 @@ public class Space_Player {
         int type = powerup.getType(); // gets the type of powerup
         if (powerupID.size() == 0) { // will only receive it if there are non presently used
             if (type == INVINCIBLE) { // if the type is invincible
-                Space_Main.hud.addPowerup(new Texture("Assets/invincible.png")); // adds to the HUD
+                Space_Main.hud.addPowerup(new Texture("SpaceInvaders/invincible.png")); // adds to the HUD
                 powerupID.add(INVINCIBLE); // adds the ID to the arraylist
             } else if (type == SPIRITBOMB) {
-                Space_Main.hud.addPowerup(new Texture("Assets/spiritbomb.png"));
+                Space_Main.hud.addPowerup(new Texture("SpaceInvaders/spiritbomb.png"));
                 powerupID.add(SPIRITBOMB);
             } else if (type == MIRROR) {
-                Space_Main.hud.addPowerup(new Texture("Assets/Mirror.png"));
+                Space_Main.hud.addPowerup(new Texture("SpaceInvaders/Mirror.png"));
                 powerupID.add(MIRROR);
             } else if (type == HEART){ // will add a life if not already maxed out
                 lives += (lives == 3 ? 0 : 1);

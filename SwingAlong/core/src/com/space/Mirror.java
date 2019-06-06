@@ -1,4 +1,4 @@
-package space;
+package com.space;
 
 /*
     Author: Anita Hu, Nizar Alrifai
@@ -13,7 +13,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import java.awt.*;
 
 public class Mirror {
-    private Sprite mirror = new Sprite(new Texture("Assets/Mirror/0.png")); // creates a new sprite
+    private Sprite mirror = new Sprite(new Texture("SpaceInvaders/Mirror/0.png")); // creates a new sprite
     private Rectangle rect;
     private int timesHit = 0; // will store the amount of times the mirror has been hit
     private boolean isBroken = false; // will check if the mirror is broken

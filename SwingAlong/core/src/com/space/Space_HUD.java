@@ -1,4 +1,4 @@
-package space;
+package com.space;
 
 /*
     Author: Anita Hu, Nizar Alrifai
@@ -18,13 +18,13 @@ public class Space_HUD {
     private Texture powerups_hud; // the background for the powerups HUD
     private Texture points_hud; // the COOL text for the points
     private Texture heart; // the texture for the heart to display the players life
-    private BitmapFont font = new BitmapFont(Gdx.files.internal("Assets/one/impact.fnt"), false); // will load in a font for the points
+    private BitmapFont font = new BitmapFont(Gdx.files.internal("SpaceInvaders/one/impact.fnt"), false); // will load in a font for the points
     private ArrayList<Texture> powerup_sprites = new ArrayList<Texture>(); //will store the powerup texture
 
     public Space_HUD() {// will load in various textures
-        powerups_hud = new Texture("Assets/powerupsHUD.png");
-        points_hud = new Texture("Assets/points.png");
-        heart = new Texture("Assets/heart.png");
+        powerups_hud = new Texture("SpaceInvaders/powerupsHUD.png");
+        points_hud = new Texture("SpaceInvaders/points.png");
+        heart = new Texture("SpaceInvaders/heart.png");
     }
 
     public void render(SpriteBatch batch) { // this will render all the information that is to be displayed
