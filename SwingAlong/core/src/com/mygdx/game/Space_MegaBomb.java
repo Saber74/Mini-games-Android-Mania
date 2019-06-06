@@ -31,7 +31,7 @@ import sun.util.resources.cldr.ro.TimeZoneNames_ro;
 //instead of ApplicationAdapter, use ScreenAdapter
 //class set up is same as create()
 
-public class MegaBomb extends ScreenAdapter{
+public class Space_MegaBomb extends ScreenAdapter{
 
 	MyGdxGame game;
 	SpriteBatch batch;
@@ -62,7 +62,7 @@ public class MegaBomb extends ScreenAdapter{
 	Animation<Texture> explodeAnimation;
 	Texture currentFrame;
 
-	public MegaBomb(MyGdxGame game) {
+	public Space_MegaBomb(MyGdxGame game) {
 
 		Gdx.graphics.setWindowedMode(800,600);
 
@@ -76,8 +76,8 @@ public class MegaBomb extends ScreenAdapter{
 
 		player = P1;
 
-		bomb = new Texture("MegaBomb/bomb.png");
-		lightSprite = new Sprite(new Texture("MegaBomb/light.png"));
+		bomb = new Texture("Space_MegaBomb/bomb.png");
+		lightSprite = new Sprite(new Texture("Space_MegaBomb/light.png"));
 		lightSprite.setSize(100,100);
 		lightSprite.setPosition(380,290);
 
@@ -89,14 +89,14 @@ public class MegaBomb extends ScreenAdapter{
 		wiresCut = new Texture[wireStatus.length];
 
 		for(int i=0; i<wireStatus.length; i++){
-			wiresUncut[i] = new Texture(String.format("MegaBomb/wire%d_colour.png",i+1));
-			wiresCut[i] = new Texture(String.format("MegaBomb/wire%d_grey.png",i+1));
+			wiresUncut[i] = new Texture(String.format("Space_MegaBomb/wire%d_colour.png",i+1));
+			wiresCut[i] = new Texture(String.format("Space_MegaBomb/wire%d_grey.png",i+1));
 		}
 
 		Texture[] explodeTextures = new Texture[73];
 
 		for(int i=0; i<explodeTextures.length; i++){
-			explodeTextures[i] = new Texture(String.format("MegaBomb/EXPLOSION/%d.png",i));
+			explodeTextures[i] = new Texture(String.format("Space_MegaBomb/EXPLOSION/%d.png",i));
 		}
 
 		explodeAnimation = new Animation<Texture>(0.12f, explodeTextures);

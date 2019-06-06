@@ -17,7 +17,7 @@ public class MyGdxGame extends Game {
 		shapeRenderer = new ShapeRenderer();
 		font = new BitmapFont(Gdx.files.internal("IntroScreen/Intro.fnt")); //description font
 
-		setScreen(new TitleScreen(this));
+		setScreen(new IntroAnimation(this));
 	}
 
 
