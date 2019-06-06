@@ -5,9 +5,19 @@ import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
 
 public class GamePickScreen extends ScreenAdapter {
+
     MyGdxGame game;
+
+    float stateTime;
+
+    Texture[] introTextures;
+    Animation<Texture> introAnimation;
+    Texture currentFrame;
+
+
     Texture swingalong=new Texture("swingalong.png");
     Texture stickfight= new Texture("stickfight.png");
     Texture spaceinvaders= new Texture("spaceinvaders.png");
@@ -22,6 +32,17 @@ public class GamePickScreen extends ScreenAdapter {
     String[] games={"Swing Along","Stick Fight","Space Invaders","Bomb game","Crossy Road"};
     public GamePickScreen(MyGdxGame game) {
         this.game = game;
+
+        stateTime = 0f;
+
+        introTextures = new Texture[27];
+
+        for(int i=0; i<introTextures.length; i++){
+            String pic = String.format("pingpong/%d.png",i);
+            introTextures[i] = new Texture(pic);
+        }
+
+        introAnimation = new Animation<Texture>(0.12f, introTextures);
     }
 
     @Override
@@ -68,6 +89,9 @@ public class GamePickScreen extends ScreenAdapter {
     public void render(float delta) {
         Gdx.gl.glClearColor(.4f, .25f, 0.3f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+        stateTime += Gdx.graphics.getDeltaTime();
+
         game.batch.begin();
         game.batch.draw(swingalong,100,550);
         game.batch.draw(stickfight,1000,550);
@@ -78,6 +102,11 @@ public class GamePickScreen extends ScreenAdapter {
         String currGame=games[gamenum-1];
         String text= String.format("Current Game: "+"%d.%s",gamenum,currGame);
         game.font.draw(game.batch, text, -65+Gdx.graphics.getWidth() * .25f+100, 700);
+
+
+        currentFrame = introAnimation.getKeyFrame(stateTime, true);
+        game.batch.draw(currentFrame,450,300);
+
         game.batch.end();
 
     }

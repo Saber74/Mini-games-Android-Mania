@@ -6,6 +6,7 @@ import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
 
 public class TitleScreen extends ScreenAdapter {
 
@@ -13,7 +14,9 @@ public class TitleScreen extends ScreenAdapter {
     Texture logo= new Texture("logo.png");
 
     public TitleScreen(MyGdxGame game) {
+
         this.game = game;
+
     }
 
     @Override
@@ -33,9 +36,12 @@ public class TitleScreen extends ScreenAdapter {
     public void render(float delta) {
         Gdx.gl.glClearColor(.4f, .25f, 0.3f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
         game.batch.begin();
         game.batch.draw(logo,175,0);
         game.font.draw(game.batch, "Press space to select a game.", 50+Gdx.graphics.getWidth() * .25f, Gdx.graphics.getHeight() * .25f);
+
+
         game.batch.end();
     }
 

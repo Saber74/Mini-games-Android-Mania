@@ -1,4 +1,4 @@
-package space;
+package com.space;
 
 /*
     Author: Anita Hu, Nizar Alrifai

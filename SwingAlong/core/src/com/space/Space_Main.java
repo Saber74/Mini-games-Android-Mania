@@ -4,7 +4,7 @@
     Purpose: The main class is responsible for all the core functionality of the game.
 
         */
-package space;
+package com.space;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
@@ -42,9 +42,9 @@ public class Space_Main extends ApplicationAdapter {
     Music start0;
     Music music;
     Texture bg;
-    public static LinkedList<Space_Bullet> enemybullets = new LinkedList<>(); // arraylist that stores the enemy bullets
-    public static LinkedList<Space_Bullet> bullets = new LinkedList<>(); // this is the arraylist that stores the player bullets
-    LinkedList<Space_PowerUp> powerups = new LinkedList<>(); // this stores the powerups
+    public static LinkedList<Space_Bullet> enemybullets = new LinkedList<Space_Bullet>(); // arraylist that stores the enemy bullets
+    public static LinkedList<Space_Bullet> bullets = new LinkedList<Space_Bullet>(); // this is the arraylist that stores the player bullets
+    LinkedList<Space_PowerUp> powerups = new LinkedList<Space_PowerUp>(); // this stores the powerups
     public static ArrayList<ArrayList<Space_Enemy>> enemies = new ArrayList<ArrayList<Space_Enemy>>(); // this stores all the enemies
     public static final int WIDTH = 1024; // this is the width of the screen
     public static final int HEIGHT = 1024; // this sets the height of the screen
@@ -216,9 +216,9 @@ public class Space_Main extends ApplicationAdapter {
 
     public void restart(){ // this method will restart the game
         playerAlive = true; // this will store a true or false value depending on whether the player is alive
-        enemybullets = new LinkedList<>(); // arraylist that stores the enemy bullets
-        bullets = new LinkedList<>(); // this is the arraylist that stores the player bullets
-        powerups = new LinkedList<>(); // this stores the powerups
+        enemybullets = new LinkedList<Space_Bullet>(); // arraylist that stores the enemy bullets
+        bullets = new LinkedList<Space_Bullet>(); // this is the arraylist that stores the player bullets
+        powerups = new LinkedList<Space_PowerUp>(); // this stores the powerups
         enemies = new ArrayList<ArrayList<Space_Enemy>>(); // this stores all the enemies
         player = new Space_Player(0, 50);
 
@@ -293,7 +293,7 @@ public class Space_Main extends ApplicationAdapter {
     }
 
     private LinkedList<Space_Bullet> chooseShootingEnemies() { // this will choose which enemy will shoot
-        LinkedList<Space_Bullet> enemyBullets = new LinkedList<>(); // creates an arraylist that will store the bullets
+        LinkedList<Space_Bullet> enemyBullets = new LinkedList<Space_Bullet>(); // creates an arraylist that will store the bullets
         int shootChance; // will store the shooting chance
         Random enemyShootChance = new Random(); // random object
         for (int i = 0; i < enemies.size(); i++) {
