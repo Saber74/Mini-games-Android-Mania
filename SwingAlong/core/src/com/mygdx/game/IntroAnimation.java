@@ -3,6 +3,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.ScreenAdapter;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 
@@ -28,6 +29,8 @@ public class IntroAnimation extends ScreenAdapter {
     }
     @Override
     public void render(float delta){
+        Gdx.gl.glClearColor(255, 255, 255,0);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         stateTime += Gdx.graphics.getDeltaTime();
         game.batch.begin();
         currentFrame = introAnimation.getKeyFrame(stateTime, true);
