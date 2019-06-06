@@ -107,6 +107,12 @@ public class Space_Main extends ScreenAdapter {
     public void render(float delta) {
         Gdx.gl.glClearColor(0, 0, 0, 1); // sets the background colour to black
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        if(gameStarted){
+            if (Gdx.input.isKeyPressed(Input.Keys.LEFT))
+                player.goLeft(); // player will go left when left arrow key pressed
+            if (Gdx.input.isKeyPressed(Input.Keys.RIGHT))
+                player.goRight(); // player will go right when right arrow key pressed
+        }
         batch.begin(); // begins the batch which will allow for items to be drawn upon it so that it can be seen on the screen
         intro(); // this will run the intro
         aliveEnemies = numOfAliveEnemies(); // this will get the number of alive enemies
@@ -144,10 +150,10 @@ public class Space_Main extends ScreenAdapter {
         Gdx.input.setInputProcessor(new InputAdapter() {
             @Override
             public boolean keyDown(int keyCode) {
-                if (Gdx.input.isKeyPressed(Input.Keys.LEFT))
-                    player.goLeft(); // player will go left when left arrow key pressed
-                if (Gdx.input.isKeyPressed(Input.Keys.RIGHT))
-                    player.goRight(); // player will go right when right arrow key pressed
+//                if (Gdx.input.isKeyPressed(Input.Keys.LEFT))
+//                    player.goLeft(); // player will go left when left arrow key pressed
+//                if (Gdx.input.isKeyPressed(Input.Keys.RIGHT))
+//                    player.goRight(); // player will go right when right arrow key pressed
                 // if the left or right shift is pressed, then the player will use a powerup
                 if (Gdx.input.isKeyPressed(Input.Keys.SHIFT_LEFT) || Gdx.input.isKeyPressed(Input.Keys.SHIFT_RIGHT))
                     player.usePowerup();
