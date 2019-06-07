@@ -1,8 +1,8 @@
-package com.space;
+package com.mygdx.game;
 
 /*
     Author: Anita Hu, Nizar Alrifai
-    Class Name: Mirror
+    Class Name: Space_Mirror
     Purpose: creates a mirror which would reflect the enemy bullets back towards the player
 
         */
@@ -12,13 +12,13 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import java.awt.*;
 
-public class Mirror {
-    private Sprite mirror = new Sprite(new Texture("SpaceInvaders/Mirror/0.png")); // creates a new sprite
+public class Space_Mirror {
+    private Sprite mirror = new Sprite(new Texture("SpaceInvaders/Space_Mirror/0.png")); // creates a new sprite
     private Rectangle rect;
     private int timesHit = 0; // will store the amount of times the mirror has been hit
     private boolean isBroken = false; // will check if the mirror is broken
 
-    public Mirror() { // creates a rectange object
+    public Space_Mirror() { // creates a rectange object
         rect = new Rectangle((int) mirror.getX(), (int) mirror.getY(), (int) mirror.getWidth(), (int) mirror.getHeight());
     }
 

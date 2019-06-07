@@ -17,7 +17,7 @@ public class MyGdxGame extends Game {
 		shapeRenderer = new ShapeRenderer();
 		font = new BitmapFont(Gdx.files.internal("IntroScreen/Intro.fnt")); //description font
 
-		setScreen(new TitleScreen(this));
+		setScreen(new IntroAnimation(this));
 	}
 
 
@@ -28,6 +28,11 @@ public class MyGdxGame extends Game {
 		batch.dispose();
 		shapeRenderer.dispose();
 		font.dispose();
+	}
+	@Override
+	public void resize(int width, int height) {
+		System.out.println("resized");
+		super.resize(width, height);
 	}
 }
 

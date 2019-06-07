@@ -20,12 +20,10 @@ public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 
-		//config.height = 1000;
-		//config.width = 1000;
-
-		config.setFromDisplayMode(LwjglApplicationConfiguration.getDesktopDisplayMode());
 
 		new LwjglApplication(new MyGdxGame(), config);
+
+		config.setFromDisplayMode(LwjglApplicationConfiguration.getDesktopDisplayMode());
 
 
 		//check which game is picked

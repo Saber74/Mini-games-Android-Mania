@@ -1,4 +1,4 @@
-package com.space;
+package com.mygdx.game;
 
 /*
     Author: Anita Hu, Nizar Alrifai
@@ -12,14 +12,14 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import java.awt.*;
 
-public class SpiritBomb {
+public class Space_SpiritBomb {
     private float x, y, width;
     Texture spiritbomb_sprite;
     Sprite spiritbomb;
 
     Rectangle rect;
 
-    public SpiritBomb(float x, float y, float width) {
+    public Space_SpiritBomb(float x, float y, float width) {
         this.x = x;
         this.y = y;
         this.width = width;

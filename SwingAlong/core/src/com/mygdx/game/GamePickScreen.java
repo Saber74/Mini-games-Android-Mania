@@ -5,17 +5,12 @@ import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Animation;
 
 public class GamePickScreen extends ScreenAdapter {
 
     MyGdxGame game;
 
     float stateTime;
-
-    Texture[] introTextures;
-    Animation<Texture> introAnimation;
-    Texture currentFrame;
 
 
     Texture swingalong;
@@ -47,16 +42,7 @@ public class GamePickScreen extends ScreenAdapter {
 
         games= new String[]{"Swing Along","Stick Fight","Space Invaders","Bomb game","Crossy Road"};
 
-        stateTime = 0f;
 
-        introTextures = new Texture[27];
-
-        for(int i=0; i<introTextures.length; i++){
-            String pic = String.format("IntroScreen/pingpong/%d.png",i);
-            introTextures[i] = new Texture(pic);
-        }
-
-        introAnimation = new Animation<Texture>(0.12f, introTextures);
     }
 
     @Override
@@ -74,7 +60,7 @@ public class GamePickScreen extends ScreenAdapter {
                         game.setScreen(new MegaBomb(game));
 
                     } else if (gamenum == SPACE) {
-                        //                game.setScreen(new Swing);
+                        game.setScreen(new Space_Main(game));
 
                     } else if (gamenum == ROAD) {
                         game.setScreen(new ChickenCrossyRoad(game));
@@ -116,11 +102,6 @@ public class GamePickScreen extends ScreenAdapter {
         String currGame=games[gamenum-1];
         String text= String.format("Current Game: "+"%d.%s",gamenum,currGame);
         game.font.draw(game.batch, text, -65+Gdx.graphics.getWidth() * .25f+100, 700);
-
-
-        currentFrame = introAnimation.getKeyFrame(stateTime, true);
-        game.batch.draw(currentFrame,450,300);
-
         game.batch.end();
 
     }
@@ -128,5 +109,10 @@ public class GamePickScreen extends ScreenAdapter {
     @Override
     public void hide() {
         Gdx.input.setInputProcessor(null);
+    }
+    @Override
+    public void resize(int width, int height) {
+        System.out.println("resized");
+        super.resize(width, height);
     }
 }

@@ -4,11 +4,13 @@
     Purpose: The main class is responsible for all the core functionality of the game.
 
         */
-package com.space;
+package com.mygdx.game;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.InputAdapter;
+import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
@@ -20,8 +22,8 @@ import java.util.LinkedList;
 import java.util.Random;
 
 import static com.badlogic.gdx.Gdx.graphics;
-
-public class Space_Main extends ApplicationAdapter {
+public class Space_Main extends ScreenAdapter {
+    MyGdxGame game;
     private boolean soundPlayed=false;
     private boolean end = false; //indicating the end of introduction
     Music intro_music; //main theme
@@ -58,8 +60,10 @@ public class Space_Main extends ApplicationAdapter {
     private boolean gameStarted = false; // this will store whether the game is started or not
     private int aliveEnemies; // this will store the number of alive enemies
     private BitmapFont diedFont; // just a font
-    @Override
-    public void create() { // create method is used for loading various assets needed
+    //----------------------------------------*-------------------------------------------------------
+    //create method
+    public Space_Main(MyGdxGame game) { // create method is used for loading various assets needed
+        this.game=game;
         // loading music
         start0 = Gdx.audio.newMusic(Gdx.files.internal("SpaceInvaders/Sound/start0.mp3")); //first sound in intro
         start = Gdx.audio.newMusic(Gdx.files.internal("SpaceInvaders/Sound/start.mp3")); //2nd
@@ -88,9 +92,8 @@ public class Space_Main extends ApplicationAdapter {
         intro_music.play();
         //next up are assets used in main game
         music = Gdx.audio.newMusic(Gdx.files.internal("SpaceInvaders/Sound/main.mp3"));
-        graphics.setWindowedMode(WIDTH, HEIGHT);
         bg = new Texture("SpaceInvaders/jpgs/space-1.jpg");
-        batch = new SpriteBatch(); // initialized the new batch
+        batch = game.batch; // initialized the new batch
         player = new Space_Player(0, 50); // initializes the player and sets the x and y
         createEnemies(); // creates enemies
 
@@ -100,21 +103,16 @@ public class Space_Main extends ApplicationAdapter {
             explosion[i] = new Texture("SpaceInvaders/EXPLOSION/" + i + ".png"); // assigns a part of the array to a certain image
         }
     }
-
-
     @Override
-    public void render() {
+    public void render(float delta) {
         Gdx.gl.glClearColor(0, 0, 0, 1); // sets the background colour to black
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        if (gameStarted){ // will only check for button presses for these methods when the game has started
-            if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) player.goLeft(); // player will go left when left arrow key pressed
-            if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) player.goRight(); // player will go right when right arrow key pressed
-            // if the left or right shift is pressed, then the player will use a powerup
-            if (Gdx.input.isKeyPressed(Input.Keys.SHIFT_LEFT) || Gdx.input.isKeyPressed(Input.Keys.SHIFT_RIGHT)) player.usePowerup();
-            // if the player presses the space button and the player is not shooting, the player shoots a bullet
-            if (Gdx.input.isKeyPressed(Input.Keys.SPACE) && !player.isShooting() && bullets.size() == 0) bullets.add(player.shootBullet());
+        if(gameStarted){
+            if (Gdx.input.isKeyPressed(Input.Keys.LEFT))
+                player.goLeft(); // player will go left when left arrow key pressed
+            if (Gdx.input.isKeyPressed(Input.Keys.RIGHT))
+                player.goRight(); // player will go right when right arrow key pressed
         }
-
         batch.begin(); // begins the batch which will allow for items to be drawn upon it so that it can be seen on the screen
         intro(); // this will run the intro
         aliveEnemies = numOfAliveEnemies(); // this will get the number of alive enemies
@@ -147,12 +145,49 @@ public class Space_Main extends ApplicationAdapter {
         }
         batch.end(); // ends the batch
     }
-
     @Override
-    public void dispose() { // disposes of the batch
-        batch.dispose();
+    public void show() {
+        Gdx.input.setInputProcessor(new InputAdapter() {
+            @Override
+            public boolean keyDown(int keyCode) {
+//                if (Gdx.input.isKeyPressed(Input.Keys.LEFT))
+//                    player.goLeft(); // player will go left when left arrow key pressed
+//                if (Gdx.input.isKeyPressed(Input.Keys.RIGHT))
+//                    player.goRight(); // player will go right when right arrow key pressed
+                // if the left or right shift is pressed, then the player will use a powerup
+                if (Gdx.input.isKeyPressed(Input.Keys.SHIFT_LEFT) || Gdx.input.isKeyPressed(Input.Keys.SHIFT_RIGHT))
+                    player.usePowerup();
+                // if the player presses the space button and the player is not shooting, the player shoots a bullet
+                if (Gdx.input.isKeyPressed(Input.Keys.SPACE) && !player.isShooting() && bullets.size() == 0)
+                    bullets.add(player.shootBullet());
+                return true;
+
+            }
+        });
     }
 
+//                if (keycode == Input.Keys.LEFT) {
+//                    player.goLeft(); // player will go left when left arrow key pressed
+//                }
+//                if (keycode == Input.Keys.RIGHT) {
+//                    player.goRight(); // player will go right when right arrow key pressed
+//                }
+//                if (keycode == Input.Keys.SHIFT_LEFT) {
+//                    player.usePowerup(); // if the leftshift is pressed, then the player will use a powerup
+//
+//                }
+//                if (keycode == Input.Keys.SPACE && !player.isShooting() && bullets.size() == 0) {
+//                    // if the player presses the space button and the player is not shooting, the player shoots a bullet
+//                    bullets.add(player.shootBullet());
+//                }
+//
+//
+//            return true;
+//        }
+    @Override
+    public void hide() {
+        Gdx.input.setInputProcessor(null);
+    }
     private int numOfAliveEnemies() { // this will count up the amount of enemies alive
         int counter = 0;
         for (int i = 0; i < enemies.size(); i++) {
@@ -390,5 +425,10 @@ public class Space_Main extends ApplicationAdapter {
         } else { // after everything else is done the gameStarted will be made true so that the game can start
             gameStarted = true;
         }
+    }
+    @Override
+    public void resize(int width, int height) {
+        System.out.println("resized");
+        super.resize(width, height);
     }
 }

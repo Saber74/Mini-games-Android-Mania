@@ -1,4 +1,4 @@
-package com.space;
+package com.mygdx.game;
 
 /*
     Author: Anita Hu, Nizar Alrifai
@@ -25,7 +25,7 @@ public class Space_Player {
     private final static int MIRROR = 2;
     private final static int HEART = 3;
     private boolean using_spiritbomb = false; // will be used to determine if spiritbomb powerup is being used
-    private SpiritBomb spiritbomb; // creates a SpiritBomb object
+    private Space_SpiritBomb spiritbomb; // creates a SpiritBomb object
     private ArrayList<Integer> powerupID = new ArrayList<Integer>(); // will store the id of the powerup
     private int points = 0; // will store the points
     private int lives = 3; // stores the amount of lives left
@@ -33,7 +33,7 @@ public class Space_Player {
     private Sprite barrier = new Sprite(new Texture("SpaceInvaders/barriers.png")); // sprite of the barrier
     boolean musicPlaying = false; // checks if music is playing
     private boolean mirror_activated = false; // checks if the mirror powerup is active
-    private Mirror[] mirrors = new Mirror[3]; // stores three mirror if the power up is used
+    private Space_Mirror[] spaceMirrors = new Space_Mirror[3]; // stores three mirror if the power up is used
     Rectangle rect; // stores a rectangle of the player which is used for collision and more
 
     public Space_Player(float x, float y) { // constructor takes in x and y
@@ -80,18 +80,18 @@ public class Space_Player {
         }
 
         if (mirror_activated){ // if the mirror is being used
-            int brokenMirrors = 0; // stores the amount of broken mirrors
-            for (int i = 0; i < mirrors.length; i++){
-                mirrors[i].update(batch, i); // updates the mirror
+            int brokenMirrors = 0; // stores the amount of broken spaceMirrors
+            for (int i = 0; i < spaceMirrors.length; i++){
+                spaceMirrors[i].update(batch, i); // updates the mirror
                 for (int n = 0; n < Space_Main.enemybullets.size(); n++){ // checks if the enemy bullets hit the mirror
-                    if (mirrors[i].isCollidesWith(Space_Main.enemybullets.get(n))){
+                    if (spaceMirrors[i].isCollidesWith(Space_Main.enemybullets.get(n))){
                         Space_Main.enemybullets.get(n).reflect(); // reflects the bullet back towards the enemy
-                        mirrors[i].hit(); // the mirror is hit and the amount of bullets it can reflect is reduced
+                        spaceMirrors[i].hit(); // the mirror is hit and the amount of bullets it can reflect is reduced
                     }
                 }
-                if (mirrors[i].isBroken()) brokenMirrors++; // if the mirror is broken, add it to the variable
+                if (spaceMirrors[i].isBroken()) brokenMirrors++; // if the mirror is broken, add it to the variable
             }
-            if (brokenMirrors == 3) mirror_activated = false; // will set mirror_activated to false if 3 mirrors broken
+            if (brokenMirrors == 3) mirror_activated = false; // will set mirror_activated to false if 3 spaceMirrors broken
 
         }
         System.out.println(lives);
@@ -102,12 +102,12 @@ public class Space_Player {
         if (powerupID.size() > 0) { // if there is a powerup that is present
             if (powerupID.get(0) == SPIRITBOMB) { // if the powerup is a spiritbomb
                 using_spiritbomb = true; // sets using_spiritbomb to true
-                spiritbomb = new SpiritBomb(player.getX(), player.getY(), player.getWidth()); // initializes the spiritbomb object
+                spiritbomb = new Space_SpiritBomb(player.getX(), player.getY(), player.getWidth()); // initializes the spiritbomb object
             } else if (powerupID.get(0) == INVINCIBLE) { // if the powerup is invincible
                 invincible = true; // invincible  is set to true
             }else if (powerupID.get(0) == MIRROR){ // if the powerup is a mirror
-                for (int i = 0; i < mirrors.length; i++){ // creates a new Mirror object int the mirrors array
-                    mirrors[i] = new Mirror();
+                for (int i = 0; i < spaceMirrors.length; i++){ // creates a new Space_Mirror object int the spaceMirrors array
+                    spaceMirrors[i] = new Space_Mirror();
                 }
                 mirror_activated = true; // mirror activated is set to true
             }
@@ -126,7 +126,7 @@ public class Space_Player {
                 Space_Main.hud.addPowerup(new Texture("SpaceInvaders/spiritbomb.png"));
                 powerupID.add(SPIRITBOMB);
             } else if (type == MIRROR) {
-                Space_Main.hud.addPowerup(new Texture("SpaceInvaders/Mirror.png"));
+                Space_Main.hud.addPowerup(new Texture("SpaceInvaders/Space_Mirror.png"));
                 powerupID.add(MIRROR);
             } else if (type == HEART){ // will add a life if not already maxed out
                 lives += (lives == 3 ? 0 : 1);
