@@ -75,7 +75,7 @@ public class ChickenCrossyRoad extends ScreenAdapter {
 
 		this.game = game;
 
-		game.resize(1000,1000);
+		//game.resize(1000,1000);
 
 		//Gdx.graphics.setWindowedMode(800, 800);
 		//each row is 50 pixels tall
@@ -276,7 +276,7 @@ public class ChickenCrossyRoad extends ScreenAdapter {
 
 			//-----------------------draw objects onto screen-------------------------
 			batch.begin();
-			batch.draw(bkg, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+			batch.draw(bkg, 0, 0, 800, 1000);
 
 			//draw chickens in bottom left corner (represents # of lives player has left)
 			for (int i = 0; i < players.length; i++) {
@@ -403,6 +403,10 @@ public class ChickenCrossyRoad extends ScreenAdapter {
 		Gdx.input.setInputProcessor(new InputAdapter() {
 
 			public boolean keyDown(int keycode) {
+
+				if(keycode == Keys.ESCAPE){
+					Gdx.app.exit();
+				}
 
 				//prevents player from using keys to change position of chicken when it is dead
 				if (players[0].areKeysDisabled() == false) {

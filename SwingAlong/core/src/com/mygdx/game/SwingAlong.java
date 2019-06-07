@@ -24,6 +24,7 @@ import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -31,6 +32,8 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.swing.along.ActionResolver;
 
 public class SwingAlong extends ScreenAdapter {
+
+	private OrthographicCamera cam;
 
 	MyGdxGame game;
 
@@ -63,11 +66,21 @@ public class SwingAlong extends ScreenAdapter {
 
 
 	public SwingAlong(MyGdxGame game){
-		Gdx.graphics.setWindowedMode(1000,800);
 
+		//Gdx.graphics.setWindowedMode(1000,800);
+		//resize(2000,800);
 		this.game = game;
 		batch = game.batch;
 		sr = new ShapeRenderer();
+
+		//https://github.com/libgdx/libgdx/wiki/Orthographic-camera
+		// Constructs a new OrthographicCamera, using the given viewport width and height
+		// Height is multiplied by aspect ratio.
+		cam = new OrthographicCamera(1000,800);
+
+		cam.position.set(500,400,0);
+		cam.update();
+
 
 		//https://code.google.com/archive/p/libgdx-users/wikis/IntegratingAndroidNativeUiElements3TierProjectSetup.wiki
 
@@ -112,7 +125,10 @@ public class SwingAlong extends ScreenAdapter {
 
 	@Override
 	public void render (float delta) {
-		
+
+		cam.update();
+		batch.setProjectionMatrix(cam.combined);
+
 		Gdx.gl.glClearColor(1, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
@@ -143,11 +159,11 @@ public class SwingAlong extends ScreenAdapter {
 		batch.begin();
 		
 		//upper background
-		batch.draw(bkg, bkgX1, 400, Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/2);
+		batch.draw(bkg, bkgX1, 400, 1000, 400);
 		batch.draw(platform, bkgX1, 590, 200,10);
 		
 		//lower background
-		batch.draw(bkg, bkgX2, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/2);
+		batch.draw(bkg, bkgX2, 0, 1000, 400);
 		batch.draw(platform, bkgX2, 190, 200,10);
 		
 		updateBkg();
@@ -215,12 +231,12 @@ public class SwingAlong extends ScreenAdapter {
 		
 		if(vIndex1+1==vines1.length){
 			//vIndex = 0;
-			batch.draw(p1win,0,0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+			batch.draw(p1win,0,0,1000, 800);
 		}
 		
 		if(vIndex2+1==vines2.length){
 			//vIndex = 0;
-			batch.draw(p2win,0,0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+			batch.draw(p2win,0,0,1000, 800);
 		}
 
 		batch.end();
@@ -247,23 +263,23 @@ public class SwingAlong extends ScreenAdapter {
 	
 	public void restart1(){
 		for(int i=0; i<vines1.length; i++){
-			vines1[i] = new Vine("vine.png", 250+i*325, 800, 100+Math.random()*50);
+			vines1[i] = new Vine("SwingAlong/vine.png", 250+i*325, 800, 100+Math.random()*50);
 		}
 		stateTime1 = 0f;
 		vIndex1 = -1;
 		bkgX1 = 0;
-		p1 = new Player("megaman1_",5,0,600);
+		p1 = new Player("SwingAlong/megaman1_",5,0,600);
 		x1 = 0;
 	}
 	
 	public void restart2(){
 		for(int i=0; i<vines2.length; i++){
-			vines2[i] = new Vine("vine.png", 250+i*325, 400, 100+Math.random()*50);
+			vines2[i] = new Vine("SwingAlong/vine.png", 250+i*325, 400, 100+Math.random()*50);
 		}
 		stateTime2 = 0f;
 		vIndex2 = -1;
 		bkgX2 = 0;
-		p2 = new Player("megaman2_",5,0,200);
+		p2 = new Player("SwingAlong/megaman2_",5,0,200);
 		x2 = 0;
 	}
 	
@@ -288,13 +304,13 @@ public class SwingAlong extends ScreenAdapter {
 	public void updateBkg(){
 		if(bkgX1<0){
 			for(int i=0; i<bkgX1/-1000+1; i++){
-				batch.draw(bkg, 1000*(i+1)+bkgX1, 400, Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/2);		
+				batch.draw(bkg, 1000*(i+1)+bkgX1, 400, 1000,400);
 			}
 		}
 		
 		if(bkgX2<0){
 			for(int i=0; i<bkgX2/-1000+1; i++){
-				batch.draw(bkg, 1000*(i+1)+bkgX2, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/2);		
+				batch.draw(bkg, 1000*(i+1)+bkgX2, 0, 1000, 400);
 			}
 		}
 	}
@@ -312,6 +328,9 @@ public class SwingAlong extends ScreenAdapter {
 		Gdx.input.setInputProcessor(new InputAdapter(){
 			//implement ALL methods of InputProcessor
 			public boolean keyDown(int keycode){
+				if(keycode == Keys.ESCAPE){
+					Gdx.app.exit();
+				}
 				if(keycode == Keys.RIGHT){
 
 					float px1 = p1.getX()+p1.getWidth();
@@ -409,6 +428,7 @@ public class SwingAlong extends ScreenAdapter {
 	public void hide () {
 		Gdx.input.setInputProcessor(null);
 	}
+
 	@Override
 	public void resize(int width, int height) {
 		System.out.println("resized");

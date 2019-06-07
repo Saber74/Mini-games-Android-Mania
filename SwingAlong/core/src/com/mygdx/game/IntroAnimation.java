@@ -35,10 +35,10 @@ public class IntroAnimation extends ScreenAdapter {
         game.batch.begin();
         currentFrame = introAnimation.getKeyFrame(stateTime, true);
         game.batch.draw(currentFrame,450,300);
-        if(introAnimation.isAnimationFinished(stateTime)==true){
+        game.batch.end();
+        if(introAnimation.isAnimationFinished(stateTime)){
             System.out.println("done");
         }
-        game.batch.end();
 
     }
     @Override

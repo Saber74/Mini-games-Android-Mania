@@ -19,11 +19,11 @@ import com.mygdx.game.MyGdxGame;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+		config.setFromDisplayMode(LwjglApplicationConfiguration.getDesktopDisplayMode());
 
+		config.fullscreen = true;
 
 		new LwjglApplication(new MyGdxGame(), config);
-
-		config.setFromDisplayMode(LwjglApplicationConfiguration.getDesktopDisplayMode());
 
 
 		//check which game is picked
