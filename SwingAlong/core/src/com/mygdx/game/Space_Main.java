@@ -13,6 +13,7 @@ import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -44,6 +45,7 @@ public class Space_Main extends ScreenAdapter {
     Music start0;
     Music music;
     Texture bg;
+    OrthographicCamera cam;
     public static LinkedList<Space_Bullet> enemybullets = new LinkedList<Space_Bullet>(); // arraylist that stores the enemy bullets
     public static LinkedList<Space_Bullet> bullets = new LinkedList<Space_Bullet>(); // this is the arraylist that stores the player bullets
     LinkedList<Space_PowerUp> powerups = new LinkedList<Space_PowerUp>(); // this stores the powerups
@@ -63,6 +65,10 @@ public class Space_Main extends ScreenAdapter {
     //----------------------------------------*-------------------------------------------------------
     //create method
     public Space_Main(MyGdxGame game) { // create method is used for loading various assets needed
+        cam = new OrthographicCamera(1000,900);
+        cam.zoom=(float)1.2;
+        cam.position.set(500,500,0);
+        cam.update();
         this.game=game;
         // loading music
         start0 = Gdx.audio.newMusic(Gdx.files.internal("SpaceInvaders/Sound/start0.mp3")); //first sound in intro
@@ -105,6 +111,8 @@ public class Space_Main extends ScreenAdapter {
     }
     @Override
     public void render(float delta) {
+        cam.update();
+        batch.setProjectionMatrix(cam.combined);
         Gdx.gl.glClearColor(0, 0, 0, 1); // sets the background colour to black
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         if(gameStarted){
