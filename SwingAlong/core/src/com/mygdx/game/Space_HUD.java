@@ -13,13 +13,15 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class Space_HUD {
     private Texture powerups_hud; // the background for the powerups HUD
     private Texture points_hud; // the COOL text for the points
     private Texture heart; // the texture for the heart to display the players life
     private BitmapFont font = new BitmapFont(Gdx.files.internal("SpaceInvaders/one/impact.fnt"), false); // will load in a font for the points
-    private ArrayList<Texture> powerup_sprites = new ArrayList<Texture>(); //will store the powerup texture
+    private LinkedList<Texture> powerup_sprites = new LinkedList<Texture>(); //will store the powerup texture
+    private LinkedList<Texture> powerup_sprites2= new LinkedList<Texture>();
 
     public Space_HUD() {// will load in various textures
         powerups_hud = new Texture("SpaceInvaders/powerupsHUD.png");
@@ -30,10 +32,10 @@ public class Space_HUD {
     public void render(SpriteBatch batch) { // this will render all the information that is to be displayed
         batch.draw(powerups_hud, Space_Main.WIDTH - powerups_hud.getWidth(), Space_Main.HEIGHT - powerups_hud.getHeight()); // draws the powerup HUD background
         batch.draw(points_hud, 0, Space_Main.HEIGHT - points_hud.getHeight()); // draws the COOL text for points
-        font.draw(batch, "" + Space_Main.player.getPoints(), 235, Space_Main.HEIGHT - 25); // draws the point value on screen
+        font.draw(batch, "" + Space_Main.player.getPoints()+" vs "+Space_Main.player2.getPoints(), 235, Space_Main.HEIGHT - 25); // draws the point value on screen
         if (powerup_sprites.size() > 0) batch.draw(powerup_sprites.get(0), 790, Space_Main.HEIGHT - 105); // draws the powerup sprites on screen
         for (int i = 0; i < Space_Main.player.getLives(); i++) { // draws the players life represented by hearts at the top of the screen
-            batch.draw(heart, 375 + i * (heart.getWidth() + 10), Space_Main.HEIGHT - heart.getHeight() - 25);
+            batch.draw(heart, 475 + i * (heart.getWidth() + 10), Space_Main.HEIGHT - heart.getHeight() - 25);
         }
     }
 

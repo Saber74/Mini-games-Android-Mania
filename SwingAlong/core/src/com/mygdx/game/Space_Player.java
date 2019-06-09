@@ -15,6 +15,8 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class Space_Player {
+    private final int PLAYERONE=1;
+    private final int PLAYERTWO=2;
     private float x, y; // stores the x and the y of the player
     private Texture player_sprite;
     private Sprite player;
@@ -35,9 +37,13 @@ public class Space_Player {
     private boolean mirror_activated = false; // checks if the mirror powerup is active
     private Space_Mirror[] spaceMirrors = new Space_Mirror[3]; // stores three mirror if the power up is used
     Rectangle rect; // stores a rectangle of the player which is used for collision and more
-
-    public Space_Player(float x, float y) { // constructor takes in x and y
-        player_sprite = new Texture("SpaceInvaders/0.png"); // loads in player sprite image
+    public Space_Player(float x, float y,int pl) { // constructor takes in x and y
+        if(pl==PLAYERONE) {
+            player_sprite = new Texture("SpaceInvaders/0.png"); // loads in player sprite image
+        }
+        else if(pl==PLAYERTWO){
+            player_sprite=new Texture("SpaceInvaders/p2.png");
+        }
         player = new Sprite(player_sprite); // creates a sprite out of the image
         this.x = x; // sets the x variable
         this.y = y; // sets the y variable
@@ -94,7 +100,6 @@ public class Space_Player {
             if (brokenMirrors == 3) mirror_activated = false; // will set mirror_activated to false if 3 spaceMirrors broken
 
         }
-        System.out.println(lives);
         this.render(batch); // calls the render method
     }
 
@@ -126,7 +131,7 @@ public class Space_Player {
                 Space_Main.hud.addPowerup(new Texture("SpaceInvaders/spiritbomb.png"));
                 powerupID.add(SPIRITBOMB);
             } else if (type == MIRROR) {
-                Space_Main.hud.addPowerup(new Texture("SpaceInvaders/Space_Mirror.png"));
+                Space_Main.hud.addPowerup(new Texture("SpaceInvaders/Mirror.png"));
                 powerupID.add(MIRROR);
             } else if (type == HEART){ // will add a life if not already maxed out
                 lives += (lives == 3 ? 0 : 1);

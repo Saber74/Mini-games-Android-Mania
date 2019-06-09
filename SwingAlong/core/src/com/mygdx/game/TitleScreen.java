@@ -35,7 +35,6 @@ public class TitleScreen extends ScreenAdapter {
     public void render(float delta) {
         Gdx.gl.glClearColor(.4f, .25f, 0.3f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
         game.batch.begin();
         game.batch.draw(logo,175,0);
         game.font.draw(game.batch, "Press space to select a game.", 50+Gdx.graphics.getWidth() * .25f, Gdx.graphics.getHeight() * .25f);
