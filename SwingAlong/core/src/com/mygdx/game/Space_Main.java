@@ -149,10 +149,8 @@ public class Space_Main extends ScreenAdapter {
         else { // if one of the conditions for running the game are not true
             if (aliveEnemies > 0 && (!playerAlive ||!player2Alive)){ // if the enemies are alive but the player is not then the player loses
                 youDied(); // shows some text on the screen after you die and will play a sound
-//                winner();
             } else if (playerAlive && aliveEnemies == 0 && player2Alive){ // if the player is alive but the enemies aren't
                 youWin(); // this will display some text and some sound will be played
-//                winner();
             }
         }
         batch.end(); // ends the batch
@@ -223,7 +221,16 @@ public class Space_Main extends ScreenAdapter {
             win.play();
             soundPlayed = true;
         }
-        diedFont.draw(batch,"YOU WON!!!",300,612); // displays "YOU WON" on the screen
+        if(player.getPoints()>player2.getPoints()){
+            diedFont.draw(batch,"P1 WON!!!",300,612); // displays "YOU WON" on the screen
+        }
+        else if(player.getPoints()<player2.getPoints()){
+            diedFont.draw(batch,"P1 WON!!!",300,612); // displays "YOU WON" on the screen
+        }
+        else if(player.getPoints()==player2.getPoints()){
+            diedFont.draw(batch,"IT'S A DRAW",300,612);
+        }
+
         diedFont.draw(batch,"Continue?",335,512); // displays "YOU WON" on the screen
         diedFont.draw(batch,"Yes - Y",385,412); // displays "YOU WON" on the screen
         diedFont.draw(batch,"No - N",385,312); // displays "YOU WON" on the screen
@@ -235,10 +242,18 @@ public class Space_Main extends ScreenAdapter {
     }
 
     private void youDied(){ // this will display choice words and a sound when the player loses
-        diedFont.draw(batch, "YOU DIED.....", 350, 950);
-        diedFont.draw(batch, "YOU FAILED THE GALAXY",150, 800);
-        diedFont.draw(batch, "YOU FAILED HUMANITY", 180,660);
-        diedFont.draw(batch, "Frankly speaking, YOU SUCK!",100,500);
+        if(!playerAlive){
+            diedFont.draw(batch, "P1 DIED.....", 350, 950);
+            diedFont.draw(batch, "P1 FAILED THE GALAXY",150, 800);
+            diedFont.draw(batch, "P1 FAILED HUMANITY", 180,660);
+            diedFont.draw(batch, "Frankly speaking, P1 SUCK!",100,500);
+        }
+        else if (!player2Alive){
+            diedFont.draw(batch, "P2 DIED.....",350,950);
+            diedFont.draw(batch, "P2 FAILED THE GALAXY",150, 800);
+            diedFont.draw(batch, "P2 FAILED HUMANITY", 180,660);
+            diedFont.draw(batch, "Frankly speaking, P2 SUCKS!",100,500);
+        }
         diedFont.draw(batch,"Yes - Y",385,400); // displays "YOU WON" on the screen
         diedFont.draw(batch,"No - N",385,300); // displays "YOU WON" on the screen
         if (Gdx.input.isKeyPressed(Input.Keys.Y)){
@@ -277,7 +292,7 @@ public class Space_Main extends ScreenAdapter {
 
     private void dropPowerup() { // this will decide at random when to drop a powerup
         Random powerupDrop = new Random(); // creates a random object
-        int isDrop = powerupDrop.nextInt(1000); // this will get a random number within the given range
+        int isDrop = powerupDrop.nextInt(100); // this will get a random number within the given range
         if (isDrop < 2 && powerups.size() == 0) powerups.add(new Space_PowerUp()); // creates a new powerup if the random number is less than 2 and if there are no other powerups on the screen
         for (int i = 0; i < powerups.size(); i++) { // this will go through the powerups
             powerups.get(i).update(batch); // this will update the powerup
