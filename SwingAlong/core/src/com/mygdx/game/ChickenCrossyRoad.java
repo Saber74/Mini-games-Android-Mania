@@ -16,6 +16,7 @@ import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -26,6 +27,7 @@ import com.badlogic.gdx.audio.Music;
 
 public class ChickenCrossyRoad extends ScreenAdapter {
 
+	OrthographicCamera cam;
 	MyGdxGame game;
 	SpriteBatch batch;
 	ShapeRenderer sr;
@@ -73,6 +75,11 @@ public class ChickenCrossyRoad extends ScreenAdapter {
 	//*********************************CREATE GAME VARIABLES*************************************
 	public ChickenCrossyRoad(MyGdxGame game) {
 
+		cam = new OrthographicCamera(1600,1000);
+
+		cam.position.set(400,500,0);
+		cam.update();
+
 		this.game = game;
 
 		//game.resize(1000,1000);
@@ -106,7 +113,7 @@ public class ChickenCrossyRoad extends ScreenAdapter {
 
 		homes = new Home[5];
 		for (int i = 0; i < 5; i++) {
-			homes[i] = new Home("ChickenCrossyRoad/nest.png", new Rectangle(50 + i * 150, 650, 75, 75));
+			homes[i] = new Home("ChickenCrossyRoad/nest.png", new Rectangle(50 + i * 150, 670, 75, 75));
 		}
 
 
@@ -180,6 +187,9 @@ public class ChickenCrossyRoad extends ScreenAdapter {
 	//****************************************RUN GAME**************************************
 	@Override
 	public void render(float delta) {
+
+		cam.update();
+		batch.setProjectionMatrix(cam.combined);
 		//music.play();
 
 		Gdx.gl.glClearColor(1, 0, 0, 1);
@@ -308,9 +318,9 @@ public class ChickenCrossyRoad extends ScreenAdapter {
 
 			//display score on top left of screen
 			font.setColor(1, 1, 1, 1);
-			font.draw(batch, "" + players[0].score, 30, 755);
+			font.draw(batch, "" + players[0].score, 30, 850);
 			font.setColor(0, 0, 0, 1);
-			font.draw(batch, "" + players[1].score, 700, 755);
+			font.draw(batch, "" + players[1].score, 700, 850);
 
 			//if chicken dies
 			for (Chicken p : players) {
@@ -326,6 +336,12 @@ public class ChickenCrossyRoad extends ScreenAdapter {
 
 
 		}
+
+		sr.begin(ShapeRenderer.ShapeType.Filled);
+		sr.setColor(0,0,0,1);
+		sr.rect(0,0,480,1400);
+		sr.rect(1440,0,480,1400);
+		sr.end();
 
 		//to make the spritesheet animals look like they're moving slower,
 		//momentarily pause the program 

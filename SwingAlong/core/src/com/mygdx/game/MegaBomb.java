@@ -14,6 +14,7 @@ import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -33,6 +34,7 @@ import sun.util.resources.cldr.ro.TimeZoneNames_ro;
 
 public class MegaBomb extends ScreenAdapter{
 
+	OrthographicCamera cam;
 	MyGdxGame game;
 	SpriteBatch batch;
 
@@ -44,7 +46,8 @@ public class MegaBomb extends ScreenAdapter{
 	int player;
 
 	ShapeRenderer sr;
-	BitmapFont font;
+	BitmapFont fontPlayer;
+	BitmapFont fontTime;
 	float stateTime;
 
 	Texture bomb;
@@ -64,14 +67,20 @@ public class MegaBomb extends ScreenAdapter{
 
 	public MegaBomb(MyGdxGame game) {
 
-		Gdx.graphics.setWindowedMode(800,600);
+		cam = new OrthographicCamera(800,600);
+
+		cam.position.set(400,300,0);
+		cam.update();
+
 
 		this.game = game;
 		batch = game.batch;
 
 		sr = new ShapeRenderer();
-		font = new BitmapFont();
-		font.getData().setScale(2f);
+		fontPlayer = new BitmapFont(Gdx.files.internal("IntroScreen/Intro.fnt")); //description font
+		fontTime = new BitmapFont();
+		fontTime.getData().setScale(2f);
+
 		stateTime = 0f;
 
 		player = P1;
@@ -141,12 +150,16 @@ public class MegaBomb extends ScreenAdapter{
 
 	@Override
 	public void render (float delta) {
+
+		cam.update();
+		batch.setProjectionMatrix(cam.combined);
+
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 		batch.begin();
 
-		batch.draw(bomb, Gdx.graphics.getWidth()/2-300/2, Gdx.graphics.getHeight()/2-150/2, 300,150);
+		batch.draw(bomb, 250, 225, 300,150);
 
 		for(int i=0; i<wireStatus.length; i++){
 			float width = wiresUncut[i].getWidth();
@@ -162,8 +175,8 @@ public class MegaBomb extends ScreenAdapter{
 		}
 
 		if(time>0) {
-			font.draw(batch, String.format("Player %d's turn",player), 10, 550);
-			font.draw(batch, timeStamp, 350, 310);
+			fontPlayer.draw(batch, String.format("Player %d's turn",player), 10, 550);
+			fontTime.draw(batch, timeStamp, 350, 310);
 			if(time<5000 && (time/20)%10 == 0){
 				lightSprite.setAlpha(1f);
 			}
@@ -179,9 +192,9 @@ public class MegaBomb extends ScreenAdapter{
 
 		if(wireStatus[explode] == CUT){
 			time = -1;
-			font.getData().setScale(1.5f);
-			font.draw(batch, "DEFUSED", 325, 305);
-			font.draw(batch,"Player "+player+" wins!",30,550);
+			fontTime.getData().setScale(1.5f);
+			fontTime.draw(batch, "DEFUSED", 325, 305);
+			fontPlayer.draw(batch,"Player "+player+" wins!",30,550);
 
 			wireStatus = new int[]{CUT,CUT,CUT,CUT,CUT,CUT};
 		}
@@ -209,6 +222,9 @@ public class MegaBomb extends ScreenAdapter{
 	public void show(){
 		Gdx.input.setInputProcessor(new InputAdapter(){
 			public boolean keyDown(int keycode) {
+				if(keycode == Input.Keys.ESCAPE){
+					Gdx.app.exit();
+				}
 				if (keycode == Input.Keys.NUM_1) {
 					wireStatus[0] = CUT;
 				}

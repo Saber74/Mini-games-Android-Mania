@@ -5,16 +5,25 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 
 public class TitleScreen extends ScreenAdapter {
+
+    OrthographicCamera cam;
 
     MyGdxGame game;
     Texture logo= new Texture("IntroScreen/logo.png");
 
     public TitleScreen(MyGdxGame game) {
 
+        cam = new OrthographicCamera(1000,800);
+
+        cam.position.set(675,400,0);
+        cam.update();
+
         this.game = game;
+
 
     }
 
@@ -33,12 +42,16 @@ public class TitleScreen extends ScreenAdapter {
 
     @Override
     public void render(float delta) {
+
+        cam.update();
+        game.batch.setProjectionMatrix(cam.combined);
+
         Gdx.gl.glClearColor(.4f, .25f, 0.3f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         game.batch.begin();
         game.batch.draw(logo,175,0);
-        game.font.draw(game.batch, "Press space to select a game.", 50+Gdx.graphics.getWidth() * .25f, Gdx.graphics.getHeight() * .25f);
+        game.font.draw(game.batch, "Press <SPACE> to select a game.", 350, 150);
 
 
         game.batch.end();
@@ -48,9 +61,5 @@ public class TitleScreen extends ScreenAdapter {
     public void hide(){
         Gdx.input.setInputProcessor(null);
     }
-    @Override
-    public void resize(int width, int height) {
-        System.out.println("resized");
-        super.resize(width, height);
-    }
+
 }

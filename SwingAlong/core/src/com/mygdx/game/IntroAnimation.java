@@ -4,17 +4,31 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
 public class IntroAnimation extends ScreenAdapter {
-    int animatiomcounter =0;
+
+    private OrthographicCamera cam;
+
+    int animationCounter =0;
     MyGdxGame game;
     float stateTime;
     Texture[] introTextures;
     Animation<Texture> introAnimation;
     Texture currentFrame;
+
+    BitmapFont font;
+
     public IntroAnimation(MyGdxGame game){
+
+        cam = new OrthographicCamera(1000,800);
+
+        cam.position.set(675,400,0);
+        cam.update();
+
         this.game=game;
         stateTime = 0f;
 
@@ -26,35 +40,42 @@ public class IntroAnimation extends ScreenAdapter {
         }
 
         introAnimation = new Animation<Texture>(0.05f, introTextures);
+
+        font = new BitmapFont();
+        font.getData().setScale(2f);
+        font.setColor(0,0,0,1);
+
     }
     @Override
     public void render(float delta){
+
+        cam.update();
+        game.batch.setProjectionMatrix(cam.combined);
+
         Gdx.gl.glClearColor(255, 255, 255,0);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         stateTime += Gdx.graphics.getDeltaTime();
         game.batch.begin();
         currentFrame = introAnimation.getKeyFrame(stateTime, true);
         game.batch.draw(currentFrame,450,300);
+        font.draw(game.batch,"Loading...",600,200);
         game.batch.end();
         if(introAnimation.isAnimationFinished(stateTime)){
-            System.out.println("done");
+            animationCounter++;
+            stateTime = 0;
+        }
+
+        if(animationCounter == 4){
+            game.setScreen(new TitleScreen(game));
         }
 
     }
     @Override
     public void show() {
-        Gdx.input.setInputProcessor(new InputAdapter() {
-            @Override
-            public boolean keyDown(int keyCode) {
-                if (keyCode == Input.Keys.SPACE||animatiomcounter==2) {
-                    game.setScreen(new TitleScreen(game));
-                }
-                return true;
-            }
-        });
+
     }
     @Override
     public void hide() {
-        Gdx.input.setInputProcessor(null);
+
     }
 }
