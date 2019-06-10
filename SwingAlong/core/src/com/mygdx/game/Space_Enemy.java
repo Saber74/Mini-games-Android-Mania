@@ -19,7 +19,7 @@ import java.util.Random;
 public class Space_Enemy {
     Music die; //music played when they die
     private Sprite sprite;
-    private Texture blueship; //differnt types of enemies
+    private Texture blueship; //differnt types of nemies
     private Texture yellowship;
     private Texture redship;
     private boolean dead = false;

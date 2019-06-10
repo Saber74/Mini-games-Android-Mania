@@ -5,7 +5,6 @@
 
         */
 package com.mygdx.game;
-
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -13,14 +12,13 @@ import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Random;
-
 import static com.badlogic.gdx.Gdx.graphics;
 public class Space_Main extends ScreenAdapter {
     MyGdxGame game;
@@ -44,25 +42,31 @@ public class Space_Main extends ScreenAdapter {
     Music start0;
     Music music;
     Texture bg;
+    OrthographicCamera cam;
     public static LinkedList<Space_Bullet> enemybullets = new LinkedList<Space_Bullet>(); // arraylist that stores the enemy bullets
     public static LinkedList<Space_Bullet> bullets = new LinkedList<Space_Bullet>(); // this is the arraylist that stores the player bullets
+    public static LinkedList<Space_Bullet> bulletsp2= new LinkedList<Space_Bullet>();
     LinkedList<Space_PowerUp> powerups = new LinkedList<Space_PowerUp>(); // this stores the powerups
     public static ArrayList<ArrayList<Space_Enemy>> enemies = new ArrayList<ArrayList<Space_Enemy>>(); // this stores all the enemies
     public static final int WIDTH = 1024; // this is the width of the screen
     public static final int HEIGHT = 1024; // this sets the height of the screen
-
     public static Space_Player player; // this is the player object and it is static so that it can be accessed from different classes
+    public static Space_Player player2;
     public static Space_HUD hud; // this is the heads up display
 
     public static Texture[] explosion = new Texture[73]; // this array stores the sprites for the explosion for when an enemy dies
-
-    private boolean playerAlive = true; // this will store a true or false value depending on whether the player is alive
+    private boolean playerAlive = true; // this will store a true or false value depending on// whether the player is alive
+    private boolean player2Alive=true;
     private boolean gameStarted = false; // this will store whether the game is started or not
     private int aliveEnemies; // this will store the number of alive enemies
     private BitmapFont diedFont; // just a font
     //----------------------------------------*-------------------------------------------------------
     //create method
     public Space_Main(MyGdxGame game) { // create method is used for loading various assets needed
+        cam = new OrthographicCamera(1000,900);
+        cam.zoom=(float)1.2;
+        cam.position.set(500,500,0);
+        cam.update();
         this.game=game;
         // loading music
         start0 = Gdx.audio.newMusic(Gdx.files.internal("SpaceInvaders/Sound/start0.mp3")); //first sound in intro
@@ -94,17 +98,19 @@ public class Space_Main extends ScreenAdapter {
         music = Gdx.audio.newMusic(Gdx.files.internal("SpaceInvaders/Sound/main.mp3"));
         bg = new Texture("SpaceInvaders/jpgs/space-1.jpg");
         batch = game.batch; // initialized the new batch
-        player = new Space_Player(0, 50); // initializes the player and sets the x and y
+        player = new Space_Player(0, 50,1); // initializes the player and sets the x and y
+        player2= new Space_Player(600,50,2);
         createEnemies(); // creates enemies
 
         hud = new Space_HUD(); // initializes the heads up display
-
         for (int i = 0; i < 73; i++) { // this will load in the images for the explosion animation
             explosion[i] = new Texture("SpaceInvaders/EXPLOSION/" + i + ".png"); // assigns a part of the array to a certain image
         }
     }
     @Override
     public void render(float delta) {
+        cam.update();
+        batch.setProjectionMatrix(cam.combined);
         Gdx.gl.glClearColor(0, 0, 0, 1); // sets the background colour to black
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         if(gameStarted){
@@ -112,12 +118,15 @@ public class Space_Main extends ScreenAdapter {
                 player.goLeft(); // player will go left when left arrow key pressed
             if (Gdx.input.isKeyPressed(Input.Keys.RIGHT))
                 player.goRight(); // player will go right when right arrow key pressed
+            if (Gdx.input.isKeyPressed(Input.Keys.A))
+                player2.goLeft(); // player will go left when left arrow key pressed
+            if (Gdx.input.isKeyPressed(Input.Keys.D))
+                player2.goRight(); // player will go right when right arrow key pressed
         }
         batch.begin(); // begins the batch which will allow for items to be drawn upon it so that it can be seen on the screen
         intro(); // this will run the intro
         aliveEnemies = numOfAliveEnemies(); // this will get the number of alive enemies
-        if (playerAlive && gameStarted && aliveEnemies > 0) { // will keep on running as long as the intro has ended, the player is alive, and there are still enemies alive
-            System.out.println(aliveEnemies);
+        if (playerAlive && player2Alive && gameStarted && aliveEnemies > 0) { // will keep on running as long as the intro has ended, the player is alive, and there are still enemies alive
             music.play(); // starts playing music
             music.setOnCompletionListener(new Music.OnCompletionListener() {//once the song is over repeat it!
                 @Override
@@ -127,19 +136,20 @@ public class Space_Main extends ScreenAdapter {
             });
             batch.draw(bg, 0, 0); // draws the background
             player.update(batch); // this will update the player's position and powerups the play has activated and received
+            player2.update(batch);
             dropPowerup(); // will randomly drop a powerup
             bulletsUpdate(); // will update the bullets and remove them if they move off-screen
             enemiesUpdate(); // this will check if the enemy is shot, as well as makes the enemies move properly
             enemiesShoot(); // will choose if enemies get to shoot and will remove the enemy bullets if they move off-screen
-            isPlayerShot(); // this will check if the player is shot and will take away a life (unless a powerup prevents that)
+            isPlayerShot(); // this will check if either player is shot and will take away a life (unless a powerup prevents that)
             areEnemiesCloseToGround(); // this will check if the enemies are low enough so that they can touch the player
-            isPlayerDead(); // this will check if the player is dead
+            isPlayerDead(); // this will check if either player is dead
             hud.update(batch); // this will update the heads up display
         }
         else { // if one of the conditions for running the game are not true
-            if (aliveEnemies > 0 && !playerAlive) { // if the enemies are alive but the player is not then the player loses
+            if (aliveEnemies > 0 && (!playerAlive ||!player2Alive)){ // if the enemies are alive but the player is not then the player loses
                 youDied(); // shows some text on the screen after you die and will play a sound
-            } else if (playerAlive && aliveEnemies == 0){ // if the player is alive but the enemies aren't
+            } else if (playerAlive && aliveEnemies == 0 && player2Alive){ // if the player is alive but the enemies aren't
                 youWin(); // this will display some text and some sound will be played
             }
         }
@@ -155,35 +165,21 @@ public class Space_Main extends ScreenAdapter {
 //                if (Gdx.input.isKeyPressed(Input.Keys.RIGHT))
 //                    player.goRight(); // player will go right when right arrow key pressed
                 // if the left or right shift is pressed, then the player will use a powerup
-                if (Gdx.input.isKeyPressed(Input.Keys.SHIFT_LEFT) || Gdx.input.isKeyPressed(Input.Keys.SHIFT_RIGHT))
+                if (Gdx.input.isKeyPressed(Input.Keys.SHIFT_RIGHT))
                     player.usePowerup();
                 // if the player presses the space button and the player is not shooting, the player shoots a bullet
                 if (Gdx.input.isKeyPressed(Input.Keys.SPACE) && !player.isShooting() && bullets.size() == 0)
                     bullets.add(player.shootBullet());
+                if (Gdx.input.isKeyPressed(Input.Keys.SHIFT_LEFT))
+                    player2.usePowerup();
+                // if the player presses the space button and the player is not shooting, the player shoots a bullet
+                if (Gdx.input.isKeyPressed(Input.Keys.Q) && !player2.isShooting() && bulletsp2.size() == 0)
+                    bulletsp2.add(player2.shootBullet());
                 return true;
 
             }
         });
     }
-
-//                if (keycode == Input.Keys.LEFT) {
-//                    player.goLeft(); // player will go left when left arrow key pressed
-//                }
-//                if (keycode == Input.Keys.RIGHT) {
-//                    player.goRight(); // player will go right when right arrow key pressed
-//                }
-//                if (keycode == Input.Keys.SHIFT_LEFT) {
-//                    player.usePowerup(); // if the leftshift is pressed, then the player will use a powerup
-//
-//                }
-//                if (keycode == Input.Keys.SPACE && !player.isShooting() && bullets.size() == 0) {
-//                    // if the player presses the space button and the player is not shooting, the player shoots a bullet
-//                    bullets.add(player.shootBullet());
-//                }
-//
-//
-//            return true;
-//        }
     @Override
     public void hide() {
         Gdx.input.setInputProcessor(null);
@@ -212,6 +208,7 @@ public class Space_Main extends ScreenAdapter {
             for (int n = 0; n < enemies.get(i).size(); n++) {
                 if (enemies.get(i).get(n).getRect().y <= 125 && !enemies.get(i).get(n).isDead()){
                     player.kill(); // kills the player immediately
+                    player2.kill();
                 }
             }
         }
@@ -224,7 +221,16 @@ public class Space_Main extends ScreenAdapter {
             win.play();
             soundPlayed = true;
         }
-        diedFont.draw(batch,"YOU WON!!!",300,612); // displays "YOU WON" on the screen
+        if(player.getPoints()>player2.getPoints()){
+            diedFont.draw(batch,"P1 WON!!!",300,612); // displays "YOU WON" on the screen
+        }
+        else if(player.getPoints()<player2.getPoints()){
+            diedFont.draw(batch,"P1 WON!!!",300,612); // displays "YOU WON" on the screen
+        }
+        else if(player.getPoints()==player2.getPoints()){
+            diedFont.draw(batch,"IT'S A DRAW",300,612);
+        }
+
         diedFont.draw(batch,"Continue?",335,512); // displays "YOU WON" on the screen
         diedFont.draw(batch,"Yes - Y",385,412); // displays "YOU WON" on the screen
         diedFont.draw(batch,"No - N",385,312); // displays "YOU WON" on the screen
@@ -236,10 +242,18 @@ public class Space_Main extends ScreenAdapter {
     }
 
     private void youDied(){ // this will display choice words and a sound when the player loses
-        diedFont.draw(batch, "YOU DIED.....", 350, 950);
-        diedFont.draw(batch, "YOU FAILED THE GALAXY",150, 800);
-        diedFont.draw(batch, "YOU FAILED HUMANITY", 180,660);
-        diedFont.draw(batch, "Frankly speaking, YOU SUCK!",100,500);
+        if(!playerAlive){
+            diedFont.draw(batch, "P1 DIED.....", 350, 950);
+            diedFont.draw(batch, "P1 FAILED THE GALAXY",150, 800);
+            diedFont.draw(batch, "P1 FAILED HUMANITY", 180,660);
+            diedFont.draw(batch, "Frankly speaking, P1 SUCK!",100,500);
+        }
+        else if (!player2Alive){
+            diedFont.draw(batch, "P2 DIED.....",350,950);
+            diedFont.draw(batch, "P2 FAILED THE GALAXY",150, 800);
+            diedFont.draw(batch, "P2 FAILED HUMANITY", 180,660);
+            diedFont.draw(batch, "Frankly speaking, P2 SUCKS!",100,500);
+        }
         diedFont.draw(batch,"Yes - Y",385,400); // displays "YOU WON" on the screen
         diedFont.draw(batch,"No - N",385,300); // displays "YOU WON" on the screen
         if (Gdx.input.isKeyPressed(Input.Keys.Y)){
@@ -251,14 +265,15 @@ public class Space_Main extends ScreenAdapter {
 
     public void restart(){ // this method will restart the game
         playerAlive = true; // this will store a true or false value depending on whether the player is alive
+        player2Alive=true;
         enemybullets = new LinkedList<Space_Bullet>(); // arraylist that stores the enemy bullets
         bullets = new LinkedList<Space_Bullet>(); // this is the arraylist that stores the player bullets
-        powerups = new LinkedList<Space_PowerUp>(); // this stores the powerups
+        bulletsp2 = new LinkedList<Space_Bullet>(); // this is the arraylist that stores the player bullets
+        powerups= new LinkedList<Space_PowerUp>(); // this stores the powerups
         enemies = new ArrayList<ArrayList<Space_Enemy>>(); // this stores all the enemies
-        player = new Space_Player(0, 50);
-
+        player = new Space_Player(0, 50,1);
+        player2= new Space_Player(500,50,2);
         createEnemies(); // creates enemies
-
         hud = new Space_HUD(); // initializes the heads up display
         aliveEnemies = numOfAliveEnemies(); // this will store the number of alive enemies
     }
@@ -277,7 +292,7 @@ public class Space_Main extends ScreenAdapter {
 
     private void dropPowerup() { // this will decide at random when to drop a powerup
         Random powerupDrop = new Random(); // creates a random object
-        int isDrop = powerupDrop.nextInt(1000); // this will get a random number within the given range
+        int isDrop = powerupDrop.nextInt(100); // this will get a random number within the given range
         if (isDrop < 2 && powerups.size() == 0) powerups.add(new Space_PowerUp()); // creates a new powerup if the random number is less than 2 and if there are no other powerups on the screen
         for (int i = 0; i < powerups.size(); i++) { // this will go through the powerups
             powerups.get(i).update(batch); // this will update the powerup
@@ -286,6 +301,10 @@ public class Space_Main extends ScreenAdapter {
             } else if (player.isCollidingWith(powerups.get(i))) { // will remove and run a player method when the player collides with the powerup
                 player.getPowerup(powerups.get(i)); // this will get the powerup for the player
                 powerups.remove(i); // removes the powerup
+            }
+            else if(player2.isCollidingWith(powerups.get(i))){
+                player2.getPowerup(powerups.get(i));
+                powerups.remove(i);
             }
         }
     }
@@ -304,6 +323,15 @@ public class Space_Main extends ScreenAdapter {
                         enemies.get(i).get(n).setDead(true, player); // this will set the enemy to dead
                     }
                 }
+                for(int f=0;f<bulletsp2.size();f++){
+                    if (enemies.get(i).get(n).isCollidingWith(bulletsp2.get(f))) { // will check if a bullet hits the enemy
+                        bulletsp2.remove(f); // removes the bullet
+                        player2.setShooting(false); // player is not shooting anymore
+                        player2.addPoints(enemies.get(i).get(n).getPointValue()); // adds points to the player's score according to the enemy point value
+                        enemies.get(i).get(n).setDead(true, player); // this will set the enemy to dead
+                    }
+
+                }
             }
         }
     }
@@ -313,6 +341,11 @@ public class Space_Main extends ScreenAdapter {
             if (player.isCollidingWith(enemybullets.get(i))) { // if the player is colliding with a bullet
                 enemybullets.remove(i); // removes the enemy bullet
                 player.takeAwayLife(); // takes a life
+                break;
+            }
+            if(player2.isCollidingWith(enemybullets.get(i))){
+                enemybullets.remove(i);
+                player2.takeAwayLife();
             }
         }
     }
@@ -323,6 +356,13 @@ public class Space_Main extends ScreenAdapter {
             if (bullets.get(i).getY() > HEIGHT) { // if the bullet is off screen it gets removed
                 bullets.remove(i);
                 player.setShooting(false);
+            }
+        }
+        for(int i=0; i<bulletsp2.size();i++){
+            bulletsp2.get(i).update(batch);
+            if(bulletsp2.get(i).getY()>HEIGHT){
+                bulletsp2.remove(i);
+                player2.setShooting(false);
             }
         }
     }
@@ -352,6 +392,9 @@ public class Space_Main extends ScreenAdapter {
     private void isPlayerDead() { // will check if the player is dead
         if (player.getLives() <= 0) { // if the lives left is less than 0
             playerAlive = false; // will set the playerAlive to false
+        }
+        if(player2.getLives()<=0){
+            player2Alive=false;
         }
     }
 
@@ -428,7 +471,6 @@ public class Space_Main extends ScreenAdapter {
     }
     @Override
     public void resize(int width, int height) {
-        System.out.println("resized");
         super.resize(width, height);
     }
 }

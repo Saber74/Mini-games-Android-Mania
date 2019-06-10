@@ -33,6 +33,7 @@ public class GamePickScreen extends ScreenAdapter {
     private static final int SPACE=3;
     private static final int BOMB=4;
     private static final int ROAD=5;
+    private static final int MEMORY=6;
 
     String[] games;
 
@@ -56,8 +57,9 @@ public class GamePickScreen extends ScreenAdapter {
         spaceInvaders = new Texture("IntroScreen/spaceinvaders.png");
         megaBomb = new Texture("IntroScreen/bomb.png");
         chickenCrossyRoad = new Texture("IntroScreen/crossyroad.png");
+	
 
-        games= new String[]{"Swing Along","Mega Words","Space Invaders","Mega Bomb","Crossy Road"};
+        games= new String[]{"Swing Along","Mega Words","Space Invaders","Mega Bomb","Crossy Road","Memory Game"};
 
 
     }
@@ -75,6 +77,7 @@ public class GamePickScreen extends ScreenAdapter {
                 if (keyCode == Input.Keys.SPACE) {
                     if (gameNum == SWING) {
                         game.setScreen(new SwingAlong(game));
+
                     } else if (gameNum == WORD) {
                         game.setScreen(new MegaWord(game));
 
@@ -86,6 +89,9 @@ public class GamePickScreen extends ScreenAdapter {
 
                     } else if (gameNum == ROAD) {
                         game.setScreen(new ChickenCrossyRoad(game));
+
+                    } else if (gamenum == MEMORY) {
+                        game.setScreen(new MemoryIntro(game));
 
                     }
                 }
@@ -115,7 +121,6 @@ public class GamePickScreen extends ScreenAdapter {
 
         Gdx.gl.glClearColor(.4f, .25f, 0.3f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
         stateTime += Gdx.graphics.getDeltaTime();
 
         sr.begin(ShapeRenderer.ShapeType.Filled);
