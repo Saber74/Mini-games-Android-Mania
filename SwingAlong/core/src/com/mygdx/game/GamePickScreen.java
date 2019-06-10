@@ -54,7 +54,7 @@ public class GamePickScreen extends ScreenAdapter {
                     if (gamenum == SWING) {
                         game.setScreen(new SwingAlong(game));
                     } else if (gamenum == STICK) {
-                        //                game.setScreen(new Swing);
+                        game.setScreen(new MemoryIntro(game));
 
                     } else if (gamenum == BOMB) {
                         game.setScreen(new MegaBomb(game));
@@ -89,9 +89,7 @@ public class GamePickScreen extends ScreenAdapter {
     public void render(float delta) {
         Gdx.gl.glClearColor(.4f, .25f, 0.3f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
         stateTime += Gdx.graphics.getDeltaTime();
-
         game.batch.begin();
         game.batch.draw(swingalong,100,550);
         game.batch.draw(stickfight,1000,550);
