@@ -3,15 +3,18 @@
     <string name="crossy_button">Crossy Road</string>
     <string name="invaders_button">Space Invaders</string>
     <string name="swing_button">Swing Along</string>
-    <string name="fight_button">Mega Fight</string>
-    <string name="bomb_button">Bomb Luck</string>
+    <string name="word_button">Mega Words</string>
+    <string name="bomb_button">Mega Bomb</string>
+    <string name="memory_button">Mega Memory</string>
 
     <string name="crossyControls_name">Crossy Road Controls</string>
     <string name="invadersControls_name">Space Invaders Controls</string>
     <string name="swingControls_name">Swing Controls</string>
-    <string name="fightControls_name">Mega Fight Controls</string>
-    <string name="bombControls_name">Bomb Luck Controls</string>
+    <string name="wordControls_name">Mega Words Controls</string>
+    <string name="bombControls_name">Mega Bomb Controls</string>
+    <string name="memControls_name">Mega Memory Controls</string>
 
+    <string name="enter">Enter</string>
     <string name="jump">Jump!</string>
     <string name="shoot">Shoot!</string>
     <string name="attack">Attack!</string>
