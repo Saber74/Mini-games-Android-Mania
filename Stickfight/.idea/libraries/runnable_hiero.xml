@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="runnable-hiero">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/Assets/runnable-hiero.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
