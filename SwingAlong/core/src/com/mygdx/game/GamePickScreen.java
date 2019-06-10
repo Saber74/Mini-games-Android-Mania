@@ -30,10 +30,10 @@ public class GamePickScreen extends ScreenAdapter {
     int gameNum;
 
     private static final int SWING=1;
-    private static final int WORD=2;
-    private static final int SPACE=3;
-    private static final int BOMB=4;
-    private static final int ROAD=5;
+    private static final int ROAD=2;
+    private static final int WORD=3;
+    private static final int SPACE=4;
+    private static final int BOMB=5;
     private static final int MEMORY=6;
 
     String[] games;
@@ -60,7 +60,7 @@ public class GamePickScreen extends ScreenAdapter {
         chickenCrossyRoad = new Texture("IntroScreen/crossyroad.png");
 	
 
-        games= new String[]{"Swing Along","Mega Words","Space Invaders","Mega Bomb","Crossy Road","Memory Game"};
+        games= new String[]{"Swing Along","Crossy Road","Mega Words","Space Invaders","Mega Bomb","Memory Game"};
 
 
     }
@@ -130,20 +130,21 @@ public class GamePickScreen extends ScreenAdapter {
 
         if (gameNum == SWING) {
             chooseRect = new Rectangle(180,455,430,400);
-        } else if (gameNum == WORD) {
+        } else if (gameNum == ROAD) {
             chooseRect = new Rectangle(755,455,430,400);
 
-        } else if (gameNum == SPACE) {
+        } else if (gameNum == WORD) {
             chooseRect = new Rectangle(1330,455,430,400);
 
-        } else if (gameNum == BOMB) {
+        } else if (gameNum == SPACE) {
             chooseRect = new Rectangle(180,75,430,400);
 
-        } else if (gameNum == ROAD) {
+        } else if (gameNum == BOMB) {
             chooseRect = new Rectangle(755,75,430,400);
 
+        } else if (gameNum == MEMORY){
+            chooseRect = new Rectangle(1330,75,430,400);
         }
-
         sr.rect(chooseRect.x,chooseRect.y,chooseRect.width,chooseRect.height);
 
         sr.end();

@@ -38,13 +38,18 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void launchFightApp(View view) {
-        Intent intent = new Intent(this, FightControlActivity.class);
+    public void launchWordApp(View view) {
+        Intent intent = new Intent(this, WordControlActivity.class);
         startActivity(intent);
     }
 
     public void launchBombApp(View view) {
         Intent intent = new Intent(this, BombControlActivity.class);
+        startActivity(intent);
+    }
+
+    public void launchMemoryApp(View view){
+        Intent intent = new Intent(this, MemoryControlActivity.class);
         startActivity(intent);
     }
 }
