@@ -32,6 +32,7 @@ public class Memory extends ScreenAdapter {
     private int currentp2y=0;
     public Memory(MyGdxGame game)
     {
+//        Gdx.graphics.setWindowedMode(1200,1000);
         this.game = game;
         stateTime = 0f;
         time = 15000;//10 seconds - 600 seconds -> 10 minutes
@@ -45,7 +46,7 @@ public class Memory extends ScreenAdapter {
     }
     @Override
     public void render(float delta) {
-        Gdx.gl.glClearColor(0.2f, 0.1f, 0.1f, 1);
+        Gdx.gl.glClearColor(0.3f, 0.1f, 0.5f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         for(int i=0;i<7;i++){
             System.out.println(Arrays.toString(memorize[i]));
@@ -95,15 +96,15 @@ public class Memory extends ScreenAdapter {
 
                 }
                 shapes.setColor(0.3f, 0.1f, 0.1f, 0);
-                shapes.rect(200 + (50 * currentp1x), 225 + 50 * currentp1y, 28, 28);
-                shapes.rect(800 + (50 * currentp2x), 225 + 50 * currentp2y, 28, 28);
+                shapes.rect(215 + (50 * currentp1x), 235 + 50 * currentp1y, 24, 24);
+                shapes.rect(815 + (50 * currentp2x), 235 + 50 * currentp2y, 24, 24);
                 TimerTask task=new TimerTask() {
                     @Override
                     public void run() {
                         gamefinished=true;
                     }
                 };
-                new Timer().scheduleAtFixedRate(task, 2000, 10000);
+                new Timer().scheduleAtFixedRate(task, 20000, 10000);
             }
             else{
                 winnner();
@@ -185,17 +186,17 @@ public class Memory extends ScreenAdapter {
     public void winnner(){
         int p1Score=0;
         int p2Score=0;
-        for(int i=0;i<7;i++){
-            for(int k=0;k<7;k++){
-                if(memorize[i][k]==player1[i][k]){
+        for(int i=0;i<7;i++) {
+            for (int k = 0; k < 7; k++) {
+                if (memorize[i][k] == player1[i][k]) {
                     p1Score++;
                 }
-                if(memorize[i][k]==player2[i][k]){
+                if (memorize[i][k] == player2[i][k]) {
                     p2Score++;
                 }
             }
         }
-        Gdx.gl.glClearColor(.4f, .25f, 0.3f, 1);
+        Gdx.gl.glClearColor(0.3f, 0.1f, 0.5f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         game.font.getData().setScale(2f);
         for (int i = 0; i < 7; i++) {

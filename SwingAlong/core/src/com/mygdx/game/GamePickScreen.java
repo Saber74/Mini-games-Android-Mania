@@ -25,6 +25,7 @@ public class GamePickScreen extends ScreenAdapter {
     Texture megaBomb;
     Texture chickenCrossyRoad;
     Texture megaWord;
+    Texture megaMemory;
 
     int gameNum;
 
@@ -53,7 +54,7 @@ public class GamePickScreen extends ScreenAdapter {
 
         swingAlong = new Texture("IntroScreen/swingalong.png");
         megaWord = new Texture("IntroScreen/word.png");
-        //stickfight= new Texture("IntroScreen/stickfight.png");
+        megaMemory= new Texture("IntroScreen/Memory.png");
         spaceInvaders = new Texture("IntroScreen/spaceinvaders.png");
         megaBomb = new Texture("IntroScreen/bomb.png");
         chickenCrossyRoad = new Texture("IntroScreen/crossyroad.png");
@@ -90,7 +91,7 @@ public class GamePickScreen extends ScreenAdapter {
                     } else if (gameNum == ROAD) {
                         game.setScreen(new ChickenCrossyRoad(game));
 
-                    } else if (gamenum == MEMORY) {
+                    } else if (gameNum == MEMORY) {
                         game.setScreen(new MemoryIntro(game));
 
                     }
@@ -150,7 +151,7 @@ public class GamePickScreen extends ScreenAdapter {
         game.batch.begin();
         game.batch.draw(swingAlong,280,360,200,250);
         game.batch.draw(megaWord,580,360,200,250);
-        //game.batch.draw(stickfight,1000,550);
+        game.batch.draw(megaMemory,880,80,200,250);
         game.batch.draw(spaceInvaders,880,360,200,250);
         game.batch.draw(megaBomb,280,80,200,250);
         game.batch.draw(chickenCrossyRoad,580,80,200,250);

@@ -25,6 +25,7 @@ public class DesktopLauncher {
 
 		config.fullscreen = true;
 
+
 		//new LwjglApplication(new MyGdxGame(), config);
 		new LwjglApplication(new MyGdxGame(), config);
 
