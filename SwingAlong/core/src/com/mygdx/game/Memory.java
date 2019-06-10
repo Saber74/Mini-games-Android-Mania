@@ -38,8 +38,8 @@ public class Memory extends ScreenAdapter {
         for(int i=0;i<7;i++){
             for(int k=0;k<7;k++){
                 memorize[i][k]=new Random().nextInt(2) ;
-                player1[i][k]=1;
-                player2[i][k]=1;
+                player1[i][k]=0;
+                player2[i][k]=0;
             }
         }
     }
@@ -117,61 +117,62 @@ public class Memory extends ScreenAdapter {
         Gdx.input.setInputProcessor(new InputAdapter() {
             @Override
             public boolean keyDown(int keyCode) {
-                if (keyCode == Input.Keys.RIGHT) {
-                    if (currentp1x < 6) {
-                        currentp1x += 1;
+                if (!gamefinished) {
+                    if (keyCode == Input.Keys.RIGHT) {
+                        if (currentp1x < 6) {
+                            currentp1x += 1;
+                        }
+                    }
+                    if (keyCode == Input.Keys.LEFT) {
+                        if (currentp1x > 0) {
+                            currentp1x -= 1;
+                        }
+                    }
+                    if (keyCode == Input.Keys.UP) {
+                        if (currentp1y < 6) {
+                            currentp1y++;
+                        }
+                    }
+                    if (keyCode == Input.Keys.DOWN) {
+                        if (currentp1y > 0) {
+                            currentp1y--;
+                        }
+                    }
+                    if (keyCode == Input.Keys.SPACE) {
+                        if (player1[currentp1y][currentp1x] == 0) {
+                            player1[currentp1y][currentp1x] = 1;
+                        } else {
+                            player1[currentp1y][currentp1x] = 0;
+                        }
+                    }
+                    if (keyCode == Input.Keys.A) {
+                        if (currentp2x > 0) {
+                            currentp2x -= 1;
+                        }
+                    }
+                    if (keyCode == Input.Keys.D) {
+                        if (currentp2x < 6) {
+                            currentp2x += 1;
+                        }
+                    }
+                    if (keyCode == Input.Keys.W) {
+                        if (currentp2y < 6) {
+                            currentp2y++;
+                        }
+                    }
+                    if (keyCode == Input.Keys.S) {
+                        if (currentp2y > 0) {
+                            currentp2y--;
+                        }
+                    }
+                    if (keyCode == Input.Keys.SHIFT_LEFT) {
+                        if (player2[currentp2y][currentp2x] == 0) {
+                            player2[currentp2y][currentp2x] = 1;
+                        } else {
+                            player2[currentp2y][currentp2x] = 0;
+                        }
                     }
                 }
-                if (keyCode == Input.Keys.LEFT) {
-                    if (currentp1x > 0) {
-                        currentp1x -= 1;
-                    }
-                }
-                if (keyCode == Input.Keys.UP) {
-                    if (currentp1y < 6) {
-                        currentp1y++;
-                    }
-                }
-                if (keyCode == Input.Keys.DOWN) {
-                    if (currentp1y > 0) {
-                        currentp1y--;
-                    }
-                }
-                if (keyCode == Input.Keys.SPACE) {
-                    if (player1[currentp1y][currentp1x] == 0) {
-                        player1[currentp1y][currentp1x] = 1;
-                    } else {
-                        player1[currentp1y][currentp1x] = 0;
-                    }
-                }
-                if (keyCode == Input.Keys.A) {
-                    if (currentp2x > 0) {
-                        currentp2x -= 1;
-                    }
-                }
-                if (keyCode == Input.Keys.D) {
-                    if (currentp2x < 6) {
-                        currentp2x += 1;
-                    }
-                }
-                if (keyCode == Input.Keys.W) {
-                    if (currentp2y < 6) {
-                        currentp2y++;
-                    }
-                }
-                if (keyCode == Input.Keys.S) {
-                    if (currentp2y > 0) {
-                        currentp2y--;
-                    }
-                }
-                if (keyCode == Input.Keys.SHIFT_LEFT) {
-                    if (player2[currentp2y][currentp2x] == 0) {
-                        player2[currentp2y][currentp2x] = 1;
-                    } else {
-                        player2[currentp2y][currentp2x] = 0;
-                    }
-                }
-
                 return true;
             }
         });
@@ -196,7 +197,7 @@ public class Memory extends ScreenAdapter {
         }
         Gdx.gl.glClearColor(.4f, .25f, 0.3f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        game.font.getData().setScale(1f);
+        game.font.getData().setScale(2f);
         for (int i = 0; i < 7; i++) {
             for (int k = 0; k < 7; k++) {
                 if (player1[i][k] == 1) {
@@ -215,13 +216,14 @@ public class Memory extends ScreenAdapter {
                 }
                 if (memorize[i][k] == 1) {
                     shapes.setColor(0.2f, 0.5f, 0.1f, 0);
-                    shapes.rect(475 + (50 * k), 300 + 50 * i, 48, 48);
+                    shapes.rect(500 + (50 * k), 300 + 50 * i, 48, 48);
                 } else {
                     shapes.setColor(255, 255, 255, 0);
-                    shapes.rect(475 + (50 * k), 300 + 50 * i, 48, 48);
+                    shapes.rect(500 + (50 * k), 300 + 50 * i, 48, 48);
                 }
             }
         }
+        game.font.draw(game.batch,"Original",575,100);
         if(p1Score>p2Score){
             game.font.draw(game.batch,"Player one won",575,1000);
         }
