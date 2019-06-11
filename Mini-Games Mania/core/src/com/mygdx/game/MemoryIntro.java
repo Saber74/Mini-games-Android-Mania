@@ -17,7 +17,7 @@ public class MemoryIntro extends ScreenAdapter {
         game.font.getData().setScale(1.5f);
         game.font.draw(game.batch,"Memory Grids",475,700);
         game.font.getData().setScale(0.5f);
-        game.font.draw(game.batch,"Remmember the grid shown as best as you can then try to replicate it",350,400);
+        game.font.draw(game.batch,"Remember the grid shown as best as you can then try to replicate it",350,400);
         game.font.draw(game.batch,"Press space to begin",575,100);
         game.batch.end();
     }

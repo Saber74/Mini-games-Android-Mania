@@ -15,7 +15,7 @@ public class MyGdxGame extends Game {
 	public void create() {
 		batch = new SpriteBatch();
 		shapeRenderer = new ShapeRenderer();
-		font = new BitmapFont(Gdx.files.internal("IntroScreen/Intro.fnt")); //description font
+		font = new BitmapFont(Gdx.files.internal("android/assets/IntroScreen/Intro.fnt")); //description font
 
 		setScreen(new IntroAnimation(this));
 		//setScreen(new GamePickScreen(this));

@@ -23,7 +23,7 @@ public class Space_SpiritBomb {
         this.x = x;
         this.y = y;
         this.width = width;
-        spiritbomb_sprite = new Texture("SpaceInvaders/spiritbomb_attack.png"); //loads in the spiritbomb sprite
+        spiritbomb_sprite = new Texture("android/assets/SpaceInvaders/spiritbomb_attack.png"); //loads in the spiritbomb sprite
         spiritbomb = new Sprite(spiritbomb_sprite); // creates a sprite based on the sprite image
         //creates a rectangle object
         rect = new Rectangle((int) spiritbomb.getX(), (int) spiritbomb.getY(), (int) spiritbomb.getWidth(), (int) spiritbomb.getHeight());

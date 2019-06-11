@@ -96,12 +96,12 @@ public class SwingAlong extends ScreenAdapter {
 		x1 = 0;
 		x2 = 0;
 		
-		bkg = new Texture("SwingAlong/bkg.png");
-		platform = new Texture("SwingAlong/platform.png");
-		p1Mark = new Texture("SwingAlong/p1head.png");
-		p2Mark = new Texture("SwingAlong/p2head.png");
-		p1win = new Texture("SwingAlong/p1win.png");
-		p2win = new Texture("SwingAlong/p2win.png");
+		bkg = new Texture("android/assets/SwingAlong/bkg.png");
+		platform = new Texture("android/assets/SwingAlong/platform.png");
+		p1Mark = new Texture("android/assets/SwingAlong/p1head.png");
+		p2Mark = new Texture("android/assets/SwingAlong/p2head.png");
+		p1win = new Texture("android/assets/SwingAlong/p1win.png");
+		p2win = new Texture("android/assets/SwingAlong/p2win.png");
 		
 		vines1 = new Vine[15];
 		vines2 = new Vine[15];
@@ -109,16 +109,16 @@ public class SwingAlong extends ScreenAdapter {
 		//15 vines
 		//each vine is 500 pixels apart
 		for(int i=0; i<vines1.length; i++){
-			vines1[i] = new Vine("SwingAlong/vine.png", 275+i*350, 800, 100+Math.random()*50);
+			vines1[i] = new Vine("android/assets/SwingAlong/vine.png", 275+i*350, 800, 100+Math.random()*50);
 		}
 		
 		for(int i=0; i<vines2.length; i++){
-			vines2[i] = new Vine("SwingAlong/vine.png", 275+i*350, 400, 100+Math.random()*50);
+			vines2[i] = new Vine("android/assets/SwingAlong/vine.png", 275+i*350, 400, 100+Math.random()*50);
 		}
 		
-		p1 = new Player("SwingAlong/megaman1_",5,0,600);
+		p1 = new Player("android/assets/SwingAlong/megaman1_",5,0,600);
 		
-		p2 = new Player("SwingAlong/megaman2_",5,0,200);
+		p2 = new Player("android/assets/SwingAlong/megaman2_",5,0,200);
 
 		
 	}
@@ -263,23 +263,23 @@ public class SwingAlong extends ScreenAdapter {
 	
 	public void restart1(){
 		for(int i=0; i<vines1.length; i++){
-			vines1[i] = new Vine("SwingAlong/vine.png", 250+i*325, 800, 100+Math.random()*50);
+			vines1[i] = new Vine("android/assets/SwingAlong/vine.png", 250+i*325, 800, 100+Math.random()*50);
 		}
 		stateTime1 = 0f;
 		vIndex1 = -1;
 		bkgX1 = 0;
-		p1 = new Player("SwingAlong/megaman1_",5,0,600);
+		p1 = new Player("android/assets/SwingAlong/megaman1_",5,0,600);
 		x1 = 0;
 	}
 	
 	public void restart2(){
 		for(int i=0; i<vines2.length; i++){
-			vines2[i] = new Vine("SwingAlong/vine.png", 250+i*325, 400, 100+Math.random()*50);
+			vines2[i] = new Vine("android/assets/SwingAlong/vine.png", 250+i*325, 400, 100+Math.random()*50);
 		}
 		stateTime2 = 0f;
 		vIndex2 = -1;
 		bkgX2 = 0;
-		p2 = new Player("SwingAlong/megaman2_",5,0,200);
+		p2 = new Player("android/assets/SwingAlong/megaman2_",5,0,200);
 		x2 = 0;
 	}
 	

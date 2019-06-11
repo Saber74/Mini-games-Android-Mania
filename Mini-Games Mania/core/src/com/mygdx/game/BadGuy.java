@@ -21,7 +21,7 @@ public class BadGuy {
 		//create a texture for each image name
 		frameTextures = new Texture[names.length];
 		for(int i=0; i<names.length; i++){
-			frameTextures[i] = new Texture("ChickenCrossyRoad/"+names[i]);
+			frameTextures[i] = new Texture("android/assets/ChickenCrossyRoad/"+names[i]);
 		}
 		
 		badSprite = new Sprite(frameTextures[frame]);//starts off at 0th frame

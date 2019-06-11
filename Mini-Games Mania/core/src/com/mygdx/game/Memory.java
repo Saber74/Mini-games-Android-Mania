@@ -118,6 +118,9 @@ public class Memory extends ScreenAdapter {
         Gdx.input.setInputProcessor(new InputAdapter() {
             @Override
             public boolean keyDown(int keyCode) {
+                if(keyCode == Input.Keys.ESCAPE){
+                    Gdx.app.exit();
+                }
                 if (!gamefinished) {
                     if (keyCode == Input.Keys.RIGHT) {
                         if (currentp1x < 6) {

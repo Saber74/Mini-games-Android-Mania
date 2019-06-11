@@ -69,34 +69,34 @@ public class Space_Main extends ScreenAdapter {
         cam.update();
         this.game=game;
         // loading music
-        start0 = Gdx.audio.newMusic(Gdx.files.internal("SpaceInvaders/Sound/start0.mp3")); //first sound in intro
-        start = Gdx.audio.newMusic(Gdx.files.internal("SpaceInvaders/Sound/start.mp3")); //2nd
-        start2 = Gdx.audio.newMusic(Gdx.files.internal("SpaceInvaders/Sound/start2.mp3")); //3rd
+        start0 = Gdx.audio.newMusic(Gdx.files.internal("android/assets/SpaceInvaders/Sound/start0.mp3")); //first sound in intro
+        start = Gdx.audio.newMusic(Gdx.files.internal("android/assets/SpaceInvaders/Sound/start.mp3")); //2nd
+        start2 = Gdx.audio.newMusic(Gdx.files.internal("android/assets/SpaceInvaders/Sound/start2.mp3")); //3rd
         // loading a bunch of images
-        intro_player = new Texture("SpaceInvaders/0.png");
-        bullet = new Texture("SpaceInvaders/1.png");
-        bulletside = new Texture("SpaceInvaders/1rotated.png");
-        ship = new Texture("SpaceInvaders/2.png");
-        enemy1 = new Texture("SpaceInvaders/Enemies/0.png");
-        enemy2 = new Texture("SpaceInvaders/Enemies/1.png");
-        enemy3 = new Texture("SpaceInvaders/Enemies/2.png");
-        powerup1 = new Texture("SpaceInvaders/mirror.png");
-        powerup2 = new Texture("SpaceInvaders/spiritBomb.png");
-        powerup3 = new Texture("SpaceInvaders/invincible.png");
-        intro_explosion = new Texture("SpaceInvaders/Explosion/29.png");
+        intro_player = new Texture("android/assets/SpaceInvaders/0.png");
+        bullet = new Texture("android/assets/SpaceInvaders/1.png");
+        bulletside = new Texture("android/assets/SpaceInvaders/1rotated.png");
+        ship = new Texture("android/assets/SpaceInvaders/2.png");
+        enemy1 = new Texture("android/assets/SpaceInvaders/Enemies/0.png");
+        enemy2 = new Texture("android/assets/SpaceInvaders/Enemies/1.png");
+        enemy3 = new Texture("android/assets/SpaceInvaders/Enemies/2.png");
+        powerup1 = new Texture("android/assets/SpaceInvaders/mirror.png");
+        powerup2 = new Texture("android/assets/SpaceInvaders/spiritBomb.png");
+        powerup3 = new Texture("android/assets/SpaceInvaders/invincible.png");
+        intro_explosion = new Texture("android/assets/SpaceInvaders/Explosion/29.png");
         // loading a bunch of fonts
-        font2 = new BitmapFont(Gdx.files.internal("SpaceInvaders/one/intro.fnt")); //description font
-        font3 = new BitmapFont(Gdx.files.internal("SpaceInvaders/one/sub.fnt")); //description but smaller
-        font4 = new BitmapFont(Gdx.files.internal("SpaceInvaders/one/sub.fnt")); //for instructions
-        diedFont = new BitmapFont(Gdx.files.internal("SpaceInvaders/one/died.fnt"));
+        font2 = new BitmapFont(Gdx.files.internal("android/assets//one/intro.fnt")); //description font
+        font3 = new BitmapFont(Gdx.files.internal("android/assets/SpaceInvaders/one/sub.fnt")); //description but smaller
+        font4 = new BitmapFont(Gdx.files.internal("android/assets/SpaceInvaders/one/sub.fnt")); //for instructions
+        diedFont = new BitmapFont(Gdx.files.internal("android/assets/SpaceInvaders/one/died.fnt"));
         font3.getData().setScale(2f);
         font2.getData().setScale(0.8f);
-        background = new Texture("SpaceInvaders/start.jpg"); // background for intro screen
-        intro_music = Gdx.audio.newMusic(Gdx.files.internal("SpaceInvaders/1.mp3"));
+        background = new Texture("android/assets/SpaceInvaders/start.jpg"); // background for intro screen
+        intro_music = Gdx.audio.newMusic(Gdx.files.internal("android/assets/SpaceInvaders/1.mp3"));
         intro_music.play();
         //next up are assets used in main game
-        music = Gdx.audio.newMusic(Gdx.files.internal("SpaceInvaders/Sound/main.mp3"));
-        bg = new Texture("SpaceInvaders/jpgs/space-1.jpg");
+        music = Gdx.audio.newMusic(Gdx.files.internal("android/assets/SpaceInvaders/Sound/main.mp3"));
+        bg = new Texture("android/assets/SpaceInvaders/jpgs/space-1.jpg");
         batch = game.batch; // initialized the new batch
         player = new Space_Player(0, 50,1); // initializes the player and sets the x and y
         player2= new Space_Player(600,50,2);
@@ -104,7 +104,7 @@ public class Space_Main extends ScreenAdapter {
 
         hud = new Space_HUD(); // initializes the heads up display
         for (int i = 0; i < 73; i++) { // this will load in the images for the explosion animation
-            explosion[i] = new Texture("SpaceInvaders/EXPLOSION/" + i + ".png"); // assigns a part of the array to a certain image
+            explosion[i] = new Texture("android/assets/SpaceInvaders/EXPLOSION/" + i + ".png"); // assigns a part of the array to a certain image
         }
     }
     @Override
@@ -216,7 +216,7 @@ public class Space_Main extends ScreenAdapter {
 
     private void youWin(){ // displays text and will
         music.stop(); // stops the music
-        Music win= Gdx.audio.newMusic(Gdx.files.internal("SpaceInvaders/Sound/win.mp3")); // will load the win audio
+        Music win= Gdx.audio.newMusic(Gdx.files.internal("android/assets/SpaceInvaders/Sound/win.mp3")); // will load the win audio
         if(soundPlayed==false) { // plays the sound once
             win.play();
             soundPlayed = true;

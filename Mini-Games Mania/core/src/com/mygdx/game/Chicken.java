@@ -50,14 +50,14 @@ public class Chicken {
 
         this.num = num;
 
-        win = new Texture("ChickenCrossyRoad/"+String.format("p%dwin.png", num+1));
+        win = new Texture("android/assets/ChickenCrossyRoad/"+String.format("p%dwin.png", num+1));
 
         goodTextures = new Texture[4][3];
         String[] goodImages = {"_back","_front","_left","_right"};
 
         for(int i=0; i<goodImages.length; i++){
             for(int j=0; j<3; j++){
-                goodTextures[i][j] = new Texture("ChickenCrossyRoad/"+String.format("good%d%s%d.png",num+1,goodImages[i],j+1));
+                goodTextures[i][j] = new Texture("android/assets/ChickenCrossyRoad/"+String.format("good%d%s%d.png",num+1,goodImages[i],j+1));
             }
         }
 
@@ -65,7 +65,7 @@ public class Chicken {
         goodFrame = 0;
 
 
-        homeTexture = new Texture("ChickenCrossyRoad/"+String.format("home%d.png", num+1));
+        homeTexture = new Texture("android/assets/ChickenCrossyRoad/"+String.format("home%d.png", num+1));
 
         lives = 5;
 
@@ -75,7 +75,7 @@ public class Chicken {
         goodRect = new Rectangle(gx,gy,50,50);
 
         //initialize the feather (which pops up when the chicken is hit)
-        feather = new Sprite(new Texture("ChickenCrossyRoad/"+String.format("feather%d.png",num+1)));
+        feather = new Sprite(new Texture("android/assets/ChickenCrossyRoad/"+String.format("feather%d.png",num+1)));
 
         dead = false;
     }

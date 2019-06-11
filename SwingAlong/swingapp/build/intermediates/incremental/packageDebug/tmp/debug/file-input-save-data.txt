@@ -1,0 +1,7 @@
+#Internal package file, do not edit.
+#Mon Jun 10 20:54:52 EDT 2019
+0.baseType=DIRECTORY
+0.base=C\:\\Users\\hwu\\Documents\\Grade 12\\Computer Science\\FSE Mini-Game\\Mini-games-Bluetooth-Mania\\SwingAlong\\swingapp\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+0.path=classes.dex
+0.set=DEX
+count=1

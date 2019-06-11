@@ -77,7 +77,7 @@ public class MegaWord extends ScreenAdapter {
 
 		batch = new SpriteBatch();
 		sr = new ShapeRenderer();
-		font = new BitmapFont(Gdx.files.internal("IntroScreen/Intro.fnt")); //description font
+		font = new BitmapFont(Gdx.files.internal("android/assets/IntroScreen/Intro.fnt")); //description font
 
 		score1 = 0;
 		score2 = 0;

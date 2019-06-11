@@ -54,14 +54,14 @@ public class GamePickScreen extends ScreenAdapter {
 
         gameNum=1;
 
-        swingAlong = new Texture("IntroScreen/swingalong.png");
-        megaWord = new Texture("IntroScreen/word.png");
-        megaMemory= new Texture("IntroScreen/Memory.png");
-        spaceInvaders = new Texture("IntroScreen/spaceinvaders.png");
-        megaBomb = new Texture("IntroScreen/bomb.png");
-        chickenCrossyRoad = new Texture("IntroScreen/crossyroad.png");
+        swingAlong = new Texture("android/assets/IntroScreen/swingalong.png");
+        megaWord = new Texture("android/assets/IntroScreen/word.png");
+        megaMemory= new Texture("android/assets/IntroScreen/Memory.png");
+        spaceInvaders = new Texture("android/assets/IntroScreen/spaceinvaders.png");
+        megaBomb = new Texture("android/assets/IntroScreen/bomb.png");
+        chickenCrossyRoad = new Texture("android/assets/IntroScreen/crossyroad.png");
 
-        choose = new Texture("IntroScreen/chooseBox.png");
+        choose = new Texture("android/assets/IntroScreen/chooseBox.png");
 	
 
         games= new String[]{"Swing Along","Crossy Road","Mega Words","Space Invaders","Mega Bomb","Memory Game"};
@@ -149,11 +149,11 @@ public class GamePickScreen extends ScreenAdapter {
         }
 
         game.batch.draw(swingAlong,280,360,200,250);
-        game.batch.draw(megaWord,580,360,200,250);
+        game.batch.draw(chickenCrossyRoad,580,360,200,250);
+        game.batch.draw(megaWord,880,360,200,250);
+        game.batch.draw(spaceInvaders,280,80,200,250);
+        game.batch.draw(megaBomb,580,80,200,250);
         game.batch.draw(megaMemory,880,80,200,250);
-        game.batch.draw(spaceInvaders,880,360,200,250);
-        game.batch.draw(megaBomb,280,80,200,250);
-        game.batch.draw(chickenCrossyRoad,580,80,200,250);
         game.font.draw(game.batch, "Press <SPACE> to select a game.", 350, 750);
         String currGame=games[gameNum-1];
         String text= String.format("Current Game: %d. %s",gameNum,currGame);

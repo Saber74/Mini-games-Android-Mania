@@ -77,7 +77,7 @@ public class MegaBomb extends ScreenAdapter{
 		batch = game.batch;
 
 		sr = new ShapeRenderer();
-		fontPlayer = new BitmapFont(Gdx.files.internal("IntroScreen/Intro.fnt")); //description font
+		fontPlayer = new BitmapFont(Gdx.files.internal("android/assets/IntroScreen/Intro.fnt")); //description font
 		fontTime = new BitmapFont();
 		fontTime.getData().setScale(2f);
 
@@ -85,8 +85,8 @@ public class MegaBomb extends ScreenAdapter{
 
 		player = P1;
 
-		bomb = new Texture("MegaBomb/bomb.png");
-		lightSprite = new Sprite(new Texture("MegaBomb/light.png"));
+		bomb = new Texture("android/assets/MegaBomb/bomb.png");
+		lightSprite = new Sprite(new Texture("android/assets/MegaBomb/light.png"));
 		lightSprite.setSize(100,100);
 		lightSprite.setPosition(380,290);
 
@@ -98,14 +98,14 @@ public class MegaBomb extends ScreenAdapter{
 		wiresCut = new Texture[wireStatus.length];
 
 		for(int i=0; i<wireStatus.length; i++){
-			wiresUncut[i] = new Texture(String.format("MegaBomb/wire%d_colour.png",i+1));
-			wiresCut[i] = new Texture(String.format("MegaBomb/wire%d_grey.png",i+1));
+			wiresUncut[i] = new Texture(String.format("android/assets/MegaBomb/wire%d_colour.png",i+1));
+			wiresCut[i] = new Texture(String.format("android/assets/MegaBomb/wire%d_grey.png",i+1));
 		}
 
 		Texture[] explodeTextures = new Texture[73];
 
 		for(int i=0; i<explodeTextures.length; i++){
-			explodeTextures[i] = new Texture(String.format("MegaBomb/EXPLOSION/%d.png",i));
+			explodeTextures[i] = new Texture(String.format("android/assets/MegaBomb/EXPLOSION/%d.png",i));
 		}
 
 		explodeAnimation = new Animation<Texture>(0.12f, explodeTextures);

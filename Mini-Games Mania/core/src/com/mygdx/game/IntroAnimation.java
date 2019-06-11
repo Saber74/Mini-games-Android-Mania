@@ -35,13 +35,13 @@ public class IntroAnimation extends ScreenAdapter {
         introTextures = new Texture[27];
 
         for(int i=0; i<introTextures.length; i++){
-            String pic = String.format("IntroScreen/pingpong/%d.png",i);
+            String pic = String.format("android/assets/IntroScreen/pingpong/%d.png",i);
             introTextures[i] = new Texture(pic);
         }
 
         introAnimation = new Animation<Texture>(0.05f, introTextures);
 
-        font = new BitmapFont(Gdx.files.internal("IntroScreen/Intro.fnt")); //description font
+        font = new BitmapFont(Gdx.files.internal("android/assets/IntroScreen/Intro.fnt")); //description font
 
     }
     @Override

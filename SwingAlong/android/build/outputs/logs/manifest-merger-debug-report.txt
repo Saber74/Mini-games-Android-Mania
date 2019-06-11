@@ -1,0 +1,163 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\Users\hwu\Documents\Grade 12\Computer Science\FSE Mini-Game\Mini-games-Bluetooth-Mania\SwingAlong\android\AndroidManifest.xml:2:1-26:12
+INJECTED from C:\Users\hwu\Documents\Grade 12\Computer Science\FSE Mini-Game\Mini-games-Bluetooth-Mania\SwingAlong\android\AndroidManifest.xml:2:1-26:12
+INJECTED from C:\Users\hwu\Documents\Grade 12\Computer Science\FSE Mini-Game\Mini-games-Bluetooth-Mania\SwingAlong\android\AndroidManifest.xml:2:1-26:12
+INJECTED from C:\Users\hwu\Documents\Grade 12\Computer Science\FSE Mini-Game\Mini-games-Bluetooth-Mania\SwingAlong\android\AndroidManifest.xml:2:1-26:12
+MERGED from [com.android.support.constraint:constraint-layout:2.0.0-beta1] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\128ad7d69c8d3f07ddd5bf8d51cbe38b\AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\510a60ec7ec3d2cdba6d6f76bdc70837\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\5cbd17dd391695b26eebdc7be80fcc34\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\74a5cb32ccaaecb1dfc9280243ad576d\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:recyclerview-v7:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\7c6cc86925978591e02dfe23cd5a5266\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\6ad49da9a5a062ba5d9ed3be299bedeb\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\8d1ba8ed1093bde1a2ad691b3cfe84c0\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\74b34e0cc8ffa245fc6d1b3d43959248\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:loader:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\7b4e2f4258ad3f9a05709f28d0c295a8\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:viewpager:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\d349f6e304f89e56db1ad3f7b368e7e4\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:coordinatorlayout:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\ee57eebb896f3d5277be932e8a68f785\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:drawerlayout:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\f718e18175c80277c7d82d249069a9a8\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:slidingpanelayout:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\2db3437c4d6cf544a8dbd658d8f3da8d\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:customview:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\42540ba212f11fc4d832729253f80eae\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\eed36b0f7d267c7f133fbf417b1c3253\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\982b095d9e394f2525137828f7f5ab0b\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\876c0ba89456236622fc33eab59573d7\AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\f281c2dd05f794b11b9564dd651136a5\AndroidManifest.xml:17:1-25:12
+MERGED from [com.android.support:cursoradapter:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\19ac3584164a5c3522d198e77a461fd5\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\02cb466073a192f1a121821dc3b59195\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:documentfile:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\bc3a3c2a4c7008051bb63b4475cb573d\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\adcec6bc84655f4103c773dd041fce63\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:print:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\50f794784609f6a0b34f6ff9c64fafcd\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\caa26074dd1dc237671994a3256e96bc\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\b0256190d7fee96513d30e546dd0d3d8\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\25ce2066bc3206a23e6c0602a16b9809\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.1] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\eaf35b6892ec4af331c4d7bb0232d17a\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:interpolator:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\025a5a439d40c19d98c69a4c120ab87c\AndroidManifest.xml:17:1-22:12
+INJECTED from C:\Users\hwu\Documents\Grade 12\Computer Science\FSE Mini-Game\Mini-games-Bluetooth-Mania\SwingAlong\android\AndroidManifest.xml:2:1-26:12
+INJECTED from C:\Users\hwu\Documents\Grade 12\Computer Science\FSE Mini-Game\Mini-games-Bluetooth-Mania\SwingAlong\android\AndroidManifest.xml:2:1-26:12
+INJECTED from C:\Users\hwu\Documents\Grade 12\Computer Science\FSE Mini-Game\Mini-games-Bluetooth-Mania\SwingAlong\android\AndroidManifest.xml:2:1-26:12
+	package
+		ADDED from C:\Users\hwu\Documents\Grade 12\Computer Science\FSE Mini-Game\Mini-games-Bluetooth-Mania\SwingAlong\android\AndroidManifest.xml:3:5-30
+		INJECTED from C:\Users\hwu\Documents\Grade 12\Computer Science\FSE Mini-Game\Mini-games-Bluetooth-Mania\SwingAlong\android\AndroidManifest.xml
+		INJECTED from C:\Users\hwu\Documents\Grade 12\Computer Science\FSE Mini-Game\Mini-games-Bluetooth-Mania\SwingAlong\android\AndroidManifest.xml
+	android:versionName
+		INJECTED from C:\Users\hwu\Documents\Grade 12\Computer Science\FSE Mini-Game\Mini-games-Bluetooth-Mania\SwingAlong\android\AndroidManifest.xml
+		ADDED from C:\Users\hwu\Documents\Grade 12\Computer Science\FSE Mini-Game\Mini-games-Bluetooth-Mania\SwingAlong\android\AndroidManifest.xml:2:1-26:12
+		INJECTED from C:\Users\hwu\Documents\Grade 12\Computer Science\FSE Mini-Game\Mini-games-Bluetooth-Mania\SwingAlong\android\AndroidManifest.xml
+	android:versionCode
+		INJECTED from C:\Users\hwu\Documents\Grade 12\Computer Science\FSE Mini-Game\Mini-games-Bluetooth-Mania\SwingAlong\android\AndroidManifest.xml
+		ADDED from C:\Users\hwu\Documents\Grade 12\Computer Science\FSE Mini-Game\Mini-games-Bluetooth-Mania\SwingAlong\android\AndroidManifest.xml:2:1-26:12
+		INJECTED from C:\Users\hwu\Documents\Grade 12\Computer Science\FSE Mini-Game\Mini-games-Bluetooth-Mania\SwingAlong\android\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\Users\hwu\Documents\Grade 12\Computer Science\FSE Mini-Game\Mini-games-Bluetooth-Mania\SwingAlong\android\AndroidManifest.xml:2:11-69
+uses-sdk
+ADDED from C:\Users\hwu\Documents\Grade 12\Computer Science\FSE Mini-Game\Mini-games-Bluetooth-Mania\SwingAlong\android\AndroidManifest.xml:5:5-17
+INJECTED from C:\Users\hwu\Documents\Grade 12\Computer Science\FSE Mini-Game\Mini-games-Bluetooth-Mania\SwingAlong\android\AndroidManifest.xml:5:5-17
+INJECTED from C:\Users\hwu\Documents\Grade 12\Computer Science\FSE Mini-Game\Mini-games-Bluetooth-Mania\SwingAlong\android\AndroidManifest.xml:5:5-17
+MERGED from [com.android.support.constraint:constraint-layout:2.0.0-beta1] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\128ad7d69c8d3f07ddd5bf8d51cbe38b\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:2.0.0-beta1] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\128ad7d69c8d3f07ddd5bf8d51cbe38b\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\510a60ec7ec3d2cdba6d6f76bdc70837\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\510a60ec7ec3d2cdba6d6f76bdc70837\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\5cbd17dd391695b26eebdc7be80fcc34\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\5cbd17dd391695b26eebdc7be80fcc34\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\74a5cb32ccaaecb1dfc9280243ad576d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\74a5cb32ccaaecb1dfc9280243ad576d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\7c6cc86925978591e02dfe23cd5a5266\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\7c6cc86925978591e02dfe23cd5a5266\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\6ad49da9a5a062ba5d9ed3be299bedeb\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\6ad49da9a5a062ba5d9ed3be299bedeb\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\8d1ba8ed1093bde1a2ad691b3cfe84c0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\8d1ba8ed1093bde1a2ad691b3cfe84c0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\74b34e0cc8ffa245fc6d1b3d43959248\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\74b34e0cc8ffa245fc6d1b3d43959248\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\7b4e2f4258ad3f9a05709f28d0c295a8\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\7b4e2f4258ad3f9a05709f28d0c295a8\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\d349f6e304f89e56db1ad3f7b368e7e4\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\d349f6e304f89e56db1ad3f7b368e7e4\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\ee57eebb896f3d5277be932e8a68f785\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\ee57eebb896f3d5277be932e8a68f785\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\f718e18175c80277c7d82d249069a9a8\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\f718e18175c80277c7d82d249069a9a8\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\2db3437c4d6cf544a8dbd658d8f3da8d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\2db3437c4d6cf544a8dbd658d8f3da8d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\42540ba212f11fc4d832729253f80eae\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\42540ba212f11fc4d832729253f80eae\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\eed36b0f7d267c7f133fbf417b1c3253\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\eed36b0f7d267c7f133fbf417b1c3253\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\982b095d9e394f2525137828f7f5ab0b\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\982b095d9e394f2525137828f7f5ab0b\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\876c0ba89456236622fc33eab59573d7\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\876c0ba89456236622fc33eab59573d7\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\f281c2dd05f794b11b9564dd651136a5\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\f281c2dd05f794b11b9564dd651136a5\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\19ac3584164a5c3522d198e77a461fd5\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\19ac3584164a5c3522d198e77a461fd5\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\02cb466073a192f1a121821dc3b59195\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\02cb466073a192f1a121821dc3b59195\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\bc3a3c2a4c7008051bb63b4475cb573d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\bc3a3c2a4c7008051bb63b4475cb573d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\adcec6bc84655f4103c773dd041fce63\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\adcec6bc84655f4103c773dd041fce63\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\50f794784609f6a0b34f6ff9c64fafcd\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\50f794784609f6a0b34f6ff9c64fafcd\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\caa26074dd1dc237671994a3256e96bc\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\caa26074dd1dc237671994a3256e96bc\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\b0256190d7fee96513d30e546dd0d3d8\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\b0256190d7fee96513d30e546dd0d3d8\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\25ce2066bc3206a23e6c0602a16b9809\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\25ce2066bc3206a23e6c0602a16b9809\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\eaf35b6892ec4af331c4d7bb0232d17a\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\eaf35b6892ec4af331c4d7bb0232d17a\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\025a5a439d40c19d98c69a4c120ab87c\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\025a5a439d40c19d98c69a4c120ab87c\AndroidManifest.xml:20:5-44
+INJECTED from C:\Users\hwu\Documents\Grade 12\Computer Science\FSE Mini-Game\Mini-games-Bluetooth-Mania\SwingAlong\android\AndroidManifest.xml:5:5-17
+INJECTED from C:\Users\hwu\Documents\Grade 12\Computer Science\FSE Mini-Game\Mini-games-Bluetooth-Mania\SwingAlong\android\AndroidManifest.xml:5:5-17
+	android:targetSdkVersion
+		INJECTED from C:\Users\hwu\Documents\Grade 12\Computer Science\FSE Mini-Game\Mini-games-Bluetooth-Mania\SwingAlong\android\AndroidManifest.xml
+		ADDED from C:\Users\hwu\Documents\Grade 12\Computer Science\FSE Mini-Game\Mini-games-Bluetooth-Mania\SwingAlong\android\AndroidManifest.xml:5:5-17
+		INJECTED from C:\Users\hwu\Documents\Grade 12\Computer Science\FSE Mini-Game\Mini-games-Bluetooth-Mania\SwingAlong\android\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\Users\hwu\Documents\Grade 12\Computer Science\FSE Mini-Game\Mini-games-Bluetooth-Mania\SwingAlong\android\AndroidManifest.xml
+		ADDED from C:\Users\hwu\Documents\Grade 12\Computer Science\FSE Mini-Game\Mini-games-Bluetooth-Mania\SwingAlong\android\AndroidManifest.xml:5:5-17
+		INJECTED from C:\Users\hwu\Documents\Grade 12\Computer Science\FSE Mini-Game\Mini-games-Bluetooth-Mania\SwingAlong\android\AndroidManifest.xml
+application
+ADDED from C:\Users\hwu\Documents\Grade 12\Computer Science\FSE Mini-Game\Mini-games-Bluetooth-Mania\SwingAlong\android\AndroidManifest.xml:7:5-24:19
+MERGED from [com.android.support.constraint:constraint-layout:2.0.0-beta1] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\128ad7d69c8d3f07ddd5bf8d51cbe38b\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:2.0.0-beta1] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\128ad7d69c8d3f07ddd5bf8d51cbe38b\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\876c0ba89456236622fc33eab59573d7\AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\876c0ba89456236622fc33eab59573d7\AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\f281c2dd05f794b11b9564dd651136a5\AndroidManifest.xml:22:5-23:19
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\f281c2dd05f794b11b9564dd651136a5\AndroidManifest.xml:22:5-23:19
+	android:appComponentFactory
+		ADDED from [com.android.support:support-compat:28.0.0] C:\Users\hwu\.gradle\caches\transforms-2\files-2.1\876c0ba89456236622fc33eab59573d7\AndroidManifest.xml:22:18-91
+	android:label
+		ADDED from C:\Users\hwu\Documents\Grade 12\Computer Science\FSE Mini-Game\Mini-games-Bluetooth-Mania\SwingAlong\android\AndroidManifest.xml:10:9-41
+	android:icon
+		ADDED from C:\Users\hwu\Documents\Grade 12\Computer Science\FSE Mini-Game\Mini-games-Bluetooth-Mania\SwingAlong\android\AndroidManifest.xml:9:9-45
+	android:allowBackup
+		ADDED from C:\Users\hwu\Documents\Grade 12\Computer Science\FSE Mini-Game\Mini-games-Bluetooth-Mania\SwingAlong\android\AndroidManifest.xml:8:9-35
+	android:theme
+		ADDED from C:\Users\hwu\Documents\Grade 12\Computer Science\FSE Mini-Game\Mini-games-Bluetooth-Mania\SwingAlong\android\AndroidManifest.xml:11:9-40
+activity#com.swing.along.AppSwing
+ADDED from C:\Users\hwu\Documents\Grade 12\Computer Science\FSE Mini-Game\Mini-games-Bluetooth-Mania\SwingAlong\android\AndroidManifest.xml:12:9-55
+	android:name
+		ADDED from C:\Users\hwu\Documents\Grade 12\Computer Science\FSE Mini-Game\Mini-games-Bluetooth-Mania\SwingAlong\android\AndroidManifest.xml:12:19-43
+activity#com.swing.along.AndroidLauncher
+ADDED from C:\Users\hwu\Documents\Grade 12\Computer Science\FSE Mini-Game\Mini-games-Bluetooth-Mania\SwingAlong\android\AndroidManifest.xml:13:9-23:20
+	android:screenOrientation
+		ADDED from C:\Users\hwu\Documents\Grade 12\Computer Science\FSE Mini-Game\Mini-games-Bluetooth-Mania\SwingAlong\android\AndroidManifest.xml:17:13-50
+	android:label
+		ADDED from C:\Users\hwu\Documents\Grade 12\Computer Science\FSE Mini-Game\Mini-games-Bluetooth-Mania\SwingAlong\android\AndroidManifest.xml:16:13-45
+	android:configChanges
+		ADDED from C:\Users\hwu\Documents\Grade 12\Computer Science\FSE Mini-Game\Mini-games-Bluetooth-Mania\SwingAlong\android\AndroidManifest.xml:15:13-94
+	android:name
+		ADDED from C:\Users\hwu\Documents\Grade 12\Computer Science\FSE Mini-Game\Mini-games-Bluetooth-Mania\SwingAlong\android\AndroidManifest.xml:14:13-44
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from C:\Users\hwu\Documents\Grade 12\Computer Science\FSE Mini-Game\Mini-games-Bluetooth-Mania\SwingAlong\android\AndroidManifest.xml:18:13-22:29
+action#android.intent.action.MAIN
+ADDED from C:\Users\hwu\Documents\Grade 12\Computer Science\FSE Mini-Game\Mini-games-Bluetooth-Mania\SwingAlong\android\AndroidManifest.xml:19:17-69
+	android:name
+		ADDED from C:\Users\hwu\Documents\Grade 12\Computer Science\FSE Mini-Game\Mini-games-Bluetooth-Mania\SwingAlong\android\AndroidManifest.xml:19:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\Users\hwu\Documents\Grade 12\Computer Science\FSE Mini-Game\Mini-games-Bluetooth-Mania\SwingAlong\android\AndroidManifest.xml:21:17-77
+	android:name
+		ADDED from C:\Users\hwu\Documents\Grade 12\Computer Science\FSE Mini-Game\Mini-games-Bluetooth-Mania\SwingAlong\android\AndroidManifest.xml:21:27-74

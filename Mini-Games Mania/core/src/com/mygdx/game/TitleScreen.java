@@ -13,7 +13,7 @@ public class TitleScreen extends ScreenAdapter {
     OrthographicCamera cam;
 
     MyGdxGame game;
-    Texture logo= new Texture("IntroScreen/logo.png");
+    Texture logo= new Texture("android/assets/IntroScreen/logo.png");
 
     public TitleScreen(MyGdxGame game) {
 

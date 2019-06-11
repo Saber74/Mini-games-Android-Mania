@@ -13,7 +13,7 @@ public class Home {
 	}
 	
 	public void setHome(String chicken){
-		display = new Texture("ChickenCrossyRoad/"+chicken);
+		display = new Texture("android/assets/ChickenCrossyRoad/"+chicken);
 	}
 	
 	public Rectangle getRect(){

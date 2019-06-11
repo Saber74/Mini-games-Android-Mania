@@ -22,15 +22,15 @@ public class Space_HUD {
     private Texture points_hud; // the COOL text for the points
     private Texture heart; // the texture for the heart to display the players life
     private Texture heart2;
-    private BitmapFont font = new BitmapFont(Gdx.files.internal("SpaceInvaders/one/impact.fnt"), false); // will load in a font for the points
+    private BitmapFont font = new BitmapFont(Gdx.files.internal("android/assets/SpaceInvaders/one/impact.fnt"), false); // will load in a font for the points
     private LinkedList<Texture> powerup_sprites = new LinkedList<Texture>(); //will store the powerup texture
     private LinkedList<Texture> powerup_sprites2= new LinkedList<Texture>();
 
     public Space_HUD() {// will load in various textures
-        powerups_hud = new Texture("SpaceInvaders/powerupsHUD.png");
-        points_hud = new Texture("SpaceInvaders/points.png");
-        heart = new Texture("SpaceInvaders/heart.png");
-        heart2= new Texture("SpaceInvaders/heartp2.png");
+        powerups_hud = new Texture("android/assets/SpaceInvaders/powerupsHUD.png");
+        points_hud = new Texture("android/assets/SpaceInvaders/points.png");
+        heart = new Texture("android/assets/SpaceInvaders/heart.png");
+        heart2= new Texture("android/assets/SpaceInvaders/heartp2.png");
     }
 
     public void render(SpriteBatch batch) { // this will render all the information that is to be displayed

@@ -33,7 +33,7 @@ public class Space_Player {
     private int points = 0; // will store the points
     private int lives = 3; // stores the amount of lives left
     private boolean invincible = true; // used to determine invincibility
-    private Sprite barrier = new Sprite(new Texture("SpaceInvaders/barriers.png")); // sprite of the barrier
+    private Sprite barrier = new Sprite(new Texture("android/assets/SpaceInvaders/barriers.png")); // sprite of the barrier
     boolean musicPlaying = false; // checks if music is playing
     private boolean mirror_activated = false; // checks if the mirror powerup is active
     private Space_Mirror[] spaceMirrors = new Space_Mirror[3]; // stores three mirror if the power up is used
@@ -41,10 +41,10 @@ public class Space_Player {
     public Space_Player(float x, float y,int pl) { // constructor takes in x and y
         playernum=pl;
         if(pl==PLAYERONE) {
-            player_sprite = new Texture("SpaceInvaders/0.png"); // loads in player sprite image
+            player_sprite = new Texture("android/assets/SpaceInvaders/0.png"); // loads in player sprite image
         }
         else if(pl==PLAYERTWO){
-            player_sprite=new Texture("SpaceInvaders/p2.png");
+            player_sprite=new Texture("android/assets/SpaceInvaders/p2.png");
         }
         player = new Sprite(player_sprite); // creates a sprite out of the image
         this.x = x; // sets the x variable

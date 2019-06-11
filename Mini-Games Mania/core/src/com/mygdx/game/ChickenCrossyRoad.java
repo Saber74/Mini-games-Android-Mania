@@ -112,11 +112,11 @@ public class ChickenCrossyRoad extends ScreenAdapter {
 
 
 		//initialize the lady chicken's texture
-		bonusEgg = new Texture("ChickenCrossyRoad/bonus.png");
+		bonusEgg = new Texture("android/assets/ChickenCrossyRoad/bonus.png");
 
 		homes = new Home[5];
 		for (int i = 0; i < 5; i++) {
-			homes[i] = new Home("ChickenCrossyRoad/nest.png", new Rectangle(50 + i * 150, 670, 75, 75));
+			homes[i] = new Home("android/assets/ChickenCrossyRoad/nest.png", new Rectangle(50 + i * 150, 670, 75, 75));
 		}
 
 

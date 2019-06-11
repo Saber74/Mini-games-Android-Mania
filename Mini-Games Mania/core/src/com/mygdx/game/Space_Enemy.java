@@ -41,9 +41,9 @@ public class Space_Enemy {
 
     public Space_Enemy(String type, int x, int y) { //creating object, we need the row and coloumn of the enemy and it's type
         //type is assigned according to row
-        blueship = new Texture("SpaceInvaders/Enemies/2.png");
-        redship = new Texture("SpaceInvaders/Enemies/0.png");
-        yellowship = new Texture("SpaceInvaders/Enemies/1.png");
+        blueship = new Texture("android/assets/SpaceInvaders/Enemies/2.png");
+        redship = new Texture("android/assets/SpaceInvaders/Enemies/0.png");
+        yellowship = new Texture("android/assets/SpaceInvaders/Enemies/1.png");
 
         if (type.equals("yellow")) {
             sprite = new Sprite(yellowship);
@@ -115,13 +115,13 @@ public class Space_Enemy {
         Random rand = new Random();
         int n = rand.nextInt(5);
         if (n == 1) {
-            die = Gdx.audio.newMusic(Gdx.files.internal("SpaceInvaders/Sound/kill.mp3"));
+            die = Gdx.audio.newMusic(Gdx.files.internal("android/assets/SpaceInvaders/Sound/kill.mp3"));
         } else if (n == 2) {
-            die = Gdx.audio.newMusic(Gdx.files.internal("SpaceInvaders/Sound/kill2.mp3"));
+            die = Gdx.audio.newMusic(Gdx.files.internal("android/assets/SpaceInvaders/Sound/kill2.mp3"));
         } else if (n == 3) {
-            die = Gdx.audio.newMusic(Gdx.files.internal("SpaceInvaders/Sound/kill3.mp3"));
+            die = Gdx.audio.newMusic(Gdx.files.internal("android/assets/SpaceInvaders/Sound/kill3.mp3"));
         } else if (n == 4) {
-            die = Gdx.audio.newMusic(Gdx.files.internal("SpaceInvaders/Sound/kill4.mp3"));
+            die = Gdx.audio.newMusic(Gdx.files.internal("android/assets/SpaceInvaders/Sound/kill4.mp3"));
         }
         this.dead = dead;
         deathX = this.getRect().x;

@@ -33,7 +33,7 @@ public class HopOn {
 		
 		//set each image as a texture
 		for(int i=0; i<names.length; i++){
-			frameTextures[i] = new Texture("ChickenCrossyRoad/"+names[i]);
+			frameTextures[i] = new Texture("android/assets/ChickenCrossyRoad/"+names[i]);
 			
 			if(names[i].contains("swan")){
 				swan = true;
