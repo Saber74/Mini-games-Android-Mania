@@ -19,7 +19,7 @@
 //        }
 //    }
 //}
-package com;
+package com.example.firstswingtest;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
