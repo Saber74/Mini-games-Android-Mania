@@ -25,6 +25,7 @@ public class GamePickScreen extends ScreenAdapter {
     Texture megaBomb;
     Texture chickenCrossyRoad;
     Texture megaWord;
+    Texture choose;
 
     int gameNum;
 
@@ -57,6 +58,8 @@ public class GamePickScreen extends ScreenAdapter {
         spaceInvaders = new Texture("IntroScreen/spaceinvaders.png");
         megaBomb = new Texture("IntroScreen/bomb.png");
         chickenCrossyRoad = new Texture("IntroScreen/crossyroad.png");
+
+        choose = new Texture("IntroScreen/chooseBox.png");
 	
 
         games= new String[]{"Swing Along","Crossy Road","Mega Words","Space Invaders","Mega Bomb","Memory Game"};
@@ -123,32 +126,26 @@ public class GamePickScreen extends ScreenAdapter {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         stateTime += Gdx.graphics.getDeltaTime();
 
-        sr.begin(ShapeRenderer.ShapeType.Filled);
-
-        Rectangle chooseRect = new Rectangle();
+        game.batch.begin();
 
         if (gameNum == SWING) {
-            chooseRect = new Rectangle(180,455,430,400);
+            game.batch.draw(choose,260,340,240,290);
         } else if (gameNum == ROAD) {
-            chooseRect = new Rectangle(755,455,430,400);
+            game.batch.draw(choose,560,340,240,290);
 
         } else if (gameNum == WORD) {
-            chooseRect = new Rectangle(1330,455,430,400);
+            game.batch.draw(choose,860,340,240,290);
 
         } else if (gameNum == SPACE) {
-            chooseRect = new Rectangle(180,75,430,400);
+            game.batch.draw(choose,260,60,240,290);
 
         } else if (gameNum == BOMB) {
-            chooseRect = new Rectangle(755,75,430,400);
+            game.batch.draw(choose,560,60,240,290);
 
         } else if (gameNum == MEMORY){
-            chooseRect = new Rectangle(1330,75,430,400);
+            game.batch.draw(choose,860,60,240,290);
         }
-        sr.rect(chooseRect.x,chooseRect.y,chooseRect.width,chooseRect.height);
 
-        sr.end();
-
-        game.batch.begin();
         game.batch.draw(swingAlong,280,360,200,250);
         game.batch.draw(chickenCrossyRoad,580,360,200,250);
         game.batch.draw(megaWord,880,360,200,250);

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FirstSwingTest</string>
+    <string name="app_name">Minigame Controller</string>
     <string name="crossy_button">Crossy Road</string>
     <string name="invaders_button">Space Invaders</string>
     <string name="swing_button">Swing Along</string>
@@ -14,6 +14,9 @@
     <string name="bombControls_name">Mega Bomb Controls</string>
     <string name="memControls_name">Mega Memory Controls</string>
 
+    <string name="empty"></string>
+    <string name="input_label">Enter a word:</string>
+    <string name="fill">Fill</string>
     <string name="enter">Enter</string>
     <string name="jump">Jump!</string>
     <string name="shoot">Shoot!</string>

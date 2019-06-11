@@ -34,6 +34,8 @@ public class ChickenCrossyRoad extends ScreenAdapter {
 	Texture bkg;
 	BitmapFont font;
 
+	Texture back;//black on sides of game
+
 	Music music;
 
 	//title page textures
@@ -98,6 +100,7 @@ public class ChickenCrossyRoad extends ScreenAdapter {
 		//initialize background and title pages
 		bkg = new Texture("ChickenCrossyRoad/background.png");
 		title = new Texture("ChickenCrossyRoad/title.png");
+		back = new Texture("ChickenCrossyRoad/back.png");
 
 		//assign a Rectangle object to the water portion of the game
 		waterRect = new Rectangle(0, 400, 800, 400);
@@ -204,9 +207,9 @@ public class ChickenCrossyRoad extends ScreenAdapter {
 
 			run = false;
 			batch.begin();
-			batch.draw(players[0].win, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-			font.draw(batch, "Player 1 Score: " + players[0].score, 300, 340);
-			font.draw(batch, "Player 2 Score: " + players[1].score, 300, 200);
+			batch.draw(players[0].win, 0, 0, 800, 1000);
+			font.draw(batch, "Player 1 Score: " + players[0].score, 280, 600);
+			font.draw(batch, "Player 2 Score: " + players[1].score, 280, 500);
 			batch.end();
 		}
 
@@ -214,9 +217,9 @@ public class ChickenCrossyRoad extends ScreenAdapter {
 		if (players[1].won() || !players[0].isAlive()) {
 			run = false;
 			batch.begin();
-			batch.draw(players[1].win, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-			font.draw(batch, "Player 1 Score: " + players[0].score, 300, 340);
-			font.draw(batch, "Player 2 Score: " + players[1].score, 300, 200);
+			batch.draw(players[1].win, 0, 0, 800, 1000);
+			font.draw(batch, "Player 1 Score: " + players[0].score, 280, 600);
+			font.draw(batch, "Player 2 Score: " + players[1].score, 280, 500);
 			batch.end();
 		}
 
@@ -337,11 +340,11 @@ public class ChickenCrossyRoad extends ScreenAdapter {
 
 		}
 
-		sr.begin(ShapeRenderer.ShapeType.Filled);
-		sr.setColor(0,0,0,1);
-		sr.rect(0,0,480,1400);
-		sr.rect(1440,0,480,1400);
-		sr.end();
+		batch.begin();
+		//draw in black border around game
+		batch.draw(back,-480,0,480,1440);
+		batch.draw(back,800,0,480,1440);
+		batch.end();
 
 		//to make the spritesheet animals look like they're moving slower,
 		//momentarily pause the program 

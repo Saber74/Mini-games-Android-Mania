@@ -24,7 +24,7 @@ public class IntroAnimation extends ScreenAdapter {
 
     public IntroAnimation(MyGdxGame game){
 
-        cam = new OrthographicCamera(1000,800);
+        cam = new OrthographicCamera(1500,1200);
 
         cam.position.set(675,400,0);
         cam.update();
@@ -41,9 +41,7 @@ public class IntroAnimation extends ScreenAdapter {
 
         introAnimation = new Animation<Texture>(0.05f, introTextures);
 
-        font = new BitmapFont();
-        font.getData().setScale(2f);
-        font.setColor(0,0,0,1);
+        font = new BitmapFont(Gdx.files.internal("IntroScreen/Intro.fnt")); //description font
 
     }
     @Override

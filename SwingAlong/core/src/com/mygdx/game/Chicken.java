@@ -75,7 +75,7 @@ public class Chicken {
         goodRect = new Rectangle(gx,gy,50,50);
 
         //initialize the feather (which pops up when the chicken is hit)
-        feather = new Sprite(new Texture("ChickenCrossyRoad/feather.png"));
+        feather = new Sprite(new Texture("ChickenCrossyRoad/"+String.format("feather%d.png",num+1)));
 
         dead = false;
     }

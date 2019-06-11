@@ -44,8 +44,28 @@
         </activity>
 
         <activity
+            android:name=".MemoryControlActivity"
+            android:label="@string/memControls_name"
+            android:screenOrientation="landscape"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.firstswingtest.MainActivity" />
+        </activity>
+
+        <activity
             android:name=".SwingControlActivity"
             android:label="@string/swingControls_name"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.firstswingtest.MainActivity" />
+        </activity>
+
+        <activity
+            android:name=".WordControlActivity"
+            android:label="@string/wordControls_name"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
