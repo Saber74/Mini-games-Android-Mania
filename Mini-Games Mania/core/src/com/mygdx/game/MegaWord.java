@@ -258,6 +258,7 @@ public class MegaWord extends ScreenAdapter {
 			batch.begin();
 			font.draw(batch,end,220,320);
 			batch.end();
+
 		}
 
 
@@ -295,7 +296,7 @@ public class MegaWord extends ScreenAdapter {
 		Gdx.input.setInputProcessor(new InputAdapter() {
 			public boolean keyDown(int keycode) {
 				if (keycode == Input.Keys.ESCAPE) {
-					Gdx.app.exit();
+					game.setScreen(new GamePickScreen(game));
 				}
 				return true;
 			}

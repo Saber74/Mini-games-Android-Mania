@@ -119,7 +119,7 @@ public class Memory extends ScreenAdapter {
             @Override
             public boolean keyDown(int keyCode) {
                 if(keyCode == Input.Keys.ESCAPE){
-                    Gdx.app.exit();
+                    game.setScreen(new GamePickScreen(game));
                 }
                 if (!gamefinished) {
                     if (keyCode == Input.Keys.RIGHT) {

@@ -329,7 +329,7 @@ public class SwingAlong extends ScreenAdapter {
 			//implement ALL methods of InputProcessor
 			public boolean keyDown(int keycode){
 				if(keycode == Keys.ESCAPE){
-					Gdx.app.exit();
+					game.setScreen(new GamePickScreen(game));
 				}
 				if(keycode == Keys.RIGHT){
 

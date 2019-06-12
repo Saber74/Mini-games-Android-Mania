@@ -223,7 +223,7 @@ public class MegaBomb extends ScreenAdapter{
 		Gdx.input.setInputProcessor(new InputAdapter(){
 			public boolean keyDown(int keycode) {
 				if(keycode == Input.Keys.ESCAPE){
-					Gdx.app.exit();
+					game.setScreen(new GamePickScreen(game));
 				}
 				if (keycode == Input.Keys.NUM_1) {
 					wireStatus[0] = CUT;

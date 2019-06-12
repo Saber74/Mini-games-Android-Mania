@@ -5,6 +5,9 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 
+//class of BadGuys for CHICKEN CROSSY ROAD game
+//the cars and animals that walk across the screen
+//if player hits one, minus one life
 public class BadGuy {
 	int frame;//frame of the image
 	Texture[] frameTextures;//stores the images (various spritesheet frames) as textures

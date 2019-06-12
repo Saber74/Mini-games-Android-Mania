@@ -160,6 +160,9 @@ public class Space_Main extends ScreenAdapter {
         Gdx.input.setInputProcessor(new InputAdapter() {
             @Override
             public boolean keyDown(int keyCode) {
+                if(Gdx.input.isKeyPressed(Input.Keys.ESCAPE)){
+                    game.setScreen(new GamePickScreen(game));
+                }
 //                if (Gdx.input.isKeyPressed(Input.Keys.LEFT))
 //                    player.goLeft(); // player will go left when left arrow key pressed
 //                if (Gdx.input.isKeyPressed(Input.Keys.RIGHT))

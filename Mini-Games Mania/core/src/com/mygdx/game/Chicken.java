@@ -5,53 +5,55 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 
-
+//class of Chicken players for CHICKEN CROSSY ROAD game
 public class Chicken {
     int num; //which player number: 0 or 1
 
     int home; //number of player's chickens that have reached a home
 
-    int score;
+    int score;//score of the player
 
-    Texture win;
+    Texture win;//player's winning screen texture
 
-    Texture[][] goodTextures;
-    Rectangle goodRect;
-    float gx,gy;
-    float moveX;
+    Texture[][] goodTextures;//chicken frames (4 walking frames for each of the 4 directions)
+    Rectangle goodRect;//rectangle around the chicken (check for collisions)
+    float gx,gy;//coordinates of player
+    float moveX;//amount that must be added to player coords as it floats on moving object in water
 
-    int lives;
+    int lives;//number of lives the player has left
 
-    Sprite feather;
-    float fx,fy;
-    float a;
+    Sprite feather;//the feather that appears when a chicken dies
+    float fx,fy;//coordinates of feather (location where chicken died, then floats up)
+    float a;//transparency of feather (fades over time)
 
-    boolean dead;
+    int goodIndex;//player's current direction (back, front, left, right)
+    int goodFrame;//player's walking frame
 
-    int goodIndex;
-    int goodFrame;
-
-    boolean disableKeys;
+    boolean dead;//check if player died
+    boolean disableKeys;//prevents certain keys from being if player lost a life
     boolean overlap;
     //check if chicken is overlapping an object on the water.
     //if it is overlapping, then will not count chicken overlapping water as a death
     boolean first;//flag, so you only add coordinates of object to log the first time a chicken collides with an object
 
-    Texture homeTexture;
+    Texture homeTexture;//when chicken reaches a nest, display this image at the end
 
-    //need goodTextures
 
+    //Constructor method
+    //pass in which player the chicken is (Player 0 or Player 1)
     public Chicken(int num){
 
-        disableKeys = false;
+        disableKeys = false;//enable all keys at start of game
 
-        home = 0;
-        score = 0;
+        home = 0;//no chickens have reached home
+        score = 0;//no score yet
 
-        this.num = num;
+        this.num = num;//which player the chicken is
 
         win = new Texture("android/assets/ChickenCrossyRoad/"+String.format("p%dwin.png", num+1));
 
+
+        //create the good chicken walking textures
         goodTextures = new Texture[4][3];
         String[] goodImages = {"_back","_front","_left","_right"};
 
@@ -61,14 +63,16 @@ public class Chicken {
             }
         }
 
+        //start at 0th chicken texture
         goodIndex = 0;
         goodFrame = 0;
 
 
         homeTexture = new Texture("android/assets/ChickenCrossyRoad/"+String.format("home%d.png", num+1));
 
-        lives = 5;
+        lives = 5;//start with 5 lives
 
+        //starting position
         gx = (800-50)/2-100+200*num;
         gy = 50;
 
@@ -78,17 +82,21 @@ public class Chicken {
         feather = new Sprite(new Texture("android/assets/ChickenCrossyRoad/"+String.format("feather%d.png",num+1)));
 
         dead = false;
+        overlap = false;//player has not yet reached a HopOn object
     }
 
+    //check if the player has won (3 nests at the end)
     public boolean won(){
         return home==3 ? true : false;
         //if player has 3 chickens home, return true. else, return false
     }
 
+    //check if the player is alive (more than 0 lives)
     public boolean isAlive(){
         return lives>0 ? true : false;
     }
 
+    //check if player is off screen
     public boolean isOffScreen(){
         if(gx<25 || gx>750){
             return true;
@@ -96,18 +104,24 @@ public class Chicken {
         return false;
     }
 
+    //add points to player's score
     public void addToScore(int points){
         score += points;
     }
 
+    //player reached a home nest
     public void addHome(){
         home++;
     }
 
+    //update whether or not player is on a HopOn object in the water
+    //this determines if the player will sink in water or not
     public void setOverlap(boolean b){
         overlap = b;
     }
 
+    //find whether or not player just reached a HopOn object
+    //If player just reached it, then add the object's coordinates to the player, so player moves with the object
     public boolean getFirst(){
         return first;
     }
@@ -116,30 +130,31 @@ public class Chicken {
         first = b;
     }
 
+    //change frame to change direction that the player is moving
     public void setIndex(int i){
         goodIndex = i;
     }
 
+    //make player look like he's moving
     public void increaseFrame(){
         goodFrame++;
     }
 
+    //update player's coordinates
     public void setX(float x){
         gx = x;
     }
-
     public void setY(float y){
         gy = y;
     }
-
     public void translateX(float x){
         gx += x;
     }
-
     public void translateY(float y){
         gy += y;
     }
 
+    //add x-coordinate of HopOn object to player
     public void setMoveX(float mx){
         moveX = mx;
     }
@@ -148,10 +163,12 @@ public class Chicken {
         return moveX;
     }
 
+    //set the player's rectangle
     public void setRect(float x, float y, float width, float height){
         goodRect = new Rectangle(x,y,width,height);
     }
 
+    //update player's rectangle as player moves
     public void updateRect(float x, float y){
         goodRect.x = x;
         goodRect.y = y;
@@ -161,7 +178,8 @@ public class Chicken {
         return goodRect;
     }
 
-    public void setLives(int l){
+    //set number of lives
+    public void addLives(int l){
         lives = l;
     }
 

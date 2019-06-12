@@ -98,9 +98,9 @@ public class ChickenCrossyRoad extends ScreenAdapter {
 		//music = Gdx.audio.newMusic(Gdx.files.internal("chicken dance song.mp3"));
 
 		//initialize background and title pages
-		bkg = new Texture("ChickenCrossyRoad/background.png");
-		title = new Texture("ChickenCrossyRoad/title.png");
-		back = new Texture("ChickenCrossyRoad/back.png");
+		bkg = new Texture("android/assets/ChickenCrossyRoad/background.png");
+		title = new Texture("android/assets/ChickenCrossyRoad/title.png");
+		back = new Texture("android/assets/ChickenCrossyRoad/back.png");
 
 		//assign a Rectangle object to the water portion of the game
 		waterRect = new Rectangle(0, 400, 800, 400);
@@ -424,7 +424,7 @@ public class ChickenCrossyRoad extends ScreenAdapter {
 			public boolean keyDown(int keycode) {
 
 				if(keycode == Keys.ESCAPE){
-					Gdx.app.exit();
+					game.setScreen(new GamePickScreen(game));
 				}
 
 				//prevents player from using keys to change position of chicken when it is dead
