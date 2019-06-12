@@ -15,15 +15,17 @@ public class Server {
     ExecutorService pool = null;
     int clientcount = 0;
 
-    public static void main(String[] args) throws Exception {
-        new Server();
+    public static void main(String[] args) throws IOException {
+        Server serverobj = new Server(5014);
+        serverobj.startServer();
+        Client x= new Client();
+        x.send("1000");
+        System.out.println("hi");
     }
 
-    public Server()
-            throws Exception {
-        this.port = 5014;
+    Server(int port) {
+        this.port = port;
         pool = Executors.newFixedThreadPool(5);
-        startServer();
     }
 
     public void startServer() throws IOException {
@@ -64,20 +66,24 @@ public class Server {
 
         @Override
         public void run() {
-            int w=0;
             int x = 1;
             try {
                 while (true) {
                     s = cin.readLine();
-                    System.out.println(s);
+
+                    System.out.print("Client(" + id + ") :" + s + "\n");
                     //s=stdin.readLine();
+                    s = "received";
                     if (s.equalsIgnoreCase("bye")) {
                         cout.println("BYE");
                         x = 0;
                         System.out.println("Connection ended by server");
                         break;
                     }
+                    cout.println(s);
                 }
+
+
                 cin.close();
                 client.close();
                 cout.close();
@@ -93,4 +99,3 @@ public class Server {
         }
     }
 }
-

@@ -290,7 +290,6 @@ public class MegaWord extends ScreenAdapter {
 		Gdx.input.getTextInput(listener1, "Player 1", "", "");
 
 	}
-
 	public void show(){
 
 		Gdx.input.setInputProcessor(new InputAdapter() {

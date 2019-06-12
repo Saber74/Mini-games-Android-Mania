@@ -85,12 +85,12 @@ public class Space_Main extends ScreenAdapter {
         powerup3 = new Texture("android/assets/SpaceInvaders/invincible.png");
         intro_explosion = new Texture("android/assets/SpaceInvaders/Explosion/29.png");
         // loading a bunch of fonts
-        font2 = new BitmapFont(Gdx.files.internal("android/assets//one/intro.fnt")); //description font
+        font2 = new BitmapFont(Gdx.files.internal("android/assets/SpaceInvaders/one/intro.fnt")); //description font
         font3 = new BitmapFont(Gdx.files.internal("android/assets/SpaceInvaders/one/sub.fnt")); //description but smaller
         font4 = new BitmapFont(Gdx.files.internal("android/assets/SpaceInvaders/one/sub.fnt")); //for instructions
         diedFont = new BitmapFont(Gdx.files.internal("android/assets/SpaceInvaders/one/died.fnt"));
         font3.getData().setScale(2f);
-        font2.getData().setScale(0.8f);
+         font2.getData().setScale(0.8f);
         background = new Texture("android/assets/SpaceInvaders/start.jpg"); // background for intro screen
         intro_music = Gdx.audio.newMusic(Gdx.files.internal("android/assets/SpaceInvaders/1.mp3"));
         intro_music.play();

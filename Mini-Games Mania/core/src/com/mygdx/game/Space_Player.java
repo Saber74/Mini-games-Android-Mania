@@ -127,13 +127,13 @@ public class Space_Player {
         int type = powerup.getType(); // gets the type of powerup
         if (powerupID.size() == 0) { // will only receive it if there are non presently used
             if (type == INVINCIBLE) { // if the type is invincible
-                Space_Main.hud.addPowerup(new Texture("SpaceInvaders/invincible.png"),playernum); // adds to the HUD
+                Space_Main.hud.addPowerup(new Texture("android/assets/SpaceInvaders/invincible.png"),playernum); // adds to the HUD
                 powerupID.add(INVINCIBLE); // adds the ID to the arraylist
             } else if (type == SPIRITBOMB) {
-                Space_Main.hud.addPowerup(new Texture("SpaceInvaders/spiritbomb.png"),playernum);
+                Space_Main.hud.addPowerup(new Texture("android/assets/SpaceInvaders/spiritbomb.png"),playernum);
                 powerupID.add(SPIRITBOMB);
             } else if (type == MIRROR) {
-                Space_Main.hud.addPowerup(new Texture("SpaceInvaders/Mirror.png"),playernum);
+                Space_Main.hud.addPowerup(new Texture("android/assets/SpaceInvaders/Mirror.png"),playernum);
                 powerupID.add(MIRROR);
             } else if (type == HEART){ // will add a life if not already maxed out
                 lives += (lives == 3 ? 0 : 1);
