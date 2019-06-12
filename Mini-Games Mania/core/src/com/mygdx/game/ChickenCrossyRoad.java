@@ -402,7 +402,7 @@ public class ChickenCrossyRoad extends ScreenAdapter {
 				p.setOverlap(true);//prevent from detecting that chicken is overlapping waterRect
 				p.addToScore(50);//increase score by 50 when chicken reaches the end
 				p.addHome();
-				p.setLives(3);
+				p.addLives();
 				homes[i].setHome(String.format("home%d.png", p.num + 1));
 				//homeRects[i] = nestRects[i];//set coordinates of homeRect to be same as the corresponding
 				//nest that the chicken just reached

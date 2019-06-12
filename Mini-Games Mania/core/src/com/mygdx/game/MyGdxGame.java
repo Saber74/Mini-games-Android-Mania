@@ -18,7 +18,7 @@ public class MyGdxGame extends Game {
 		font = new BitmapFont(Gdx.files.internal("android/assets/IntroScreen/Intro.fnt")); //description font
 
 		setScreen(new IntroAnimation(this));
-		//setScreen(new GamePickScreen(this));
+		//setScreen(new Memory(this));
 	}
 
 

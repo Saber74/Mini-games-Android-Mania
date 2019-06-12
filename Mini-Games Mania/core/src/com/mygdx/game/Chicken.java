@@ -179,8 +179,8 @@ public class Chicken {
     }
 
     //set number of lives
-    public void addLives(int l){
-        lives = l;
+    public void addLives(){
+        lives++;
     }
 
 

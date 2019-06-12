@@ -6,6 +6,7 @@ import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
 
@@ -13,6 +14,7 @@ public class GamePickScreen extends ScreenAdapter {
 
     OrthographicCamera cam;
     MyGdxGame game;
+    BitmapFont font;
 
     ShapeRenderer sr;
 
@@ -49,6 +51,7 @@ public class GamePickScreen extends ScreenAdapter {
         cam.update();
 
         this.game = game;
+        font = new BitmapFont(Gdx.files.internal("android/assets/IntroScreen/Intro.fnt"));
 
         sr = new ShapeRenderer();
 
@@ -154,10 +157,10 @@ public class GamePickScreen extends ScreenAdapter {
         game.batch.draw(spaceInvaders,280,80,200,250);
         game.batch.draw(megaBomb,580,80,200,250);
         game.batch.draw(megaMemory,880,80,200,250);
-        game.font.draw(game.batch, "Press <SPACE> to select a game.", 350, 750);
+        font.draw(game.batch, "Press <SPACE> to select a game.", 350, 750);
         String currGame=games[gameNum-1];
         String text= String.format("Current Game: %d. %s",gameNum,currGame);
-        game.font.draw(game.batch, text, 370, 700);
+        font.draw(game.batch, text, 370, 700);
         game.batch.end();
 
 
