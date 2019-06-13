@@ -3,34 +3,35 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 public class Server {
+    ServerSocket server;
     int port;
-    ServerSocket server = null;
     Socket client = null;
     ExecutorService pool = null;
     int clientcount = 0;
 
     public static void main(String[] args) throws IOException {
-        Server serverobj = new Server(5014);
+        Server serverobj = new Server(5013);
         serverobj.startServer();
-        Client x= new Client();
-        x.send("1000");
-        System.out.println("hi");
     }
 
     Server(int port) {
+        try{
+            server = new ServerSocket(1000,1, InetAddress.getByName("142.93.255.106"));
+        }
+        catch(IOException x){}
         this.port = port;
         pool = Executors.newFixedThreadPool(5);
     }
 
     public void startServer() throws IOException {
-
-        server = new ServerSocket(5014);
+        server = new ServerSocket(1000,1, InetAddress.getByName("142.93.255.106"));
         System.out.println("Server Booted");
         System.out.println("Any client can stop the server by sending -1");
         while (true) {
@@ -43,7 +44,6 @@ public class Server {
     }
 
     private static class ServerThread implements Runnable {
-
         Server server = null;
         Socket client = null;
         BufferedReader cin;
@@ -72,8 +72,9 @@ public class Server {
                     s = cin.readLine();
 
                     System.out.print("Client(" + id + ") :" + s + "\n");
+                    System.out.print("Server : ");
                     //s=stdin.readLine();
-                    s = "received";
+                    s = sc.nextLine();
                     if (s.equalsIgnoreCase("bye")) {
                         cout.println("BYE");
                         x = 0;
