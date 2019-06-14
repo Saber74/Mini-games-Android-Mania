@@ -1,3 +1,6 @@
+//ICS4U FSE
+//ANITA HU? / NIZAR ALRIFAI
+//Code for intro to the memory game filled with instructions
 package com.mygdx.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -10,9 +13,9 @@ public class MemoryIntro extends ScreenAdapter {
         this.game = game;
     }
     @Override
-    public void render(float delta) {
+    public void render(float delta) { //using game we set up a new screen
         Gdx.gl.glClearColor(255, 255, 255, 1);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); //displayig new background and outputing text
         game.batch.begin();
         game.font.getData().setScale(1.5f);
         game.font.draw(game.batch,"Memory Grids",475,700);
@@ -27,7 +30,7 @@ public class MemoryIntro extends ScreenAdapter {
         Gdx.input.setInputProcessor(new InputAdapter() {
             @Override
             public boolean keyDown(int keyCode) {
-                if (keyCode == Input.Keys.SPACE) {
+                if (keyCode == Input.Keys.SPACE) { //if space is pressed move on to the actual game screen
                     game.setScreen(new Memory(game));
                 }
                 return true;

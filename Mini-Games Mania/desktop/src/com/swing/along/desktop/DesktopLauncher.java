@@ -12,9 +12,6 @@ package com.swing.along.desktop;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-
-import com.mygdx.game.IntroAnimation;
-import com.mygdx.game.MegaWord;
 import com.mygdx.game.MyGdxGame;
 
 
