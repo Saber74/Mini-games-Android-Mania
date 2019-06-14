@@ -1,3 +1,7 @@
+//ICS4U FSE
+//ANITA HU? / NIZAR ALRIFAI
+//Memory game. Outputs a random grid that has 2 kinds of boxes, colloured or non coloured. Try to remmeber the pattern adn
+//replicate it to win
 package com.mygdx.game;
 
 import com.badlogic.gdx.Gdx;
@@ -19,7 +23,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class Memory extends ScreenAdapter {
-    OrthographicCamera cam;
+
+    OrthographicCamera cam; //camera for proper zoom
     float stateTime;
     int memorizeTime;
     int recreateTime;
@@ -29,18 +34,18 @@ public class Memory extends ScreenAdapter {
 
     BitmapFont font;
 
-    ShapeRenderer shapes=new ShapeRenderer();
+    ShapeRenderer shapes=new ShapeRenderer(); //shape renderer for squares
     private int[][] memorize= new int[7][7];
     private int[][] player1= new int[7][7];
     private int[][] player2=new int [7][7];
     private int currentp1x=0;
     private int currentp1y=0;
-    private int currentp2x=0;
-    private int currentp2y=0;
+    private int currentp2x=0; //current location in regards to horizantal square
+    private int currentp2y=0; //current location in regards to vertical square
 
-    Timer memorizeTimer;
-    Timer recreateTimer;
-    TimerTask memorizeTask;
+    Timer memorizeTimer; //timer to memorize the pattern
+    Timer recreateTimer; //timer to recreate the patters
+    TimerTask memorizeTask; //runs after timer is up
     TimerTask recreateTask;
     String timeStamp;
 
@@ -56,7 +61,7 @@ public class Memory extends ScreenAdapter {
         this.game = game;
         font = new BitmapFont(Gdx.files.internal("android/assets/IntroScreen/Intro.fnt"));
 
-        for(int i=0;i<7;i++){
+        for(int i=0;i<7;i++){ //randomly generating the grid
             for(int k=0;k<7;k++){
                 memorize[i][k]=new Random().nextInt(2) ;
                 player1[i][k]=0;
@@ -64,7 +69,7 @@ public class Memory extends ScreenAdapter {
             }
         }
 
-        timeStamp = "";
+        timeStamp = ""; //timer stuff
         memorizeTimer = new Timer();
         recreateTimer = new Timer();
 
@@ -119,7 +124,7 @@ public class Memory extends ScreenAdapter {
     }
 
     @Override
-    public void render(float delta) {
+    public void render(float delta) { //creating the players grid and the grid to recreate and the winning screen
 
         //cam.update();
         //game.batch.setProjectionMatrix(cam.combined);
@@ -131,7 +136,7 @@ public class Memory extends ScreenAdapter {
             System.out.println(Arrays.toString(memorize[i]));
         }
 
-        if(gameStart) {
+        if(gameStart) { //display the grid to memorize
             shapes.begin(ShapeRenderer.ShapeType.Filled);
             for (int i = 0; i < 7; i++) {
                 for (int k = 0; k < 7; k++) {
@@ -152,7 +157,7 @@ public class Memory extends ScreenAdapter {
          }
 
         else {
-            if (!gameFinished) {
+            if (!gameFinished) { //if game is not finished give the players the chance to recreate
                 game.batch.begin();
                 font.draw(game.batch, "Now Recreate!", Gdx.graphics.getWidth()/2-450, 700);
                 font.draw(game.batch, timeStamp, Gdx.graphics.getWidth()/2-330, 600);
@@ -185,13 +190,13 @@ public class Memory extends ScreenAdapter {
 
             }
             else{
-                winnner();
+                winnner(); //determine who is winner and show comparison of grids
             }
         }
 
     }
     @Override
-    public void show() {
+    public void show() { //checking for input
         Gdx.input.setInputProcessor(new InputAdapter() {
             @Override
             public boolean keyDown(int keyCode) {
@@ -263,7 +268,7 @@ public class Memory extends ScreenAdapter {
     public void hide() {
         Gdx.input.setInputProcessor(null);
     }
-    public void winnner(){
+    public void winnner(){ //checking who winner and displaying grids
         int p1Score=0;
         int p2Score=0;
         for(int i=0;i<7;i++) {
