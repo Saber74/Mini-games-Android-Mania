@@ -1,0 +1,12 @@
+Folder Contents:
+
+JAR FILE NAME: MinigameMania in FINAL folder
+
+- FINAL folder has the jar file and code for minigames (ran in Eclipse)
+- the Minigames folder has code for minigames and APPS in Android
+  (which are not included in the jar file)
+
+- Server code is in the text file, as it is actually being used on the server
+
+*Note: the pop-up text input listener for the Mega Word minigame appears 
+behind the screen.
