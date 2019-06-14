@@ -157,6 +157,8 @@ public class MegaBomb extends ScreenAdapter{
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
+
+
 		batch.begin();
 
 		batch.draw(bomb, 250, 225, 300,150);

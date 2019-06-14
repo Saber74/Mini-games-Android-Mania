@@ -13,16 +13,12 @@ import com.badlogic.gdx.math.Rectangle;
 public class GamePickScreen extends ScreenAdapter {
 
     OrthographicCamera cam;
-    MyGdxGame game;
+    MyGdxGame game;//use Game Class interface to go from one screen (class) to another
     BitmapFont font;
 
     ShapeRenderer sr;
 
-    float stateTime;
-
-
     Texture swingAlong;
-    //Texture stickfight;
     Texture spaceInvaders;
     Texture megaBomb;
     Texture chickenCrossyRoad;
@@ -33,6 +29,7 @@ public class GamePickScreen extends ScreenAdapter {
 
     int gameNum;
 
+    //constants to determine which game is being chosen
     private static final int SWING=1;
     private static final int ROAD=2;
     private static final int WORD=3;
@@ -55,7 +52,7 @@ public class GamePickScreen extends ScreenAdapter {
 
         sr = new ShapeRenderer();
 
-        gameNum=1;
+        gameNum=1;//start with the first game being the chosen one
 
         swingAlong = new Texture("android/assets/IntroScreen/swingalong.png");
         megaWord = new Texture("android/assets/IntroScreen/word.png");
@@ -64,9 +61,10 @@ public class GamePickScreen extends ScreenAdapter {
         megaBomb = new Texture("android/assets/IntroScreen/bomb.png");
         chickenCrossyRoad = new Texture("android/assets/IntroScreen/crossyroad.png");
 
+        //white border drawn around the selected game
         choose = new Texture("android/assets/IntroScreen/chooseBox.png");
 	
-
+        //array of game names
         games= new String[]{"Swing Along","Crossy Road","Mega Words","Space Invaders","Mega Bomb","Memory Game"};
 
 
@@ -74,14 +72,17 @@ public class GamePickScreen extends ScreenAdapter {
 
     @Override
     public void show() {
+        //check which game will be selected
         Gdx.input.setInputProcessor(new InputAdapter() {
             @Override
             public boolean keyDown(int keyCode) {
 
+                //end application if press ESCAPE
                 if(keyCode == Input.Keys.ESCAPE){
                     Gdx.app.exit();
                 }
 
+                //press SPACE to start the selected game
                 if (keyCode == Input.Keys.SPACE) {
                     if (gameNum == SWING) {
                         game.setScreen(new SwingAlong(game));
@@ -103,6 +104,8 @@ public class GamePickScreen extends ScreenAdapter {
 
                     }
                 }
+
+                //move left and right to go through games
                 if (keyCode == Input.Keys.LEFT) {
                     if (gameNum > 1) {
                         gameNum -= 1;
@@ -129,10 +132,10 @@ public class GamePickScreen extends ScreenAdapter {
 
         Gdx.gl.glClearColor(.4f, .25f, 0.3f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        stateTime += Gdx.graphics.getDeltaTime();
 
         game.batch.begin();
 
+        //draw the white box behind the selected game
         if (gameNum == SWING) {
             game.batch.draw(choose,260,340,240,290);
         } else if (gameNum == ROAD) {
@@ -151,6 +154,7 @@ public class GamePickScreen extends ScreenAdapter {
             game.batch.draw(choose,860,60,240,290);
         }
 
+        //draw the screenshot textures of the games on the screen
         game.batch.draw(swingAlong,280,360,200,250);
         game.batch.draw(chickenCrossyRoad,580,360,200,250);
         game.batch.draw(megaWord,880,360,200,250);

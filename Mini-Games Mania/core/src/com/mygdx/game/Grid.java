@@ -1,80 +1,69 @@
 package com.mygdx.game;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Scanner;
 
+
+//class of the Letter letters for MEGAWORD game
 public class Grid {
 
-    //the 5 x 5 grid of letters that players must use to make a word out of
-    char[] grid;
+    //the 25 letters (characters) that players must use to make a word out of
+    char[] letters;
 
-    HashMap<Character, Integer> letterFreq;
+    HashMap<Character, Integer> letterFreq;//the number of times each letter appears
 
     public Grid(){
 
-        grid = new char[25];
+        letters = new char[25];//25 letters
 
-        for(int i=0; i<grid.length; i++){
-            grid[i] = (char)(Math.random()*26 + 65);
+        for(int i=0; i<letters.length; i++){
+            //add a random letter in alphabet to array of letters to be displayed
+            letters[i] = (char)(Math.random()*26 + 65);
         }
 
-        //create a collection of all characters on the grid and their frequencies
+        //create a collection of all characters in the primitive array and their frequencies
         letterFreq = new HashMap<Character, Integer>();
 
-        for(char ch : grid){
-            //if the character is not yet in the Map
+        //go through each letter in the array
+        for(char ch : letters){
+            //if the character is not yet in the Map, add this letter and frequency 1
             if(!letterFreq.containsKey(ch)){
                 letterFreq.put(ch,1);
             }
 
-            //if the character is already in the Map, add one to its frequency
+            //if the character is already in the Map, add one to its current frequency
             else{
                 int n = ((Integer)letterFreq.get(ch)).intValue();
                 letterFreq.put(ch,n+1);
             }
         }
 
-
-
     }
 
-    public boolean isWord(String word, HashSet<String> dictionary){
-        HashMap<Character, Integer> compareFreq = letterFreq;
-        //if the word is in the dictionary
-        if(dictionary.contains(word)) {
-            //go through each character in the word created
-            for (char ch : word.toCharArray()) {
-                if (compareFreq.containsKey(ch) && compareFreq.get(ch) > 0) {
-                    int n = ((Integer) compareFreq.get(ch)).intValue();
-                    compareFreq.put(ch, n - 1);
-                }
-                else{
-                    return false;
-                }
-            }
-
-            return true;
-        }
-
-        return false;
-    }
-
+    //get HashMap of the letter frequencies
     public HashMap getLetterFreq(){
         return letterFreq;
     }
 
+    //get each letter in array
     public char getLetter(int i){
-        return grid[i];
+        return letters[i];
     }
 
+    //get number of letters in the array to choose from
     public int getLength(){
-        return grid.length;
+        return letters.length;
     }
 
+    //display all the letters to choose from
     @Override
     public String toString(){
-        return Arrays.toString(grid);
+        return Arrays.toString(letters);
     }
 
 }
