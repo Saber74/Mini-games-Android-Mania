@@ -6,6 +6,7 @@ import java.net.*;
 //6 wires: 1 wire will defuse the bomb. The first person to choose the correct wire WINS.
 //OR the person who is up to choose once the time runs out loses
 
+import com.ClientRead;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -33,7 +34,7 @@ import sun.util.resources.cldr.ro.TimeZoneNames_ro;
 //class set up is same as create()
 
 public class MegaBomb extends ScreenAdapter{
-
+	ClientRead client;
 	OrthographicCamera cam;
 	MyGdxGame game;
 	SpriteBatch batch;
@@ -59,7 +60,7 @@ public class MegaBomb extends ScreenAdapter{
 
 	String timeStamp;
 	int time;
-
+	String fromserver;
 	int explode;
 
 	Animation<Texture> explodeAnimation;
@@ -75,7 +76,7 @@ public class MegaBomb extends ScreenAdapter{
 
 		this.game = game;
 		batch = game.batch;
-
+		client=game.client;
 		sr = new ShapeRenderer();
 		fontPlayer = new BitmapFont(Gdx.files.internal("android/assets/IntroScreen/Intro.fnt")); //description font
 		fontTime = new BitmapFont();
@@ -150,7 +151,7 @@ public class MegaBomb extends ScreenAdapter{
 
 	@Override
 	public void render (float delta) {
-
+//		fromServer=client.read();
 		cam.update();
 		batch.setProjectionMatrix(cam.combined);
 
@@ -225,22 +226,22 @@ public class MegaBomb extends ScreenAdapter{
 				if(keycode == Input.Keys.ESCAPE){
 					game.setScreen(new GamePickScreen(game));
 				}
-				if (keycode == Input.Keys.NUM_1) {
+				if (keycode == Input.Keys.NUM_1){ //||fromserer.equals("1")
 					wireStatus[0] = CUT;
 				}
-				if (keycode == Input.Keys.NUM_2) {
+				if (keycode == Input.Keys.NUM_2) { //||fromserer.equals("2")
 					wireStatus[1] = CUT;
 				}
-				if (keycode == Input.Keys.NUM_3) {
+				if (keycode == Input.Keys.NUM_3) { //||fromserer.equals("3")
 					wireStatus[2] = CUT;
 				}
-				if (keycode == Input.Keys.NUM_4) {
+				if (keycode == Input.Keys.NUM_4) { //||fromserer.equals("4")
 					wireStatus[3] = CUT;
 				}
-				if (keycode == Input.Keys.NUM_5) {
+				if (keycode == Input.Keys.NUM_5) { //||fromserer.equals("5")
 					wireStatus[4] = CUT;
 				}
-				if (keycode == Input.Keys.NUM_6) {
+				if (keycode == Input.Keys.NUM_6) { //||fromserer.equals("6")
 					wireStatus[5] = CUT;
 				}
 

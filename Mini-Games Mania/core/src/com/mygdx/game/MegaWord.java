@@ -3,6 +3,7 @@ package com.mygdx.game;
 //6 wires: 1 wire will defuse the bomb. The first person to choose the correct wire WINS.
 //OR the person who is up to choose once the time runs out loses
 
+import com.ClientRead;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -32,7 +33,7 @@ public class MegaWord extends ScreenAdapter {
 
 	OrthographicCamera cam;
 	MyGdxGame game;
-
+	ClientRead client= new ClientRead();
 	public static final int P1 = 1;
 	public static final int P2 = 2;
 	public static HashSet<String> dictionary;
@@ -61,7 +62,7 @@ public class MegaWord extends ScreenAdapter {
 	TimerTask task;
 	String timeStamp;
 	int time;
-
+	String fromserver;
 
 
 	public MegaWord(MyGdxGame game){
@@ -73,8 +74,7 @@ public class MegaWord extends ScreenAdapter {
 
 		this.game = game;
 		batch = game.batch;
-
-
+		client=game.client;
 		batch = new SpriteBatch();
 		sr = new ShapeRenderer();
 		font = new BitmapFont(Gdx.files.internal("android/assets/IntroScreen/Intro.fnt")); //description font
@@ -127,7 +127,7 @@ public class MegaWord extends ScreenAdapter {
 
 	@Override
 	public void render (float delta) {
-
+//		fromserver=client.read();
 		cam.update();
 		batch.setProjectionMatrix(cam.combined);
 

@@ -2,15 +2,19 @@
 //ANITA HU? / NIZAR ALRIFAI
 //Code for intro to the memory game filled with instructions
 package com.mygdx.game;
+import com.ClientRead;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
 public class MemoryIntro extends ScreenAdapter {
+    String fromserver;
+    ClientRead client;
     MyGdxGame game;
     public MemoryIntro(MyGdxGame game) {
         this.game = game;
+        client=game.client;
     }
     @Override
     public void render(float delta) { //using game we set up a new screen

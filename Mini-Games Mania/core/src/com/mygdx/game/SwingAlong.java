@@ -13,6 +13,7 @@ package com.mygdx.game;
 //import java.util.*;
 
 
+import com.ClientRead;
 import com.badlogic.gdx.ApplicationAdapter;
 
 
@@ -34,9 +35,9 @@ import com.swing.along.ActionResolver;
 public class SwingAlong extends ScreenAdapter {
 
 	private OrthographicCamera cam;
-
+	ClientRead client;
 	MyGdxGame game;
-
+	String fromserver;
 	SpriteBatch batch;
 	ShapeRenderer sr;
 	int angle = 90;
@@ -72,7 +73,7 @@ public class SwingAlong extends ScreenAdapter {
 		this.game = game;
 		batch = game.batch;
 		sr = new ShapeRenderer();
-
+		client=game.client;
 		//https://github.com/libgdx/libgdx/wiki/Orthographic-camera
 		// Constructs a new OrthographicCamera, using the given viewport width and height
 		// Height is multiplied by aspect ratio.
@@ -125,7 +126,7 @@ public class SwingAlong extends ScreenAdapter {
 
 	@Override
 	public void render (float delta) {
-
+//		fromserver=client.read();
 		cam.update();
 		batch.setProjectionMatrix(cam.combined);
 
@@ -331,7 +332,7 @@ public class SwingAlong extends ScreenAdapter {
 				if(keycode == Keys.ESCAPE){
 					game.setScreen(new GamePickScreen(game));
 				}
-				if(keycode == Keys.RIGHT){
+				if(keycode == Keys.RIGHT){ //||fromserver.equals("JUMP")
 
 					float px1 = p1.getX()+p1.getWidth();
 					float vx1 = (float)(vines1[vIndex1+1].getX()-vines1[vIndex1+1].getHeight()*Math.cos(Math.toRadians(vines1[vIndex1+1].getRotation()-90)));

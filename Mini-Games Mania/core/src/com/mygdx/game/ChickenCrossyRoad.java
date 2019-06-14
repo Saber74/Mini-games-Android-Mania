@@ -10,6 +10,7 @@ package com.mygdx.game;
 import java.util.ArrayList;
 
 
+import com.ClientRead;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputAdapter;
@@ -26,7 +27,7 @@ import com.badlogic.gdx.audio.Music;
 
 
 public class ChickenCrossyRoad extends ScreenAdapter {
-
+	ClientRead client;
 	OrthographicCamera cam;
 	MyGdxGame game;
 	SpriteBatch batch;
@@ -50,7 +51,7 @@ public class ChickenCrossyRoad extends ScreenAdapter {
 	float ex, ey;
 	boolean bonus = false;
 	HopOn log;
-
+	String fromserver;
 
 	Home[] homes;
 
@@ -83,7 +84,7 @@ public class ChickenCrossyRoad extends ScreenAdapter {
 		cam.update();
 
 		this.game = game;
-
+		client=game.client;
 		//game.resize(1000,1000);
 
 		//Gdx.graphics.setWindowedMode(800, 800);
@@ -190,7 +191,7 @@ public class ChickenCrossyRoad extends ScreenAdapter {
 	//****************************************RUN GAME**************************************
 	@Override
 	public void render(float delta) {
-
+//		fromserver=client.read();
 		cam.update();
 		batch.setProjectionMatrix(cam.combined);
 		//music.play();
@@ -433,22 +434,22 @@ public class ChickenCrossyRoad extends ScreenAdapter {
 					players[0].setFirst(true);
 
 					//arrow keys for player 1
-					if (keycode == Keys.UP) {
+					if (keycode == Keys.UP) { //||fromserver.equals("UP")
 						players[0].increaseFrame();
 						players[0].setIndex(0);//index of chicken sprite
 						players[0].translateY(50);
 						players[0].addToScore(10);//as chicken advances 1 row, increase score by 10
-					} else if (keycode == Keys.DOWN) {
+					} else if (keycode == Keys.DOWN) { //||fromserver.equals("DOWN")
 						if (players[0].getY() > 50) {//prevent chicken from moving out of bottom boundary
 							players[0].increaseFrame();
 							players[0].setIndex(1);
 							players[0].translateY(-50);
 						}
-					} else if (keycode == Keys.LEFT) {
+					} else if (keycode == Keys.LEFT) { //||fromserver.equals("LEFT")
 						players[0].increaseFrame();
 						players[0].setIndex(2);
 						players[0].translateX(-50);
-					} else if (keycode == Keys.RIGHT) {
+					} else if (keycode == Keys.RIGHT) { //||fromserver.equals("RIGHT")
 						players[0].increaseFrame();
 						players[0].setIndex(3);
 						players[0].translateX(50);

@@ -4,6 +4,7 @@
 //replicate it to win
 package com.mygdx.game;
 
+import com.ClientRead;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
@@ -23,7 +24,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class Memory extends ScreenAdapter {
-
+    String fromserver;
+    ClientRead client;
     OrthographicCamera cam; //camera for proper zoom
     float stateTime;
     int memorizeTime;
@@ -68,6 +70,7 @@ public class Memory extends ScreenAdapter {
                 player2[i][k]=0;
             }
         }
+        client=game.client;
 
         timeStamp = ""; //timer stuff
         memorizeTimer = new Timer();
@@ -125,7 +128,7 @@ public class Memory extends ScreenAdapter {
 
     @Override
     public void render(float delta) { //creating the players grid and the grid to recreate and the winning screen
-
+//        fromserver=client.read();
         //cam.update();
         //game.batch.setProjectionMatrix(cam.combined);
 
@@ -204,27 +207,27 @@ public class Memory extends ScreenAdapter {
                     game.setScreen(new GamePickScreen(game));
                 }
                 if (!gameFinished) {
-                    if (keyCode == Input.Keys.RIGHT) {
+                    if (keyCode == Input.Keys.RIGHT) { //||fromserver.equals("RIGHT")
                         if (currentp1x < 6) {
                             currentp1x += 1;
                         }
                     }
-                    if (keyCode == Input.Keys.LEFT) {
+                    if (keyCode == Input.Keys.LEFT) { //||fromserver.equals("LEFT")
                         if (currentp1x > 0) {
                             currentp1x -= 1;
                         }
                     }
-                    if (keyCode == Input.Keys.UP) {
+                    if (keyCode == Input.Keys.UP) { ////||fromserver.equals("UP")
                         if (currentp1y < 6) {
                             currentp1y++;
                         }
                     }
-                    if (keyCode == Input.Keys.DOWN) {
+                    if (keyCode == Input.Keys.DOWN) { //||fromserver.equals("DOWN")
                         if (currentp1y > 0) {
                             currentp1y--;
                         }
                     }
-                    if (keyCode == Input.Keys.SPACE) {
+                    if (keyCode == Input.Keys.SPACE) { //||fromserver.equals("FILL")
                         if (player1[currentp1y][currentp1x] == 0) {
                             player1[currentp1y][currentp1x] = 1;
                         } else {

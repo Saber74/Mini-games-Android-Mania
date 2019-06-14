@@ -9,6 +9,7 @@ import java.io.PrintStream;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -18,7 +19,7 @@ public class Server {
     Socket client = null; //adding clients
     ExecutorService pool = null; //clients are added to this pool and are managed there
     int clientcount = 0; //counting how many clients
-
+    static ArrayList<Socket> clients= new ArrayList<Socket>();
     public static void main(String[] args) {
         try {
 
@@ -39,6 +40,7 @@ public class Server {
         System.out.println("Any client can stop the server by sending -1");
         while (true) { //accepting any clients that try to join up to a max of 5 running at same time
             client = server.accept();
+            clients.add(client);
             clientcount++;
             ServerThread runnable = new ServerThread(client, clientcount, this); //creates a thread to deal with every client seperatley
             pool.execute(runnable);
@@ -61,12 +63,12 @@ public class Server {
                 this.server = server;
                 this.id = count;
                 System.out.println("Connection " + id + "established with client " + client);
-                cin = new BufferedReader(new InputStreamReader(client.getInputStream())); //setting up input and ouput for client
+                if(id==1){
+                    cin = new BufferedReader(new InputStreamReader(client.getInputStream())); //setting up input and ouput for client
+                }
                 cout = new PrintStream(client.getOutputStream());
-
             }
             catch(IOException x){}
-
         }
 
         @Override
@@ -85,9 +87,14 @@ public class Server {
                         System.out.println("Connection ended by server");
                         break;
                     }
-                    cout.println(s);
+                    int remmember=id-1;
+                    for(int i=0;i<clients.size();i++){
+                        client=clients.get(i);
+                        cout = new PrintStream(client.getOutputStream());
+                        cout.println(s);
+                    }
+                    client=clients.get(remmember);
                 }
-
 
                 cin.close();
                 client.close();

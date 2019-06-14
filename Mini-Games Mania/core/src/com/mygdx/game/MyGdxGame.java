@@ -1,4 +1,5 @@
 package com.mygdx.game;
+import com.ClientRead;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -10,16 +11,17 @@ public class MyGdxGame extends Game {
 	SpriteBatch batch;
 	ShapeRenderer shapeRenderer;
 	BitmapFont font;
-
+	ClientRead client;
 	@Override
 	public void create() {
 		batch = new SpriteBatch();
 		shapeRenderer = new ShapeRenderer();
 		font = new BitmapFont(Gdx.files.internal("android/assets/IntroScreen/Intro.fnt")); //description font
-
+		client=new ClientRead();
 		setScreen(new IntroAnimation(this));
 		//setScreen(new Memory(this));
 	}
+
 
 
 

@@ -5,6 +5,7 @@
 
         */
 package com.mygdx.game;
+import com.ClientRead;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -21,6 +22,7 @@ import java.util.LinkedList;
 import java.util.Random;
 import static com.badlogic.gdx.Gdx.graphics;
 public class Space_Main extends ScreenAdapter {
+    ClientRead client;
     MyGdxGame game;
     private boolean soundPlayed=false;
     private boolean end = false; //indicating the end of introduction
@@ -68,6 +70,7 @@ public class Space_Main extends ScreenAdapter {
         cam.position.set(500,500,0);
         cam.update();
         this.game=game;
+        client=game.client;
         // loading music
         start0 = Gdx.audio.newMusic(Gdx.files.internal("android/assets/SpaceInvaders/Sound/start0.mp3")); //first sound in intro
         start = Gdx.audio.newMusic(Gdx.files.internal("android/assets/SpaceInvaders/Sound/start.mp3")); //2nd
@@ -109,14 +112,15 @@ public class Space_Main extends ScreenAdapter {
     }
     @Override
     public void render(float delta) {
+//        String fromserver= client.read();
         cam.update();
         batch.setProjectionMatrix(cam.combined);
         Gdx.gl.glClearColor(0, 0, 0, 1); // sets the background colour to black
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         if(gameStarted){
-            if (Gdx.input.isKeyPressed(Input.Keys.LEFT))
+            if (Gdx.input.isKeyPressed(Input.Keys.LEFT))//|fromserver.equals("LEFT"))
                 player.goLeft(); // player will go left when left arrow key pressed
-            if (Gdx.input.isKeyPressed(Input.Keys.RIGHT))
+            if (Gdx.input.isKeyPressed(Input.Keys.RIGHT))//||fromserver.equals("RIGHT"))
                 player.goRight(); // player will go right when right arrow key pressed
             if (Gdx.input.isKeyPressed(Input.Keys.A))
                 player2.goLeft(); // player will go left when left arrow key pressed
@@ -171,7 +175,7 @@ public class Space_Main extends ScreenAdapter {
                 if (Gdx.input.isKeyPressed(Input.Keys.SHIFT_RIGHT))
                     player.usePowerup();
                 // if the player presses the space button and the player is not shooting, the player shoots a bullet
-                if (Gdx.input.isKeyPressed(Input.Keys.SPACE) && !player.isShooting() && bullets.size() == 0)
+                if ((Gdx.input.isKeyPressed(Input.Keys.SPACE))&& !player.isShooting() && bullets.size() == 0)
                     bullets.add(player.shootBullet());
                 if (Gdx.input.isKeyPressed(Input.Keys.SHIFT_LEFT))
                     player2.usePowerup();
