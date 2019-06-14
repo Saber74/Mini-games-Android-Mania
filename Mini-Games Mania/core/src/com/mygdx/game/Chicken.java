@@ -178,22 +178,24 @@ public class Chicken {
         return goodRect;
     }
 
-    //set number of lives
+    //add a life when one of the player's chickens reaches the end
     public void addLives(){
         lives++;
     }
 
-
+    //draw the chicken on the screen
     public void render(SpriteBatch batch){
         batch.draw(goodTextures[goodIndex][goodFrame%3],goodRect.x,goodRect.y);
     }
 
+    //draw the number of lives the player has left
     public void renderLives(SpriteBatch batch, int index){
         for(int i=0; i<lives-1; i++){
             batch.draw(goodTextures[1][1], 50*i + 600*index, 0, 50,50);
         }
     }
 
+    //if player dies, set up variables
     public void die(){
         //set feather coordinates equal to last location where chicken died
         fx = gx;
@@ -202,7 +204,7 @@ public class Chicken {
         //set chicken to position off screen until feather disappears
         gy = -100;
         a=1;
-        setKeysDisable(true);
+        disableKeys = true;//temporarily disable keys when feather animation playing
     }
 
     public void setKeysDisable(boolean b){
@@ -213,22 +215,25 @@ public class Chicken {
         return disableKeys;
     }
 
+    //update feather
     public void updateFeather(SpriteBatch batch, int count){
         //increase feather coordinates (gives the effect that feather is rising up)
         fx++;
         fy++;
         feather.setPosition(fx,fy);
         feather.draw(batch,a);
+        //update transparency of feather
         if(count%10==0){
             a-=0.5;//make feather transparent over time
         }
+
         //once feather fully disappears, reset chicken position
         if(a==0){
             gx = (800-50)/2-100+200*num;
             gy = 50;
             lives--;
             goodIndex = 0;
-            dead = false;
+            dead = false;//player no longer dead
         }
     }
 

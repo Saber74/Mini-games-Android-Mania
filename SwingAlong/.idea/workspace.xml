@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="12318ebd-443a-44ea-b4a9-0e72d61f9028" name="Default Changelist" comment="" />
+    <list default="true" id="12318ebd-443a-44ea-b4a9-0e72d61f9028" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../Mini-Games Mania/android/assets/ChickenCrossyRoad/chicken dance song.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Mini-Games Mania/core/src/com/mygdx/game/Chicken.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Mini-Games Mania/core/src/com/mygdx/game/Chicken.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Mini-Games Mania/core/src/com/mygdx/game/ChickenCrossyRoad.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Mini-Games Mania/core/src/com/mygdx/game/ChickenCrossyRoad.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Mini-Games Mania/core/src/com/mygdx/game/GamePickScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Mini-Games Mania/core/src/com/mygdx/game/GamePickScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Mini-Games Mania/core/src/com/mygdx/game/Grid.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Mini-Games Mania/core/src/com/mygdx/game/Grid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Mini-Games Mania/core/src/com/mygdx/game/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Mini-Games Mania/core/src/com/mygdx/game/Home.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Mini-Games Mania/core/src/com/mygdx/game/HopOn.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Mini-Games Mania/core/src/com/mygdx/game/HopOn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Mini-Games Mania/core/src/com/mygdx/game/IntroAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Mini-Games Mania/core/src/com/mygdx/game/IntroAnimation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Mini-Games Mania/core/src/com/mygdx/game/MegaBomb.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Mini-Games Mania/core/src/com/mygdx/game/MegaBomb.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Mini-Games Mania/core/src/com/mygdx/game/Memory.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Mini-Games Mania/core/src/com/mygdx/game/Memory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Mini-Games Mania/desktop/src/com/swing/along/desktop/DesktopLauncher.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Mini-Games Mania/desktop/src/com/swing/along/desktop/DesktopLauncher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Mini-Games Mania/swingapp/src/main/java/com/example/firstswingtest/BombControlActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Mini-Games Mania/swingapp/src/main/java/com/example/firstswingtest/BombControlActivity.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,7 +29,17 @@
     </system>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/android/build/generated/source/buildConfig/debug/com/swing/along/BuildConfig.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -86,72 +109,55 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="10" />
+    <option name="x" value="9" />
     <option name="width" value="846" />
-    <option name="height" value="775" />
+    <option name="height" value="776" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
+    <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="ProjectPane" />
       <pane id="PackagesPane" />
-      <pane id="ProjectPane">
+      <pane id="AndroidView">
         <subPane>
           <expand>
             <path>
-              <item name="SwingAlong" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SwingAlong" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="SwingAlong" type="1abcf292:AndroidViewProjectNode" />
+              <item name="android" type="e9137016:NonAndroidModuleNode" />
             </path>
             <path>
-              <item name="SwingAlong" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SwingAlong" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name=".idea" type="462c0819:PsiDirectoryNode" />
+              <item name="SwingAlong" type="1abcf292:AndroidViewProjectNode" />
+              <item name="android" type="e9137016:NonAndroidModuleNode" />
+              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
             </path>
             <path>
-              <item name="SwingAlong" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SwingAlong" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="android" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="SwingAlong" type="1abcf292:AndroidViewProjectNode" />
+              <item name="android" type="e9137016:NonAndroidModuleNode" />
+              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
+              <item name="along" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="SwingAlong" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SwingAlong" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="android" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="SwingAlong" type="1abcf292:AndroidViewProjectNode" />
+              <item name="core" type="e9137016:NonAndroidModuleNode" />
             </path>
             <path>
-              <item name="SwingAlong" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SwingAlong" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="SwingAlong" type="1abcf292:AndroidViewProjectNode" />
+              <item name="core" type="e9137016:NonAndroidModuleNode" />
+              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
             </path>
             <path>
-              <item name="SwingAlong" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SwingAlong" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="core" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="SwingAlong" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SwingAlong" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="core" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="bin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SwingAlong" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SwingAlong" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="core" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="build" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SwingAlong" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SwingAlong" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="desktop" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="SwingAlong" type="1abcf292:AndroidViewProjectNode" />
+              <item name="core" type="e9137016:NonAndroidModuleNode" />
+              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -367,7 +373,7 @@
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.32980332" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.32955465" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Build Variants" order="4" side_tool="true" />
@@ -382,7 +388,7 @@
       <window_info anchor="bottom" id="Terminal" order="4" />
       <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="6" />
-      <window_info anchor="bottom" id="Build" order="7" weight="0.32961783" />
+      <window_info anchor="bottom" id="Build" order="7" visible="true" weight="0.3285968" />
       <window_info anchor="bottom" id="Find" order="8" weight="0.32961783" />
       <window_info anchor="bottom" id="Android Profiler" order="9" show_stripe_button="false" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" weight="0.32980332" />
@@ -415,5 +421,12 @@
     <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/MegaBomb.java" />
     <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/Space_HUD.java" />
     <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/IntroAnimation.java" />
+    <entry file="file://$PROJECT_DIR$/android/build/generated/source/buildConfig/debug/com/swing/along/BuildConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>

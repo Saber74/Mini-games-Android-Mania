@@ -55,13 +55,6 @@ public class ChickenCrossyRoad extends ScreenAdapter {
 
 	Home[] homes;
 
-	//related to the home base nests
-	Texture homeTexture;
-	Texture nestTexture;
-	static Rectangle[] nestRects;//array of nests at the end without chicken
-	static Rectangle[] homeRects;//array of nests at the end with chicken (once it successfully reaches end)
-	int home = 0;//number of chickens that made it to their home base
-
 	//related to water portion of game
 	Rectangle waterRect;//if player collides with waterRect, it dies
 
@@ -78,25 +71,20 @@ public class ChickenCrossyRoad extends ScreenAdapter {
 	//*********************************CREATE GAME VARIABLES*************************************
 	public ChickenCrossyRoad(MyGdxGame game) {
 
+		//set up camera so that game appears full screen
 		cam = new OrthographicCamera(1600,1000);
-
 		cam.position.set(400,500,0);
 		cam.update();
 
 		this.game = game;
 		client=game.client;
-		//game.resize(1000,1000);
-
-		//Gdx.graphics.setWindowedMode(800, 800);
-		//each row is 50 pixels tall
-		//System.out.println(Gdx.graphics.getWidth()+", "+Gdx.graphics.getHeight());
 
 		batch = game.batch;
 		sr = new ShapeRenderer();
 		font = new BitmapFont();
 		font.getData().setScale(2f);
 
-		//music = Gdx.audio.newMusic(Gdx.files.internal("chicken dance song.mp3"));
+		//music = Gdx.audio.newMusic(Gdx.files.internal("android/assets/ChickenCrossyRoad/chicken_dance_song.mp3"));
 
 		//initialize background and title pages
 		bkg = new Texture("android/assets/ChickenCrossyRoad/background.png");
@@ -315,7 +303,7 @@ public class ChickenCrossyRoad extends ScreenAdapter {
 			//draw the golden egg
 			batch.draw(bonusEgg, ex, ey);
 
-			//draw chicken player last (so that most forward on screen)
+			//draw chicken players last (so that most forward on screen)
 			for (int i = 0; i < 2; i++) {
 				players[i].render(batch);
 			}

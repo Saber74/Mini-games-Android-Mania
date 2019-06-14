@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 
+//class of HopOn objects for CHICKEN CROSSY ROAD game
 public class HopOn {
 	String name;//to check if it is a log or not
 	int frame;//frame - as there are spritesheets used for the eggs in the nest

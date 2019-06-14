@@ -186,8 +186,8 @@ public class Memory extends ScreenAdapter {
                     }
                 }
                 shapes.setColor(0.3f, 0.1f, 0.1f, 0);
-                shapes.rect(Gdx.graphics.getWidth()/2-600+15 + (50 * currentp1x), 235 + 50 * currentp1y, 24, 24);
-                shapes.rect(Gdx.graphics.getWidth()/2+200+15 + (50 * currentp2x), 235 + 50 * currentp2y, 24, 24);
+                shapes.rect(Gdx.graphics.getWidth()/2-600+12 + (50 * currentp1x), 235 + 50 * currentp1y, 24, 24);
+                shapes.rect(Gdx.graphics.getWidth()/2+200+12 + (50 * currentp2x), 235 + 50 * currentp2y, 24, 24);
                 shapes.end();
 
 

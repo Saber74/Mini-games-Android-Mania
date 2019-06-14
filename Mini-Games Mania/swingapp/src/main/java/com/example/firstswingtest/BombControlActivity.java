@@ -1,4 +1,5 @@
 package com.example.firstswingtest;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -30,6 +31,7 @@ public class BombControlActivity extends AppCompatActivity {
         }
     }
     public void deWire1(View view) {
+
         Log.d("BombControlActivity", "WIRE 1 DEACTIVATED");
 
     }

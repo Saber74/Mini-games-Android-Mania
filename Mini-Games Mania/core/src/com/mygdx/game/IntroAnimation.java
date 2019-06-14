@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
+//first screen to be called and displayed - intro loading screen of ping pong paddle
 public class IntroAnimation extends ScreenAdapter {
 
     private OrthographicCamera cam;
@@ -16,12 +17,15 @@ public class IntroAnimation extends ScreenAdapter {
     int animationCounter =0;
     MyGdxGame game;
     float stateTime;
+
+    //ping pong animation variables
     Texture[] introTextures;
     Animation<Texture> introAnimation;
     Texture currentFrame;
 
     BitmapFont font;
 
+    //constructor method for animation
     public IntroAnimation(MyGdxGame game){
 
         cam = new OrthographicCamera(1500,1200);
@@ -32,8 +36,10 @@ public class IntroAnimation extends ScreenAdapter {
         this.game=game;
         stateTime = 0f;
 
+        //ping pong animation has 27 frames
         introTextures = new Texture[27];
 
+        //
         for(int i=0; i<introTextures.length; i++){
             String pic = String.format("android/assets/IntroScreen/pingpong/%d.png",i);
             introTextures[i] = new Texture(pic);
